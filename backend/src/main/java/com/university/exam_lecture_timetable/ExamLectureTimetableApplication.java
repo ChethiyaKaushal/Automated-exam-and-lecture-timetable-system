@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ExamLectureTimetableApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(ExamLectureTimetableApplication.class, args);
 	}
 
