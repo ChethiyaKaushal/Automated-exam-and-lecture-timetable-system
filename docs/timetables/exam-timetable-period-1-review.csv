@@ -1,0 +1,273 @@
+﻿Exam date,Start time,End time,Duration (minutes),Module code,Module name,Curriculum,Exam requirement ID,Total exam students (repeated per room),Room label,Venue,Venue exam capacity,Students allocated to venue,Unused seats in venue,Group IDs and allocated seats,Review status,Student clash and workload check
+2026-12-01,09:00,12:00,180,CE2201,Fundamentals of Fluid Mechanics,C-23,17,599,A-I,NCC,140,140,0,150: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,09:00,12:00,180,CE2201,Fundamentals of Fluid Mechanics,C-23,17,599,A-II,AUD,120,120,0,150: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,09:00,12:00,180,CE2201,Fundamentals of Fluid Mechanics,C-23,17,599,B-I,LT1,80,80,0,150: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,09:00,12:00,180,CE2201,Fundamentals of Fluid Mechanics,C-23,17,599,B-II,LT2,80,80,0,150: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,09:00,12:00,180,CE2201,Fundamentals of Fluid Mechanics,C-23,17,599,C-I,CC,70,70,0,150: 70,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,09:00,12:00,180,CE2201,Fundamentals of Fluid Mechanics,C-23,17,599,C-II,SR,50,50,0,150: 50,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,09:00,12:00,180,CE2201,Fundamentals of Fluid Mechanics,C-23,17,599,D-I,LR1,40,40,0,150: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,09:00,12:00,180,CE2201,Fundamentals of Fluid Mechanics,C-23,17,599,D-II,LR2,40,19,21,150: 19,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,09:00,12:00,180,ME1201,Engineering Drawing (Group A-I),C-23,11,140,A-I,DO1,140,140,0,111: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,09:00,12:00,180,ME1201,Engineering Drawing (Group A-II),C-23,12,140,A-II,DO2,140,140,0,156: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,13:30,15:30,120,IS1003,Proficiency in English,C-23,7,588,A-I,NCC,140,140,0,154: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,13:30,15:30,120,IS1003,Proficiency in English,C-23,7,588,A-II,AUD,120,120,0,154: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,13:30,15:30,120,IS1003,Proficiency in English,C-23,7,588,B-I,LT1,80,80,0,154: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,13:30,15:30,120,IS1003,Proficiency in English,C-23,7,588,B-II,LT2,80,80,0,154: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,13:30,15:30,120,IS1003,Proficiency in English,C-23,7,588,C-I,CC,70,70,0,154: 70,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,13:30,15:30,120,IS1003,Proficiency in English,C-23,7,588,C-II,SR,50,50,0,154: 50,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,13:30,15:30,120,IS1003,Proficiency in English,C-23,7,588,D-I,LR1,40,40,0,154: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,13:30,15:30,120,IS1003,Proficiency in English,C-23,7,588,D-II,LR2,40,8,32,154: 8,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,13:30,16:30,180,ME1201,Engineering Drawing (Group B-I),C-23,13,140,B-I,DO1,140,140,0,157: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,13:30,16:30,180,ME1201,Engineering Drawing (Group B-II),C-23,15,126,B-II,DO2,140,126,14,158: 126,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,15:30,17:30,120,EE1102,Programming Fundamentals,C-23,3,561,A-I,NCC,140,140,0,101: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,15:30,17:30,120,EE1102,Programming Fundamentals,C-23,3,561,A-II,AUD,120,120,0,101: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,15:30,17:30,120,EE1102,Programming Fundamentals,C-23,3,561,B-I,LT1,80,80,0,101: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,15:30,17:30,120,EE1102,Programming Fundamentals,C-23,3,561,B-II,LT2,80,80,0,101: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,15:30,17:30,120,EE1102,Programming Fundamentals,C-23,3,561,C-I,CC,70,70,0,101: 70,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,15:30,17:30,120,EE1102,Programming Fundamentals,C-23,3,561,C-II,LR1,40,40,0,101: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,15:30,17:30,120,EE1102,Programming Fundamentals,C-23,3,561,D-I,LR2,40,31,9,101: 31,Draft - not ready to publish,Not verified - memberships missing
+2026-12-01,15:30,17:30,120,EE5210,Hardware Description Language,C-23,93,37,A-I,SR,50,37,13,135: 37,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,09:00,12:00,180,IS5101,Engineering Ethics,C-23,101,298,A-I,AUD,120,120,0,74: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,09:00,12:00,180,IS5101,Engineering Ethics,C-23,101,298,A-II,CC,70,70,0,74: 70,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,09:00,12:00,180,IS5101,Engineering Ethics,C-23,101,298,B-I,SR,50,50,0,74: 50,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,09:00,12:00,180,IS5101,Engineering Ethics,C-23,101,298,B-II,LR1,40,40,0,74: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,09:00,12:00,180,IS5101,Engineering Ethics,C-23,101,298,C-I,LR2,40,18,22,74: 18,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,09:00,12:00,180,ME2302,Fundamentals of Materials and Manufacturing Engineering,C-23,28,575,A-I,DO1,140,140,0,152: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,09:00,12:00,180,ME2302,Fundamentals of Materials and Manufacturing Engineering,C-23,28,575,A-II,DO2,140,140,0,152: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,09:00,12:00,180,ME2302,Fundamentals of Materials and Manufacturing Engineering,C-23,28,575,B-I,NCC,140,140,0,152: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,09:00,12:00,180,ME2302,Fundamentals of Materials and Manufacturing Engineering,C-23,28,575,B-II,LT1,80,80,0,152: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,09:00,12:00,180,ME2302,Fundamentals of Materials and Manufacturing Engineering,C-23,28,575,C-I,LT2,80,75,5,152: 75,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,13:30,16:30,180,IS2401,Linear Algebra and Differential Equations,C-23,25,566,A-I,DO1,140,140,0,106: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,13:30,16:30,180,IS2401,Linear Algebra and Differential Equations,C-23,25,566,A-II,DO2,140,140,0,106: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,13:30,16:30,180,IS2401,Linear Algebra and Differential Equations,C-23,25,566,B-I,NCC,140,140,0,106: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,13:30,16:30,180,IS2401,Linear Algebra and Differential Equations,C-23,25,566,B-II,LT1,80,80,0,106: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,13:30,16:30,180,IS2401,Linear Algebra and Differential Equations,C-23,25,566,C-I,CC,70,66,4,106: 66,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,13:30,16:30,180,IS5302,Numerical Methods,C-23,106,298,A-I,AUD,120,120,0,90: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,13:30,16:30,180,IS5302,Numerical Methods,C-23,106,298,A-II,LT2,80,80,0,90: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,13:30,16:30,180,IS5302,Numerical Methods,C-23,106,298,B-I,SR,50,50,0,90: 50,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,13:30,16:30,180,IS5302,Numerical Methods,C-23,106,298,B-II,LR1,40,40,0,90: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-02,13:30,16:30,180,IS5302,Numerical Methods,C-23,106,298,C-I,LR2,40,8,32,90: 8,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,09:00,12:00,180,CE2302,Mechanics of Materials,C-23,19,564,A-I,DO1,140,140,0,146: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,09:00,12:00,180,CE2302,Mechanics of Materials,C-23,19,564,A-II,DO2,140,140,0,146: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,09:00,12:00,180,CE2302,Mechanics of Materials,C-23,19,564,B-I,NCC,140,140,0,146: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,09:00,12:00,180,CE2302,Mechanics of Materials,C-23,19,564,B-II,LT1,80,80,0,146: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,09:00,12:00,180,CE2302,Mechanics of Materials,C-23,19,564,C-I,CC,70,64,6,146: 64,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,09:00,12:00,180,CE3201,Concrete Technology,C-23,30,126,A-I,SR,50,50,0,76: 50,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,09:00,12:00,180,CE3201,Concrete Technology,C-23,30,126,A-II,LR1,40,40,0,76: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,09:00,12:00,180,CE3201,Concrete Technology,C-23,30,126,B-I,LR2,40,36,4,76: 36,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,09:00,11:00,120,EC7201,Information Security,C-18,123,195,A-I,AUD,120,120,0,26: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,09:00,11:00,120,EC7201,Information Security,C-18,123,195,A-II,LT2,80,75,5,26: 75,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,13:30,16:30,180,EC3202,Data Structures and Algorithms,C-23,39,192,A-I,NCC,140,140,0,138: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,13:30,16:30,180,EC3202,Data Structures and Algorithms,C-23,39,192,A-II,CC,70,52,18,138: 52,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,13:30,16:30,180,EC7212,Advanced Data Communication,C-18,131,39,A-I,LR2,40,39,1,83: 39,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,13:30,15:30,120,EE2202,Object Oriented Programming,C-23,23,554,A-I,DO1,140,140,0,51: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,13:30,15:30,120,EE2202,Object Oriented Programming,C-23,23,554,A-II,DO2,140,140,0,51: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,13:30,15:30,120,EE2202,Object Oriented Programming,C-23,23,554,B-I,AUD,120,120,0,51: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,13:30,15:30,120,EE2202,Object Oriented Programming,C-23,23,554,B-II,LT1,80,80,0,51: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,13:30,15:30,120,EE2202,Object Oriented Programming,C-23,23,554,C-I,LT2,80,74,6,51: 74,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,13:30,15:30,120,IS5123,Project Management,C-23,102,86,A-I,SR,50,50,0,10: 50,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,13:30,15:30,120,IS5123,Project Management,C-23,102,86,A-II,LR1,40,36,4,10: 36,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,15:30,17:30,120,CE7256,Sustainable Built Environment Principles,C-18,119,23,A-I,LT2,80,23,57,65: 23,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,15:30,17:30,120,EC7203,Advanced Artificial Intelligence,C-18,124,190,A-I,DO1,140,140,0,44: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,15:30,17:30,120,EC7203,Advanced Artificial Intelligence,C-18,124,190,A-II,SR,50,50,0,44: 50,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,15:30,17:30,120,EC7204,Cloud Computing,C-18,125,174,A-I,DO2,140,140,0,126: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,15:30,17:30,120,EC7204,Cloud Computing,C-18,125,174,A-II,LR1,40,34,6,126: 34,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,15:30,17:30,120,EC7205,Computer Vision and Image Processing,C-18,126,174,A-I,AUD,120,120,0,8: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-03,15:30,17:30,120,EC7205,Computer Vision and Image Processing,C-18,126,174,A-II,LT1,80,54,26,8: 54,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,09:00,12:00,180,CE3205,Structural Analysis I,C-23,34,126,A-I,SR,50,50,0,103: 50,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,09:00,12:00,180,CE3205,Structural Analysis I,C-23,34,126,A-II,LR1,40,40,0,103: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,09:00,12:00,180,CE3205,Structural Analysis I,C-23,34,126,B-I,LR2,40,36,4,103: 36,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,09:00,12:00,180,EC3305,Signals and Systems,C-23,42,191,A-I,NCC,140,140,0,31: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,09:00,12:00,180,EC3305,Signals and Systems,C-23,42,191,A-II,CC,70,51,19,31: 51,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,09:00,12:00,180,EE2201,Fundamentals of Electronics,C-23,21,553,A-I,DO1,140,140,0,19: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,09:00,12:00,180,EE2201,Fundamentals of Electronics,C-23,21,553,A-II,DO2,140,140,0,19: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,09:00,12:00,180,EE2201,Fundamentals of Electronics,C-23,21,553,B-I,AUD,120,120,0,19: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,09:00,12:00,180,EE2201,Fundamentals of Electronics,C-23,21,553,B-II,LT1,80,80,0,19: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,09:00,12:00,180,EE2201,Fundamentals of Electronics,C-23,21,553,C-I,LT2,80,73,7,19: 73,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,13:30,16:30,180,EC3203,Electrical and Electronic Measurements,C-23,40,190,A-I,NCC,140,140,0,123: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,13:30,16:30,180,EC3203,Electrical and Electronic Measurements,C-23,40,190,A-II,SR,50,50,0,123: 50,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,13:30,16:30,180,ME2201,Engineering Mechanics,C-23,26,551,A-I,DO1,140,140,0,148: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,13:30,16:30,180,ME2201,Engineering Mechanics,C-23,26,551,A-II,DO2,140,140,0,148: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,13:30,16:30,180,ME2201,Engineering Mechanics,C-23,26,551,B-I,AUD,120,120,0,148: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,13:30,16:30,180,ME2201,Engineering Mechanics,C-23,26,551,B-II,LT1,80,80,0,148: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,13:30,16:30,180,ME2201,Engineering Mechanics,C-23,26,551,C-I,LT2,80,71,9,148: 71,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,13:30,16:30,180,ME3204,Manufacturing Processes and Practice,C-23,62,147,A-I,CC,70,70,0,78: 70,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,13:30,16:30,180,ME3204,Manufacturing Processes and Practice,C-23,62,147,A-II,LR1,40,40,0,78: 31; 79: 9,Draft - not ready to publish,Not verified - memberships missing
+2026-12-04,13:30,16:30,180,ME3204,Manufacturing Processes and Practice,C-23,62,147,B-I,LR2,40,37,3,79: 37,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,09:00,12:00,180,EC3301,Analog Electronics,C-23,41,190,A-I,NCC,140,140,0,66: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,09:00,12:00,180,EC3301,Analog Electronics,C-23,41,190,A-II,SR,50,50,0,66: 50,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,09:00,12:00,180,EE1301,Fundamentals of Electricity,C-23,4,550,A-I,DO1,140,140,0,131: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,09:00,12:00,180,EE1301,Fundamentals of Electricity,C-23,4,550,A-II,DO2,140,140,0,131: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,09:00,12:00,180,EE1301,Fundamentals of Electricity,C-23,4,550,B-I,AUD,120,120,0,131: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,09:00,12:00,180,EE1301,Fundamentals of Electricity,C-23,4,550,B-II,LT1,80,80,0,131: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,09:00,12:00,180,EE1301,Fundamentals of Electricity,C-23,4,550,C-I,CC,70,70,0,131: 70,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,09:00,12:00,180,ME3206,Strength of Materials,C-23,63,147,A-I,LT2,80,80,0,97: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,09:00,12:00,180,ME3206,Strength of Materials,C-23,63,147,A-II,LR1,40,40,0,97: 20; 98: 20,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,09:00,12:00,180,ME3206,Strength of Materials,C-23,63,147,B-I,LR2,40,27,13,98: 27,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,13:30,16:30,180,CE1202,Introduction to Infrastructure Planning,C-23,1,549,A-I,DO1,140,140,0,21: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,13:30,16:30,180,CE1202,Introduction to Infrastructure Planning,C-23,1,549,A-II,DO2,140,140,0,21: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,13:30,16:30,180,CE1202,Introduction to Infrastructure Planning,C-23,1,549,B-I,AUD,120,120,0,21: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,13:30,16:30,180,CE1202,Introduction to Infrastructure Planning,C-23,1,549,B-II,LT1,80,80,0,21: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,13:30,16:30,180,CE1202,Introduction to Infrastructure Planning,C-23,1,549,C-I,CC,70,69,1,21: 69,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,13:30,16:30,180,CE3303,Engineering Surveying,C-23,36,132,A-I,LT2,80,80,0,37: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,13:30,16:30,180,CE3303,Engineering Surveying,C-23,36,132,A-II,SR,50,50,0,37: 50,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,13:30,16:30,180,CE3303,Engineering Surveying,C-23,36,132,B-I,LR2,40,2,38,37: 2,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,13:30,16:30,180,ME3305,Metallurgy for Engineers,C-23,68,147,A-I,NCC,140,140,0,68: 100; 69: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-07,13:30,16:30,180,ME3305,Metallurgy for Engineers,C-23,68,147,A-II,LR1,40,7,33,69: 7,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,09:00,12:00,180,CE3202,Construction Process and Technology,C-23,31,125,A-I,LT2,80,80,0,60: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,09:00,12:00,180,CE3202,Construction Process and Technology,C-23,31,125,A-II,SR,50,45,5,60: 45,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,09:00,12:00,180,CE3304,Fluid Mechanics,C-23,38,126,A-I,NCC,140,126,14,129: 126,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,09:00,12:00,180,EE5201,Communication Systems,C-23,89,75,A-I,LR1,40,40,0,36: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,09:00,12:00,180,EE5201,Communication Systems,C-23,89,75,A-II,LR2,40,35,5,36: 35,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,09:00,12:00,180,ME1202,Fundamentals of Thermodynamics,C-23,16,549,A-I,DO1,140,140,0,56: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,09:00,12:00,180,ME1202,Fundamentals of Thermodynamics,C-23,16,549,A-II,DO2,140,140,0,56: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,09:00,12:00,180,ME1202,Fundamentals of Thermodynamics,C-23,16,549,B-I,AUD,120,120,0,56: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,09:00,12:00,180,ME1202,Fundamentals of Thermodynamics,C-23,16,549,B-II,LT1,80,80,0,56: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,09:00,12:00,180,ME1202,Fundamentals of Thermodynamics,C-23,16,549,C-I,CC,70,69,1,56: 69,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,13:30,16:30,180,CE5201,Building Services Engineering,C-23,74,124,A-I,NCC,140,124,16,100: 124,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,13:30,16:30,180,CE5202,Design of Steel Structures,C-23,76,124,A-I,LT2,80,80,0,114: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,13:30,16:30,180,CE5202,Design of Steel Structures,C-23,76,124,A-II,SR,50,44,6,114: 44,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,13:30,16:30,180,EE5202,Electronic Circuit Design,C-23,90,75,A-I,LR1,40,40,0,59: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,13:30,16:30,180,EE5202,Electronic Circuit Design,C-23,90,75,A-II,LR2,40,35,5,59: 35,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,13:30,16:30,180,IS1301,Communication for Engineers,C-23,8,547,A-I,DO1,140,140,0,39: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,13:30,16:30,180,IS1301,Communication for Engineers,C-23,8,547,A-II,DO2,140,140,0,39: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,13:30,16:30,180,IS1301,Communication for Engineers,C-23,8,547,B-I,AUD,120,120,0,39: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,13:30,16:30,180,IS1301,Communication for Engineers,C-23,8,547,B-II,LT1,80,80,0,39: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-08,13:30,16:30,180,IS1301,Communication for Engineers,C-23,8,547,C-I,CC,70,67,3,39: 67,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,09:00,12:00,180,CE5204,Structural Analysis III,C-23,78,124,A-I,NCC,140,124,16,24: 124,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,09:00,12:00,180,CE5303,Hydraulic Engineering,C-23,86,124,A-I,LT2,80,80,0,57: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,09:00,12:00,180,CE5303,Hydraulic Engineering,C-23,86,124,A-II,SR,50,44,6,57: 44,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,09:00,12:00,180,EE5203,Machine Learning,C-23,91,75,A-I,LR1,40,40,0,54: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,09:00,12:00,180,EE5203,Machine Learning,C-23,91,75,A-II,LR2,40,35,5,54: 35,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,09:00,12:00,180,IS1402,Mathematical Fundamentals for Engineers,C-23,10,547,A-I,DO1,140,140,0,1: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,09:00,12:00,180,IS1402,Mathematical Fundamentals for Engineers,C-23,10,547,A-II,DO2,140,140,0,1: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,09:00,12:00,180,IS1402,Mathematical Fundamentals for Engineers,C-23,10,547,B-I,AUD,120,120,0,1: 120,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,09:00,12:00,180,IS1402,Mathematical Fundamentals for Engineers,C-23,10,547,B-II,LT1,80,80,0,1: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,09:00,12:00,180,IS1402,Mathematical Fundamentals for Engineers,C-23,10,547,C-I,CC,70,67,3,1: 67,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,13:30,16:30,180,CE5305,Traffic and Transport Engineering,C-23,87,124,A-I,LT1,80,80,0,140: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,13:30,16:30,180,CE5305,Traffic and Transport Engineering,C-23,87,124,A-II,SR,50,44,6,140: 44,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,13:30,16:30,180,CE7304,Geotechnical Engineering Design,C-18,122,124,A-I,LT2,80,80,0,5: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,13:30,16:30,180,CE7304,Geotechnical Engineering Design,C-18,122,124,A-II,CC,70,44,26,5: 44,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,13:30,16:30,180,EE5304,Power Electronics,C-23,97,75,A-I,LR1,40,40,0,18: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,13:30,16:30,180,EE5304,Power Electronics,C-23,97,75,A-II,LR2,40,35,5,18: 35,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,13:30,16:30,180,IS3301,Complex Analysis and Mathematical Transforms,C-23,56,538,A-I,DO1,140,140,0,11: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,13:30,16:30,180,IS3301,Complex Analysis and Mathematical Transforms,C-23,56,538,A-II,DO2,140,140,0,11: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,13:30,16:30,180,IS3301,Complex Analysis and Mathematical Transforms,C-23,56,538,B-I,NCC,140,140,0,11: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-09,13:30,16:30,180,IS3301,Complex Analysis and Mathematical Transforms,C-23,56,538,B-II,AUD,120,118,2,11: 118,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,09:00,12:00,180,CE5253,Advanced Surveying,C-23,83,122,A-I,LT1,80,80,0,4: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,09:00,12:00,180,CE5253,Advanced Surveying,C-23,83,122,A-II,SR,50,42,8,4: 42,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,09:00,12:00,180,CE7202,Computer Analysis of Structures,C-18,118,122,A-I,LT2,80,80,0,29: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,09:00,12:00,180,CE7202,Computer Analysis of Structures,C-18,118,122,A-II,CC,70,42,28,29: 42,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,09:00,12:00,180,EE5305,Power Systems II,C-23,99,75,A-I,LR1,40,40,0,96: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,09:00,12:00,180,EE5305,Power Systems II,C-23,99,75,A-II,LR2,40,35,5,96: 35,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,09:00,12:00,180,IS3321,Fundamentals of Management for Engineers,C-23,59,510,A-I,DO1,140,140,0,48: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,09:00,12:00,180,IS3321,Fundamentals of Management for Engineers,C-23,59,510,A-II,DO2,140,140,0,48: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,09:00,12:00,180,IS3321,Fundamentals of Management for Engineers,C-23,59,510,B-I,NCC,140,140,0,48: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,09:00,12:00,180,IS3321,Fundamentals of Management for Engineers,C-23,59,510,B-II,AUD,120,90,30,48: 90,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,13:30,16:30,180,CE5251,Design of Timber and Masonary Structures,C-23,81,112,A-I,CC,70,70,0,42: 70,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,13:30,16:30,180,CE5251,Design of Timber and Masonary Structures,C-23,81,112,A-II,LR1,40,40,0,42: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,13:30,16:30,180,CE5251,Design of Timber and Masonary Structures,C-23,81,112,B-I,LR2,40,2,38,42: 2,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,13:30,16:30,180,CE7303,Construction Environmental Management,C-18,121,122,A-I,LT2,80,80,0,77: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,13:30,16:30,180,CE7303,Construction Environmental Management,C-18,121,122,A-II,SR,50,42,8,77: 42,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,13:30,16:30,180,EC7208,Optimization Techniques for Engineers,C-18,128,119,A-I,AUD,120,119,1,61: 119,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,13:30,16:30,180,IS3322,Society and the Engineers,C-23,60,494,A-I,DO1,140,140,0,84: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,13:30,16:30,180,IS3322,Society and the Engineers,C-23,60,494,A-II,DO2,140,140,0,84: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,13:30,16:30,180,IS3322,Society and the Engineers,C-23,60,494,B-I,NCC,140,140,0,84: 140,Draft - not ready to publish,Not verified - memberships missing
+2026-12-10,13:30,16:30,180,IS3322,Society and the Engineers,C-23,60,494,B-II,LT1,80,74,6,84: 74,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,09:00,12:00,180,CE7257,Railway Geotechnics,C-18,120,105,A-I,AUD,120,105,15,89: 105,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,09:00,12:00,180,ME3301,Applied Thermodynamics,C-23,65,101,A-I,DO1,140,101,39,30: 101,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,09:00,12:00,180,ME3303,Fluid Mechanic,UNSPECIFIED,66,100,A-I,DO2,140,100,40,143: 100,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,09:00,12:00,180,ME5204,Production Planning and Control,C-23,109,99,A-I,NCC,140,99,41,134: 99,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,09:00,12:00,180,ME5301,Advanced Control Systems,C-23,112,99,A-I,CC,70,70,0,15: 70,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,09:00,12:00,180,ME5301,Advanced Control Systems,C-23,112,99,A-II,LR1,40,29,11,15: 29,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,09:00,12:00,180,ME5302,Computer Aided Design,C-23,114,99,A-I,LT1,80,80,0,40: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,09:00,12:00,180,ME5302,Computer Aided Design,C-23,114,99,A-II,LR2,40,19,21,40: 19,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,09:00,12:00,180,ME5305,Refrigeration and Air – Conditioning,C-23,117,99,A-I,LT2,80,80,0,108: 80,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,09:00,12:00,180,ME5305,Refrigeration and Air – Conditioning,C-23,117,99,A-II,SR,50,19,31,108: 19,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,13:30,16:30,180,EE3202,Data Structures and Algorithms,C-23,43,74,A-I,LT2,80,74,6,136: 74,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,13:30,16:30,180,EE3203,Electrical and Electronic Measurements,C-23,45,74,A-I,NCC,140,74,66,121: 74,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,13:30,16:30,180,EE3205,Power and Energy,C-23,46,74,A-I,LR1,40,40,0,6: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,13:30,16:30,180,EE3205,Power and Energy,C-23,46,74,A-II,LR2,40,34,6,6: 34,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,13:30,16:30,180,EE3301,Analog Electronics,C-23,48,74,A-I,CC,70,70,0,67: 70,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,13:30,16:30,180,EE3301,Analog Electronics,C-23,48,74,A-II,SR,50,4,46,67: 4,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,13:30,16:30,180,ME5210,Electric and Hybrid Vehicle Engineering (TE),C-23,110,75,A-I,LT1,80,75,5,55: 75,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,13:30,16:30,180,ME7211,Energy Technology,C-18,144,81,A-I,DO2,140,81,59,7: 81,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,13:30,16:30,180,ME7302,Heat and Mass Transfer,C-18,149,99,A-I,AUD,120,99,21,63: 99,Draft - not ready to publish,Not verified - memberships missing
+2026-12-11,13:30,16:30,180,ME7303,Production and Operations Management,C-18,150,99,A-I,DO1,140,99,41,128: 99,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,09:00,12:00,180,EC7210,Robotics and Automation,C-18,129,73,A-I,AUD,120,73,47,118: 73,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,09:00,12:00,180,EE3304,Engineering Electromagnetism,C-23,50,74,A-I,LT1,80,74,6,99: 74,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,09:00,12:00,180,EE3306,Signals and Systems,C-23,52,74,A-I,LT2,80,74,6,32: 74,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,09:00,12:00,180,EE5213,Power System Analysis,C-23,95,54,A-I,CC,70,54,16,113: 54,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,09:00,12:00,180,MN3201,Fundamentals of Naval Architecture,C-23,69,45,A-I,DO2,140,45,95,142: 45,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,09:00,12:00,180,MN3204,Maritime English -I,C-23,70,45,A-I,NCC,140,45,95,120: 45,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,09:00,12:00,180,MN3302,Engineering Knowledge (General) I,C-23,71,49,A-I,SR,50,49,1,35: 49,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,09:00,12:00,180,MN3303,Engineering Knowledge (Motor) I,C-23,72,47,A-I,DO1,140,47,93,88: 47,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,09:00,12:00,180,MN3305,Hydrostatics and stability of Marine Vehicles,C-23,73,45,A-I,LR1,40,40,0,125: 40,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,09:00,12:00,180,MN3305,Hydrostatics and stability of Marine Vehicles,C-23,73,45,A-II,LR2,40,5,35,125: 5,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,13:30,16:30,180,CE3303,Fluid Mechanics,C-18,37,22,A-I,DO1,140,22,118,130: 22,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,13:30,16:30,180,CE5202,Design of Steel Structures,C-18,75,33,A-I,LR2,40,33,7,115: 33,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,13:30,16:30,180,CE5306,Traffic and Transport Engineering,C-18,88,20,A-I,NCC,140,20,120,141: 20,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,13:30,16:30,180,EE7205,Digital Signal Processing,C-18,134,22,A-I,DO2,140,22,118,86: 22,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,13:30,16:30,180,EE7207,Electrical Installations I,C-18,135,41,A-I,SR,50,41,9,110: 41,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,13:30,16:30,180,EE7209,Machine Learning,C-18,136,28,A-I,LT1,80,28,52,53: 28,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,13:30,16:30,180,EE7215,Power System Protection,C-18,138,36,A-I,LR1,40,36,4,14: 36,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,13:30,16:30,180,EE7217,Telecommunication Networks,C-18,139,25,A-I,LT2,80,25,55,144: 25,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,13:30,16:30,180,EE7221,Robotics and Automation,C-18,142,24,A-I,AUD,120,24,96,117: 24,Draft - not ready to publish,Not verified - memberships missing
+2026-12-14,13:30,16:30,180,ME7212,Naval Architecture and Hull Design,C-18,145,31,A-I,CC,70,31,39,23: 31,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,09:00,12:00,180,CE2302,Mechanics of Materials,C-18,18,12,A-I,NCC,140,12,128,147: 12,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,09:00,12:00,180,CE5251,Design of Timber and Masonary Structures,C-18,80,14,A-I,LT2,80,14,66,43: 14,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,09:00,12:00,180,EE2202,Introduction to Electronic Engineering,C-18,22,15,A-I,SR,50,15,35,20: 15,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,09:00,11:00,120,EE5212,Operating Systems,C-23,94,13,A-I,DO1,140,13,127,116: 13,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,09:00,11:00,120,EE7204,Computer Vision and Image Processing,C-18,133,13,A-I,DO2,140,13,127,9: 13,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,09:00,12:00,180,EE7213,Power Electronic Application,C-18,137,15,A-I,CC,70,15,55,45: 15,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,09:00,12:00,180,EE7220,Optimization Techniques for Engineers,C-18,141,14,A-I,AUD,120,14,106,62: 14,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,09:00,12:00,180,IS3301,Basic Economics,C-18,55,14,A-I,LT1,80,14,66,49: 14,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,09:00,11:00,120,IS5221,Industrial Management,C-23,103,19,A-I,LR1,40,19,21,28: 19,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,09:00,12:00,180,ME7218,Computational Fluid Dynamics for Design and Analysis of Engineering Systems,C-18,148,18,A-I,LR2,40,18,22,46: 18,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,13:30,16:30,180,CE3205,Structural Analysis I,C-18,33,11,A-I,LR2,40,11,29,104: 11,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,13:30,16:30,180,CE3302,Engineering Surveying,C-18,35,10,A-I,AUD,120,10,110,38: 10,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,13:30,16:30,180,CE5204,Integrated Solid Waste Management,C-18,77,12,A-I,LR1,40,12,28,47: 12,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,13:30,16:30,180,EC7206,Digital Signal Processing,C-18,127,11,A-I,CC,70,11,59,87: 11,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,13:30,16:30,180,EE3305,Signals And Systems,C-18,51,9,A-I,NCC,140,9,131,33: 9,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,13:30,16:30,180,EE5207,Advanced Digital Communications,C-23,92,10,A-I,DO1,140,10,130,81: 10,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,13:30,15:30,120,EE7219,Information Security,C-18,140,11,A-I,LT2,80,11,69,27: 11,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,13:30,15:30,120,IS1003,Proficiency in English,C-18,6,11,A-I,LT1,80,11,69,155: 11,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,13:30,16:30,180,IS5306,Numerical Methods,C-18,107,11,A-I,SR,50,11,39,91: 11,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,13:30,16:30,180,ME7216,Mobile Robots Design,C-18,146,10,A-I,DO2,140,10,130,22: 10,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,15:30,17:30,120,EE2201,Computer Programming II,C-18,20,6,A-I,LT1,80,6,74,52: 6,Draft - not ready to publish,Not verified - memberships missing
+2026-12-15,15:30,17:30,120,EE7222,Cloud Computing,C-18,143,2,A-I,LT2,80,2,78,127: 2,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,09:00,12:00,180,CE3204,Structural Analysis I,C-18,32,8,A-I,SR,50,8,42,105: 8,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,09:00,12:00,180,CE5205,Structural Analysis III,C-18,79,7,A-I,AUD,120,7,113,25: 7,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,09:00,12:00,180,CE5303,Hydraulic Engineering,C-18,85,7,A-I,DO1,140,7,133,58: 7,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,09:00,12:00,180,EC7211,Telecommunication Networks,C-18,130,9,A-I,LR2,40,9,31,145: 9,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,09:00,12:00,180,EE3355,Signals And Systems,C-18,54,9,A-I,LR1,40,9,31,34: 9,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,09:00,12:00,180,EE7203,Advanced Data Communication,C-18,132,8,A-I,LT1,80,8,72,82: 8,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,09:00,12:00,180,IS2401,Linear Algebra and Differential Equations,C-18,24,7,A-I,LT2,80,7,73,107: 7,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,09:00,12:00,180,IS3303,Complex Analysis and Mathematical Transforms,C-18,57,8,A-I,CC,70,8,62,12: 8,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,09:00,12:00,180,ME3210,Principles and Applications of Microcontrollers,C-23,64,6,A-I,NCC,140,6,134,119: 6,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,09:00,12:00,180,ME5204,Production Planning and Control,C-18,108,7,A-I,DO2,140,7,133,133: 7,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,13:30,16:30,180,CE5252,Remote sensing and GIS,C-18,82,3,A-I,DO1,140,3,137,3: 3,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,13:30,16:30,180,EE1302,Introduction to Electrical Engineering,C-18,5,4,A-I,CC,70,4,66,132: 4,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,13:30,16:30,180,EE3203,Electrical and Electronic Measurements,C-18,44,5,A-I,LR2,40,5,35,122: 5,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,13:30,16:30,180,EE3252,Electrical and Electronic Measurements,C-18,47,3,A-I,AUD,120,3,117,124: 3,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,13:30,16:30,180,EE3302,Data Structures and Algorithms,C-18,49,5,A-I,SR,50,5,45,137: 5,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,13:30,16:30,180,IS5101,Engineering Ethics,C-18,100,3,A-I,DO2,140,3,137,75: 3,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,13:30,16:30,180,IS5222,Organizational Behaviour and Human Resource Management,C-23,104,4,A-I,LT1,80,4,76,13: 4,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,13:30,16:30,180,ME1201,Engineering Drawing (Group B-II),C-18,14,2,A-I,NCC,140,2,138,112: 2,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,13:30,16:30,180,ME2302,Introduction to Materials Science and Manufacturing Engineering,C-18,29,3,A-I,LT2,80,3,77,153: 3,Draft - not ready to publish,Not verified - memberships missing
+2026-12-16,13:30,16:30,180,ME7217,Aerospace Engineering,C-18,147,6,A-I,LR1,40,6,34,50: 6,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,09:00,12:00,180,CE5301,Construction Process and Technology,C-18,84,1,A-I,DO1,140,1,139,73: 1,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,09:00,12:00,180,EE3351,Data Structures and Algorithms,C-18,53,1,A-I,LT2,80,1,79,139: 1,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,09:00,12:00,180,EE5303,Power Electronics,C-18,96,1,A-I,DO2,140,1,139,17: 1,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,09:00,12:00,180,EE5304,Power Systems II,C-18,98,1,A-I,NCC,140,1,139,95: 1,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,09:00,12:00,180,IS1402,Mathematical Fundamentals for Engineers,C-18,9,1,A-I,LT1,80,1,79,2: 1,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,09:00,12:00,180,IS3307,Society and the Engineers,C-18,58,2,A-I,LR2,40,2,38,85: 2,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,09:00,12:00,180,ME2201,Fundamentals of Engineering Thermodynamics,C-18,27,2,A-I,LR1,40,2,38,149: 2,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,09:00,12:00,180,ME3203,Manufacturing Processes and Practices,C-18,61,1,A-I,AUD,120,1,119,80: 1,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,09:00,12:00,180,ME3304,Metallurgy for Engineers,C-18,67,2,A-I,SR,50,2,48,70: 2,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,09:00,12:00,180,ME5302,Computer Aided Design,C-18,113,2,A-I,CC,70,2,68,41: 2,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,13:30,15:30,120,EE1101,Computer Programming I,C-18,2,1,A-I,LT1,80,1,79,102: 1,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,13:30,16:30,180,IS5302,Financial Management,C-18,105,1,A-I,LR1,40,1,39,92: 1,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,13:30,16:30,180,ME5301,Advanced Control Systems,C-18,111,1,A-I,LR2,40,1,39,16: 1,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,13:30,16:30,180,ME5303,Mechanical Engineering Design,C-18,115,1,A-I,SR,50,1,49,71: 1,Draft - not ready to publish,Not verified - memberships missing
+2026-12-17,13:30,16:30,180,ME5305,Refrigeration and Air – Conditioning,C-18,116,1,A-I,CC,70,1,69,109: 1,Draft - not ready to publish,Not verified - memberships missing

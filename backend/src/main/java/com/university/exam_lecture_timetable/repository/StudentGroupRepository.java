@@ -15,4 +15,21 @@ public interface StudentGroupRepository extends JpaRepository<StudentGroupEntity
 
     @Query("select g from StudentGroupEntity g join g.modules m where m.moduleId = :moduleId")
     List<StudentGroupEntity> findByModuleId(@Param("moduleId") Long moduleId);
+
+    @Query("""
+            select m.moduleId as moduleId, g.groupId as groupId,
+                g.groupSize as groupSize, s.studentId as studentId
+            from StudentGroupEntity g
+            join g.modules m
+            left join g.students s
+            where m.moduleId in :moduleIds
+            """)
+    List<ModuleGroupMember> findMembersByModuleIds(@Param("moduleIds") List<Long> moduleIds);
+
+    interface ModuleGroupMember {
+        Long getModuleId();
+        Long getGroupId();
+        Integer getGroupSize();
+        Long getStudentId();
+    }
 }
