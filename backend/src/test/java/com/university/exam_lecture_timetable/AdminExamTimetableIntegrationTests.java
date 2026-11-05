@@ -8,7 +8,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.university.exam_lecture_timetable.entity.*;
 import com.university.exam_lecture_timetable.service.AdminExamTimetableService;
-import com.university.exam_lecture_timetable.service.ExamTimetableReviewService.StartAssignment;
+import com.university.exam_lecture_timetable.dto.request.StartAssignment;
+import com.university.exam_lecture_timetable.dto.request.DraftRequest;
 import jakarta.persistence.EntityManager;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -69,8 +70,7 @@ class AdminExamTimetableIntegrationTests {
         var swapped = List.of(new StartAssignment(a.requirementId(), b.startTimeslotId()),
                 new StartAssignment(b.requirementId(), a.startTimeslotId()));
         assertTrue(service.review(period, swapped).valid());
-        String body = json.writeValueAsString(new com.university.exam_lecture_timetable.controller.AdminExamTimetableController
-                .DraftRequest(swapped, false));
+        String body = json.writeValueAsString(new DraftRequest(swapped, false));
         mvc.perform(post(api + "/drafts").with(user("fixture-admin").roles("ADMIN")).with(csrf())
                 .contentType("application/json").content(body))
                 .andExpect(status().is(422)).andExpect(jsonPath("$.manualReviewRequired").value(true));

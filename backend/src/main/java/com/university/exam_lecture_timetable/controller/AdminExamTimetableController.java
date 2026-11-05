@@ -1,9 +1,14 @@
 package com.university.exam_lecture_timetable.controller;
 
+import com.university.exam_lecture_timetable.dto.request.DraftRequest;
+import com.university.exam_lecture_timetable.dto.request.ExamSettings;
+import com.university.exam_lecture_timetable.dto.request.StartAssignment;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.PeriodOption;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Preview;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Review;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Saved;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Setup;
 import com.university.exam_lecture_timetable.service.AdminExamTimetableService;
-import com.university.exam_lecture_timetable.service.GeminiExamTimetableService.ProviderException;
-import com.university.exam_lecture_timetable.service.ExamTimetableReviewService.Issue;
-import com.university.exam_lecture_timetable.service.ExamTimetableReviewService.StartAssignment;
 import java.security.Principal;
 import java.util.List;
 import java.util.Map;
@@ -28,12 +33,12 @@ public class AdminExamTimetableController {
     }
 
     @GetMapping("/periods")
-    public List<AdminExamTimetableService.PeriodOption> periods() {
+    public List<PeriodOption> periods() {
         return timetables.periods();
     }
 
     @GetMapping("/{periodId}")
-    public AdminExamTimetableService.Setup setup(@PathVariable long periodId) {
+    public Setup setup(@PathVariable long periodId) {
         return timetables.setup(periodId);
     }
 
@@ -47,41 +52,29 @@ public class AdminExamTimetableController {
     }
 
     @PostMapping("/{periodId}/preview")
-    public AdminExamTimetableService.Preview preview(
+    public Preview preview(
             @PathVariable long periodId, @RequestParam(defaultValue = "java") String engine
     ) {
         return timetables.preview(periodId, engine);
     }
 
     @GetMapping("/{periodId}/drafts/{timetableId}")
-    public AdminExamTimetableService.Preview open(@PathVariable long periodId, @PathVariable long timetableId) {
+    public Preview open(@PathVariable long periodId, @PathVariable long timetableId) {
         return timetables.open(periodId, timetableId);
     }
 
     @PostMapping("/{periodId}/review")
-    public com.university.exam_lecture_timetable.service.ExamTimetableReviewService.Review review(@PathVariable long periodId, @RequestBody DraftRequest request) {
+    public Review review(@PathVariable long periodId, @RequestBody DraftRequest request) {
         return timetables.review(periodId, assignments(request));
     }
 
     @PostMapping("/{periodId}/drafts")
-    public ResponseEntity<AdminExamTimetableService.Saved> save(
+    public ResponseEntity<Saved> save(
             @PathVariable long periodId, @RequestBody DraftRequest request, Principal principal
     ) {
         var result = timetables.save(periodId, assignments(request),
                 Boolean.TRUE.equals(request.manualStudentReview()), principal.getName());
         return ResponseEntity.status(result.timetableId() == null ? 422 : 201).body(result);
-    }
-
-    @ExceptionHandler(ProviderException.class)
-    public ResponseEntity<Map<String, List<Issue>>> providerFailure(ProviderException error) {
-        return ResponseEntity.status(error.httpStatus()).body(Map.of("issues",
-                List.of(new Issue("ERROR", error.code(), error.getMessage(), List.of()))));
-    }
-
-    @ExceptionHandler({IllegalArgumentException.class, IllegalStateException.class})
-    @ResponseStatus(HttpStatus.UNPROCESSABLE_CONTENT)
-    public Map<String, List<Issue>> rejected(RuntimeException error) {
-        return Map.of("issues", List.of(new Issue("ERROR", "REVIEW_REQUIRED", error.getMessage(), List.of())));
     }
 
     private static List<StartAssignment> assignments(DraftRequest request) {
@@ -90,7 +83,4 @@ public class AdminExamTimetableController {
         }
         return request.assignments();
     }
-
-    public record ExamSettings(Boolean enabled, Integer durationMinutes) {}
-    public record DraftRequest(List<StartAssignment> assignments, Boolean manualStudentReview) {}
 }

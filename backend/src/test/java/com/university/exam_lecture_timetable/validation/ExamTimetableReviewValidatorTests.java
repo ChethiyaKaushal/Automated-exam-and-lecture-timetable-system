@@ -1,19 +1,21 @@
-package com.university.exam_lecture_timetable.service;
+package com.university.exam_lecture_timetable.validation;
 
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput;
+import com.university.exam_lecture_timetable.dto.request.StartAssignment;
+import com.university.exam_lecture_timetable.service.ExamSchedulingInputService;
 import static org.junit.jupiter.api.Assertions.*;
 
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Conflict;
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Exam;
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Group;
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Slot;
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Venue;
-import com.university.exam_lecture_timetable.service.ExamTimetableReviewService.StartAssignment;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Conflict;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Exam;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Group;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Slot;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Venue;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-class ExamTimetableReviewServiceTests {
+class ExamTimetableReviewValidatorTests {
 
     @Test
     void rejectsKnownStudentClashesAndWarnsAboutSameDayWorkload() {
@@ -21,17 +23,17 @@ class ExamTimetableReviewServiceTests {
                 List.of(exam(1, "AA1201", "Exam A", 120), exam(2, "AA1202", "Exam B", 120)),
                 slots(), List.of(room(1, "DO1"), room(2, "DO2")), List.of(new Conflict(1L, 2L))), true);
 
-        var overlapping = ExamTimetableReviewService.review(loaded,
+        var overlapping = ExamTimetableReviewValidator.review(loaded,
                 List.of(new StartAssignment(1L, 1L), new StartAssignment(2L, 1L)));
         assertFalse(overlapping.valid());
         assertTrue(overlapping.issues().stream().anyMatch(issue -> issue.code().equals("STUDENT_OR_GROUP_CLASH")));
 
-        var spaced = ExamTimetableReviewService.review(loaded,
+        var spaced = ExamTimetableReviewValidator.review(loaded,
                 List.of(new StartAssignment(1L, 1L), new StartAssignment(2L, 7L)));
         assertTrue(spaced.valid());
         assertTrue(spaced.issues().stream().anyMatch(issue -> issue.code().equals("SAME_DAY_WORKLOAD")));
 
-        var lunch = ExamTimetableReviewService.review(loaded,
+        var lunch = ExamTimetableReviewValidator.review(loaded,
                 List.of(new StartAssignment(1L, 6L), new StartAssignment(2L, 7L)));
         assertFalse(lunch.valid());
         assertTrue(lunch.issues().stream().anyMatch(issue -> issue.code().equals("EXAM_DOES_NOT_FIT")));
@@ -48,14 +50,14 @@ class ExamTimetableReviewServiceTests {
                 exams, slots(), List.of(room(1, "DO1"), room(2, "DO2")), List.of()), false);
         var assignments = List.of(new StartAssignment(1L, 1L), new StartAssignment(2L, 1L),
                 new StartAssignment(3L, 7L), new StartAssignment(4L, 7L));
-        var valid = ExamTimetableReviewService.review(loaded, assignments);
+        var valid = ExamTimetableReviewValidator.review(loaded, assignments);
         assertTrue(valid.valid());
         assertEquals(List.of("DO1", "DO2", "DO1", "DO2"),
                 valid.exams().stream().map(exam -> exam.venues().getFirst().venueName()).toList());
 
         var moved = new ArrayList<>(assignments);
         moved.set(3, new StartAssignment(4L, 19L));
-        var result = ExamTimetableReviewService.review(loaded, moved);
+        var result = ExamTimetableReviewValidator.review(loaded, moved);
         assertFalse(result.valid());
         assertTrue(result.issues().stream().anyMatch(issue -> issue.code().equals("DRAWING_SESSION")));
     }

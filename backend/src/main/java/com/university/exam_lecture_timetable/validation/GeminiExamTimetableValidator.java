@@ -1,10 +1,13 @@
-package com.university.exam_lecture_timetable.service;
+package com.university.exam_lecture_timetable.validation;
 
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Exam;
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Slot;
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Venue;
-import com.university.exam_lecture_timetable.service.ExamTimetableDraftService.Draft;
-import com.university.exam_lecture_timetable.service.ExamTimetableDraftService.ScheduledExam;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput;
+import com.university.exam_lecture_timetable.service.ExamSchedulingInputService;
+import com.university.exam_lecture_timetable.service.ExamTimetableDraftService;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Exam;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Slot;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Venue;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.Draft;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.ScheduledExam;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,11 +20,11 @@ import java.util.function.Function;
 import java.util.stream.Collectors;
 import tools.jackson.databind.JsonNode;
 
-final class GeminiExamTimetableValidator {
+public final class GeminiExamTimetableValidator {
 
     private GeminiExamTimetableValidator() {}
 
-    static Draft validate(
+    public static Draft validate(
             ExamSchedulingInputService.DraftInput loaded, List<DrawingExamRule.Assignment> drawing,
             JsonNode response
     ) {

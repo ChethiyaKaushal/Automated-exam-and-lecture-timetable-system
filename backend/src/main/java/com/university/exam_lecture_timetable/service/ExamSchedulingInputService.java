@@ -1,5 +1,6 @@
 package com.university.exam_lecture_timetable.service;
 
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput;
 import com.university.exam_lecture_timetable.entity.CalendarPeriodEntity;
 import com.university.exam_lecture_timetable.entity.ExamRequirementEntity;
 import com.university.exam_lecture_timetable.entity.RequirementType;

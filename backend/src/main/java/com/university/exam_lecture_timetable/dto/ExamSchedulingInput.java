@@ -1,4 +1,4 @@
-package com.university.exam_lecture_timetable.service;
+package com.university.exam_lecture_timetable.dto;
 
 import java.util.List;
 

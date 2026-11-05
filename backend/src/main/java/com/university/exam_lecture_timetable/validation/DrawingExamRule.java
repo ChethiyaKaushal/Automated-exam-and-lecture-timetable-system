@@ -1,15 +1,16 @@
-package com.university.exam_lecture_timetable.service;
+package com.university.exam_lecture_timetable.validation;
 
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Exam;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Exam;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
 
-final class DrawingExamRule {
+public final class DrawingExamRule {
 
     private DrawingExamRule() {}
 
-    static List<Assignment> assignments(ExamSchedulingInput input) {
+    public static List<Assignment> assignments(ExamSchedulingInput input) {
         boolean hasDrawing = input.exams().stream().anyMatch(DrawingExamRule::isDrawing);
         if (!hasDrawing) {
             return List.of();
@@ -42,5 +43,5 @@ final class DrawingExamRule {
         return new Assignment(exams.getFirst(), venues.getFirst(), LocalTime.parse(start));
     }
 
-    record Assignment(Exam exam, ExamSchedulingInput.Venue venue, LocalTime start) {}
+    public record Assignment(Exam exam, ExamSchedulingInput.Venue venue, LocalTime start) {}
 }

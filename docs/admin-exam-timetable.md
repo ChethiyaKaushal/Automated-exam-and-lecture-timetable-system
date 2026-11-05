@@ -1,5 +1,17 @@
 # Exam timetable admin review
 
+The backend packages follow the team layout under `com.university.exam_lecture_timetable`.
+
+| Package | Exam timetable responsibility |
+|---|---|
+| `controller` | HTTP routes for the admin workflow. |
+| `dto.request`, `dto.response` | Request and response shapes for the existing frontend. |
+| `dto` | Scheduling input shared by Java and Gemini. |
+| `service` | Load database data, generate drafts, call Gemini and save reviewed versions. |
+| `validation` | Drawing rules, review of proposed edits and Gemini response validation. |
+| `Mapper` | Convert scheduled exams into existing timetable event, slot and allocation entities. |
+| `exception` | Format errors for the admin API. |
+
 Open `http://localhost:8081/admin/timetable.html` and sign in with an enabled account whose role is ADMIN or ROLE_ADMIN. Use the existing application's PostgreSQL settings and keep schema mode at validate.
 
 If there is no admin account, create one by adding `--timetable-admin.create=YOUR_USERNAME --timetable-admin.email=YOUR_EMAIL` to IntelliJ Program arguments and adding a strong `TIMETABLE_ADMIN_PASSWORD` environment variable. Run once, then remove those arguments and that password variable and restart. An existing account is never overwritten.

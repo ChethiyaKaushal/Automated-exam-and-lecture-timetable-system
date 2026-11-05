@@ -1,9 +1,16 @@
 package com.university.exam_lecture_timetable.service;
 
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Exam;
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Group;
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Slot;
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Venue;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.Draft;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.GroupAllocation;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.RoomAllocation;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.ScheduledExam;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.UnscheduledExam;
+import com.university.exam_lecture_timetable.validation.DrawingExamRule;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Exam;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Group;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Slot;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Venue;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -220,7 +227,7 @@ public class ExamTimetableDraftService {
         return null;
     }
 
-    static List<Venue> chooseRooms(List<Venue> available, int students) {
+    public static List<Venue> chooseRooms(List<Venue> available, int students) {
         // Largest rooms give a lower bound on how many rooms this window needs.
         int roomCount = 0;
         long capacity = 0;
@@ -259,7 +266,7 @@ public class ExamTimetableDraftService {
                 .getValue();
     }
 
-    static List<RoomAllocation> allocateGroups(Exam exam, List<Venue> venues) {
+    public static List<RoomAllocation> allocateGroups(Exam exam, List<Venue> venues) {
         List<Group> groups = exam.groups();
         List<RoomAllocation> rooms = new ArrayList<>();
         int groupIndex = 0;
@@ -309,25 +316,4 @@ public class ExamTimetableDraftService {
     }
 
     private record Placement(Window window, List<RoomAllocation> rooms) {}
-
-    public record Draft(
-            Long periodId, String status, boolean studentMembershipsComplete, boolean allExamsPlaced,
-            List<ScheduledExam> exams, List<UnscheduledExam> unscheduledExams
-    ) {}
-
-    public record ScheduledExam(
-            Long requirementId, String moduleCode, String moduleName, String curriculum,
-            int durationMinutes, int studentCount, String date, String startTime, String endTime,
-            List<Long> timeslotIds, List<RoomAllocation> venues
-    ) {}
-
-    public record RoomAllocation(
-            Long venueId, String venueName, String allocationLabel, int examCapacity, int allocatedCount,
-            List<GroupAllocation> groups
-    ) {}
-
-    public record GroupAllocation(Long groupId, int allocatedCount) {}
-
-    public record UnscheduledExam(Long requirementId, String moduleCode, String moduleName, String curriculum,
-                                 String reason) {}
 }

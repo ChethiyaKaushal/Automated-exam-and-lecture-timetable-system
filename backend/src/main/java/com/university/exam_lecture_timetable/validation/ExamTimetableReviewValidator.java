@@ -1,10 +1,15 @@
-package com.university.exam_lecture_timetable.service;
+package com.university.exam_lecture_timetable.validation;
 
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Exam;
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Slot;
-import com.university.exam_lecture_timetable.service.ExamSchedulingInput.Venue;
-import com.university.exam_lecture_timetable.service.ExamTimetableDraftService.Draft;
-import com.university.exam_lecture_timetable.service.ExamTimetableDraftService.ScheduledExam;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput;
+import com.university.exam_lecture_timetable.dto.request.StartAssignment;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Issue;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Review;
+import com.university.exam_lecture_timetable.service.ExamSchedulingInputService;
+import com.university.exam_lecture_timetable.service.ExamTimetableDraftService;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Exam;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Slot;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Venue;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.ScheduledExam;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -17,14 +22,14 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
-@Service
-public class ExamTimetableReviewService {
+@Component
+public class ExamTimetableReviewValidator {
 
     private final ExamSchedulingInputService inputs;
 
-    public ExamTimetableReviewService(ExamSchedulingInputService inputs) {
+    public ExamTimetableReviewValidator(ExamSchedulingInputService inputs) {
         this.inputs = inputs;
     }
 
@@ -196,13 +201,6 @@ public class ExamTimetableReviewService {
                 .thenComparing(ScheduledExam::startTime).thenComparing(ScheduledExam::requirementId)).toList();
     }
 
-    static List<StartAssignment> starts(Draft draft) {
-        return java.util.stream.Stream.concat(
-                draft.exams().stream().map(exam -> new StartAssignment(exam.requirementId(), exam.timeslotIds().getFirst())),
-                draft.unscheduledExams().stream().map(exam -> new StartAssignment(exam.requirementId(), null)))
-                .toList();
-    }
-
     private static String label(Exam exam) {
         return exam.moduleCode() + " " + exam.moduleName() + " (" + exam.curriculum() + ")";
     }
@@ -210,13 +208,6 @@ public class ExamTimetableReviewService {
     private static Issue error(String code, String description, Long... ids) {
         return new Issue("ERROR", code, description, List.of(ids));
     }
-
-    public record StartAssignment(Long requirementId, Long startTimeslotId) {}
-
-    public record Issue(String severity, String code, String description, List<Long> requirementIds) {}
-
-    public record Review(boolean valid, boolean studentMembershipsComplete, List<Issue> issues,
-                         List<ScheduledExam> exams) {}
 
     private record Placement(Exam exam, Window window) {}
 

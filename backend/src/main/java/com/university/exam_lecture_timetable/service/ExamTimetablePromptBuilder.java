@@ -1,6 +1,8 @@
 package com.university.exam_lecture_timetable.service;
 
-import com.university.exam_lecture_timetable.service.ExamTimetableDraftService.ScheduledExam;
+import com.university.exam_lecture_timetable.dto.ExamSchedulingInput;
+import com.university.exam_lecture_timetable.validation.DrawingExamRule;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.ScheduledExam;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Component;

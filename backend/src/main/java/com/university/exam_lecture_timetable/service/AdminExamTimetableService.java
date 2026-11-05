@@ -1,32 +1,35 @@
 package com.university.exam_lecture_timetable.service;
 
+import com.university.exam_lecture_timetable.Mapper.ExamTimetableMapper;
+import com.university.exam_lecture_timetable.dto.request.StartAssignment;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.DraftOption;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.ExamOption;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.PeriodOption;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Preview;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Review;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Saved;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Setup;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.SlotOption;
+import com.university.exam_lecture_timetable.validation.ExamTimetableReviewValidator;
 import com.university.exam_lecture_timetable.entity.AppUserEntity;
 import com.university.exam_lecture_timetable.entity.AuditLogEntity;
 import com.university.exam_lecture_timetable.entity.CalendarPeriodEntity;
-import com.university.exam_lecture_timetable.entity.EventAllocationEntity;
-import com.university.exam_lecture_timetable.entity.EventEntity;
 import com.university.exam_lecture_timetable.entity.EventRequirementEntity;
 import com.university.exam_lecture_timetable.entity.EventSlotEntity;
 import com.university.exam_lecture_timetable.entity.ExamRequirementEntity;
 import com.university.exam_lecture_timetable.entity.ModuleEntity;
 import com.university.exam_lecture_timetable.entity.RequirementType;
-import com.university.exam_lecture_timetable.entity.StudentGroupAllocationEntity;
-import com.university.exam_lecture_timetable.entity.StudentGroupEntity;
 import com.university.exam_lecture_timetable.entity.TimeslotEntity;
 import com.university.exam_lecture_timetable.entity.TimetableEntity;
 import com.university.exam_lecture_timetable.entity.TimetableStatus;
-import com.university.exam_lecture_timetable.entity.VenueEntity;
 import com.university.exam_lecture_timetable.repository.AppUserRepository;
 import com.university.exam_lecture_timetable.repository.CalendarPeriodRepository;
 import com.university.exam_lecture_timetable.repository.EventRepository;
 import com.university.exam_lecture_timetable.repository.ModuleRepository;
 import com.university.exam_lecture_timetable.repository.TimeslotRepository;
 import com.university.exam_lecture_timetable.repository.TimetableRepository;
-import com.university.exam_lecture_timetable.service.ExamTimetableReviewService.Review;
-import com.university.exam_lecture_timetable.service.ExamTimetableReviewService.StartAssignment;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.LockModeType;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -47,12 +50,12 @@ public class AdminExamTimetableService {
     private final AppUserRepository users;
     private final ExamTimetableDraftService generator;
     private final GeminiExamTimetableService gemini;
-    private final ExamTimetableReviewService reviews;
+    private final ExamTimetableReviewValidator reviews;
 
     public AdminExamTimetableService(
             EntityManager em, CalendarPeriodRepository periods, ModuleRepository modules, TimeslotRepository slots,
             TimetableRepository timetables, EventRepository events, AppUserRepository users,
-            ExamTimetableDraftService generator, GeminiExamTimetableService gemini, ExamTimetableReviewService reviews
+            ExamTimetableDraftService generator, GeminiExamTimetableService gemini, ExamTimetableReviewValidator reviews
     ) {
         this.em = em;
         this.periods = periods;
@@ -171,7 +174,7 @@ public class AdminExamTimetableService {
             case "gemini" -> gemini.generate(periodId);
             default -> throw new IllegalArgumentException("Choose java or gemini as the draft engine.");
         };
-        var assignments = ExamTimetableReviewService.starts(draft);
+        var assignments = ExamTimetableMapper.starts(draft);
         return new Preview(assignments, reviews.review(periodId, assignments));
     }
 
@@ -215,30 +218,7 @@ public class AdminExamTimetableService {
         timetable.setCreatedByUser(admin);
         timetables.save(timetable);
         for (var scheduled : review.exams()) {
-            var event = new EventEntity();
-            event.setTimetable(timetable);
-            event.setEventType("EXAM");
-            event.setRequirement(em.getReference(EventRequirementEntity.class, scheduled.requirementId()));
-            for (Long slotId : scheduled.timeslotIds()) {
-                var slot = new EventSlotEntity();
-                slot.setEvent(event);
-                slot.setTimeslot(em.getReference(TimeslotEntity.class, slotId));
-                event.getEventSlots().add(slot);
-            }
-            for (var room : scheduled.venues()) {
-                var allocation = new EventAllocationEntity();
-                allocation.setEvent(event);
-                allocation.setVenue(em.getReference(VenueEntity.class, room.venueId()));
-                for (var group : room.groups()) {
-                    var seating = new StudentGroupAllocationEntity();
-                    seating.setEventAllocation(allocation);
-                    seating.setStudentGroup(em.getReference(StudentGroupEntity.class, group.groupId()));
-                    seating.setAllocatedCount(group.allocatedCount());
-                    allocation.getStudentGroups().add(seating);
-                }
-                event.getAllocations().add(allocation);
-            }
-            events.save(event);
+            events.save(ExamTimetableMapper.toEvent(em, timetable, scheduled));
         }
         var audit = new AuditLogEntity();
         audit.setAction("EXAM_DRAFT_SAVED");
@@ -263,13 +243,4 @@ public class AdminExamTimetableService {
     private static PeriodOption option(CalendarPeriodEntity period) {
         return new PeriodOption(period.getPeriodId(), period.getPeriodName(), period.getStartingDate(), period.getEndDate());
     }
-
-    public record PeriodOption(Long periodId, String name, LocalDate start, LocalDate end) {}
-    public record ExamOption(Long moduleId, String moduleCode, String moduleName, String curriculum, String semester,
-                             boolean enabled, int durationMinutes) {}
-    public record SlotOption(Long id, String date, String time) {}
-    public record DraftOption(Long id, int version) {}
-    public record Setup(PeriodOption period, List<ExamOption> exams, List<SlotOption> slots, List<DraftOption> drafts) {}
-    public record Preview(List<StartAssignment> assignments, Review review) {}
-    public record Saved(Long timetableId, Integer version, Review review, boolean manualReviewRequired) {}
 }

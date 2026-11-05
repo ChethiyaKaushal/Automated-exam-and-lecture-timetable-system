@@ -1,6 +1,9 @@
 package com.university.exam_lecture_timetable.service;
 
-import com.university.exam_lecture_timetable.service.ExamTimetableDraftService.Draft;
+import com.university.exam_lecture_timetable.exception.GeminiProviderException;
+import com.university.exam_lecture_timetable.validation.DrawingExamRule;
+import com.university.exam_lecture_timetable.validation.GeminiExamTimetableValidator;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.Draft;
 import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -65,7 +68,7 @@ public class GeminiExamTimetableService {
 
     public Draft generate(Long periodId) {
         if (apiKey.isBlank()) {
-            throw new ProviderException(503, "GEMINI_NOT_CONFIGURED",
+            throw new GeminiProviderException(503, "GEMINI_NOT_CONFIGURED",
                     "Set GEMINI_API_KEY on the backend before generating with Gemini.");
         }
         if (!model.matches("[A-Za-z0-9][A-Za-z0-9._-]*")) {
@@ -82,12 +85,12 @@ public class GeminiExamTimetableService {
             proposal = mapper.readTree(requestProposal(prompt));
         } catch (InterruptedException error) {
             Thread.currentThread().interrupt();
-            throw new ProviderException(503, "GEMINI_UNAVAILABLE", "The Gemini request was interrupted.");
+            throw new GeminiProviderException(503, "GEMINI_UNAVAILABLE", "The Gemini request was interrupted.");
         } catch (IOException error) {
-            throw new ProviderException(503, "GEMINI_UNAVAILABLE",
+            throw new GeminiProviderException(503, "GEMINI_UNAVAILABLE",
                     "The backend could not reach Gemini. Try again or choose Java.");
         } catch (JacksonException error) {
-            throw new ProviderException(502, "GEMINI_INVALID_RESPONSE",
+            throw new GeminiProviderException(502, "GEMINI_INVALID_RESPONSE",
                     "Gemini returned invalid JSON. Try again or choose Java.");
         }
         return GeminiExamTimetableValidator.validate(loaded, drawing, proposal);
@@ -108,17 +111,17 @@ public class GeminiExamTimetableService {
                 .build();
         var response = sendWithUnavailableRetries(request);
         if (response.statusCode() == 503) {
-            throw new ProviderException(503, "GEMINI_UNAVAILABLE",
+            throw new GeminiProviderException(503, "GEMINI_UNAVAILABLE",
                     "Gemini is still unavailable after three attempts. Try again later or choose Java.");
         }
         if (response.statusCode() != 200) {
-            throw new ProviderException(502, "GEMINI_REQUEST_FAILED",
+            throw new GeminiProviderException(502, "GEMINI_REQUEST_FAILED",
                     "Gemini rejected the request (HTTP " + response.statusCode() + ").");
         }
         JsonNode candidate = mapper.readTree(response.body()).path("candidates").path(0);
         String finishReason = candidate.path("finishReason").asText("");
         if (!"STOP".equals(finishReason)) {
-            throw new ProviderException(502, "GEMINI_INCOMPLETE_RESPONSE",
+            throw new GeminiProviderException(502, "GEMINI_INCOMPLETE_RESPONSE",
                     "Gemini did not return a complete proposal. Finish reason: "
                     + (finishReason.isBlank() ? "no candidate" : finishReason) + ".");
         }
@@ -129,7 +132,7 @@ public class GeminiExamTimetableService {
             }
         }
         if (text.isEmpty()) {
-            throw new ProviderException(502, "GEMINI_INCOMPLETE_RESPONSE", "Gemini returned an empty proposal.");
+            throw new GeminiProviderException(502, "GEMINI_INCOMPLETE_RESPONSE", "Gemini returned an empty proposal.");
         }
         return text.toString();
     }
@@ -147,20 +150,6 @@ public class GeminiExamTimetableService {
             response = http.send(request, HttpResponse.BodyHandlers.ofString());
         }
         return response;
-    }
-
-    public static final class ProviderException extends RuntimeException {
-        private final int httpStatus;
-        private final String code;
-
-        ProviderException(int httpStatus, String code, String message) {
-            super(message);
-            this.httpStatus = httpStatus;
-            this.code = code;
-        }
-
-        public int httpStatus() { return httpStatus; }
-        public String code() { return code; }
     }
 
     private static class GeminiHttpClient {
