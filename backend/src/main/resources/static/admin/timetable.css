@@ -1,0 +1,22 @@
+* { box-sizing: border-box; }
+body { margin: 0; background: #f4f6fa; color: #17233b; font: 15px/1.5 system-ui, sans-serif; }
+main { max-width: 1280px; margin: auto; padding: 32px 24px 48px; }
+header { padding: 22px 28px; background: #17233b; color: white; border-radius: 12px; }
+header h1 { margin: 4px 0; }
+.eyebrow { color: #a9d5ff; font-size: 12px; letter-spacing: .09em; }
+section, details, .table { background: white; padding: 16px; margin: 16px 0; border-radius: 8px; }
+section h2 { margin-top: 0; }
+summary { cursor: pointer; font-weight: 700; }
+button, select { font: inherit; padding: 6px 10px; border-radius: 5px; margin: 3px; max-width: 100%; }
+button { border: 1px solid #1d4d91; background: #1d4d91; color: white; cursor: pointer; }
+button:disabled { opacity: .5; cursor: default; }
+.controls { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px; }
+.controls label { display: grid; min-width: 0; }
+.controls select { width: min(330px, 85vw); }
+.table { overflow-x: auto; padding: 0; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+td, th { padding: 8px 12px; border-bottom: 1px solid #e4e9f0; }
+th { background: #e8eef8; }
+.error { color: #a02020; }
+.warning { color: #74520a; }
+#message:empty { display: none; }

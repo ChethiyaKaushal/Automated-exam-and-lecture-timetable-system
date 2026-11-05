@@ -1,8 +1,10 @@
 package com.university.exam_lecture_timetable.exception;
 
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Issue;
 import jakarta.validation.ConstraintViolationException;
 import java.time.Instant;
 import java.util.List;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -85,10 +87,25 @@ public class GlobalExceptionHandler {
                 "The operation conflicts with existing data (constraint violation)", List.of());
     }
 
+    @ExceptionHandler(GeminiProviderException.class)
+    public ResponseEntity<Map<String, List<Issue>>> geminiFailure(GeminiProviderException ex) {
+        return timetableIssue(ex.httpStatus(), ex.code(), ex.getMessage());
+    }
+
+    @ExceptionHandler(ExamTimetableReviewException.class)
+    public ResponseEntity<Map<String, List<Issue>>> timetableReviewRequired(ExamTimetableReviewException ex) {
+        return timetableIssue(HttpStatus.UNPROCESSABLE_CONTENT.value(), "REVIEW_REQUIRED", ex.getMessage());
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ApiError> unexpected(Exception ex) {
         log.error("Unhandled exception", ex);
         return build(HttpStatus.INTERNAL_SERVER_ERROR, "An unexpected error occurred", List.of());
+    }
+
+    private ResponseEntity<Map<String, List<Issue>>> timetableIssue(int status, String code, String message) {
+        return ResponseEntity.status(status)
+                .body(Map.of("issues", List.of(new Issue("ERROR", code, message, List.of()))));
     }
 
     private ResponseEntity<ApiError> build(HttpStatus status, String message, List<String> details) {

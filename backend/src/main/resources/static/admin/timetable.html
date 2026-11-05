@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exam timetable review</title>
+  <link rel="stylesheet" href="timetable.css">
+  <script src="timetable.js" defer></script>
+</head>
+<body>
+  <main>
+    <header><p class="eyebrow">TIMETABLING · ADMIN</p><h1>Exam timetable review</h1>
+    <p>Set up exams, review proposed times, and save a version for further review.</p></header>
+    <section aria-label="Exam period">
+      <label for="period">Exam period</label> <select id="period"></select>
+      <button id="generate">Generate draft</button>
+      <label for="versions">Saved drafts</label> <select id="versions"></select>
+      <button id="open">Open draft</button>
+    </section>
+    <p id="message" role="status" aria-live="polite"></p>
+    <details><summary>Semester exams and durations</summary>
+      <label for="semester">Filter by semester</label> <select id="semester"></select>
+      <div class="table"><table><thead><tr><th>Semester</th><th>Module</th><th>Curriculum</th><th>Has exam</th><th>Duration</th><th>Action</th></tr></thead>
+      <tbody id="settings"></tbody></table></div>
+    </details>
+    <section aria-labelledby="edit-title">
+      <h2 id="edit-title">Edit exam times</h2>
+      <p>Choose two exams to swap start times, or choose a new start time for one exam. Rooms are assigned again using the updated schedule.</p>
+      <div class="controls">
+        <label>First exam<select id="first"></select></label>
+        <label>Second exam<select id="second"></select></label>
+        <button id="swap">Check swap</button>
+        <label>New start time for first exam<select id="slot"></select></label>
+        <button id="move">Check move</button>
+        <button id="undo">Undo last edit</button>
+      </div>
+    </section>
+    <section aria-labelledby="review-title">
+      <h2 id="review-title">Validation</h2>
+      <ul id="issues" aria-live="polite"></ul>
+      <label><input type="checkbox" id="acknowledge"> I reviewed reported student clashes manually and understand that unreported clashes may remain.</label>
+      <button id="save" disabled>Save draft version</button>
+    </section>
+    <div class="table"><table>
+      <thead><tr><th>Date</th><th>Time</th><th>Exam</th><th>Curriculum</th><th>Students</th><th>Rooms and seats</th></tr></thead>
+      <tbody id="schedule"></tbody>
+    </table></div>
+  </main>
+</body>
+</html>

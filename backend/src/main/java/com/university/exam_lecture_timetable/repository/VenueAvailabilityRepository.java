@@ -13,4 +13,6 @@ public interface VenueAvailabilityRepository extends JpaRepository<VenueAvailabi
     List<VenueAvailabilityEntity> findByIdVenueId(Long venueId);
     List<VenueAvailabilityEntity> findByIdTimeslotId(Long timeslotId);
     List<VenueAvailabilityEntity> findByIdVenueIdAndIsAvailableFalse(Long venueId);
+
+    List<VenueAvailabilityEntity> findByTimeslot_Period_PeriodIdAndIsAvailableFalse(Long periodId);
 }
