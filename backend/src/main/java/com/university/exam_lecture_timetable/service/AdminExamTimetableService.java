@@ -175,7 +175,7 @@ public class AdminExamTimetableService {
             case "gemini" -> gemini.generate(periodId);
             default -> throw new ExamTimetableReviewException("Choose java or gemini as the draft engine.");
         };
-        var assignments = ExamTimetableMapper.starts(draft);
+        var assignments = ExamTimetableMapper.starts(draft, "gemini".equals(engine));
         return new Preview(assignments, reviews.review(periodId, assignments));
     }
 
@@ -193,8 +193,10 @@ public class AdminExamTimetableService {
         var assignments = timetable.getEvents().stream().map(event -> {
             var first = event.getEventSlots().stream().map(EventSlotEntity::getTimeslot)
                     .min(Comparator.comparing(TimeslotEntity::getDate).thenComparing(TimeslotEntity::getStartTime));
+            var venueIds = event.getAllocations().stream().map(allocation -> allocation.getVenue().getVenueId())
+                    .sorted().toList();
             return new StartAssignment(event.getRequirement().getRequirementId(),
-                    first.map(TimeslotEntity::getTimeslotId).orElse(null));
+                    first.map(TimeslotEntity::getTimeslotId).orElse(null), venueIds.isEmpty() ? null : venueIds);
         }).toList();
         return new Preview(assignments, reviews.review(periodId, assignments));
     }

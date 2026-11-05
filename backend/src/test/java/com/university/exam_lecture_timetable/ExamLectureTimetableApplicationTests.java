@@ -32,7 +32,7 @@ class ExamLectureTimetableApplicationTests {
 				""", String.class);
 
 		MockMvcBuilders.standaloneSetup(controller).build()
-				.perform(get("/api/timetablesetup/academic-years"))
+				.perform(get("/api/admin/timetable-setup/academic-years"))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$[*].academicYear").value(expectedYears));
 	}
