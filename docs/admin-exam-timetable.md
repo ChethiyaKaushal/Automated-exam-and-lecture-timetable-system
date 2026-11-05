@@ -16,7 +16,7 @@ Open `http://localhost:8081/admin/timetable.html` and sign in with an enabled ac
 
 If there is no admin account, create one by adding `--timetable-admin.create=YOUR_USERNAME --timetable-admin.email=YOUR_EMAIL` to IntelliJ Program arguments and adding a strong `TIMETABLE_ADMIN_PASSWORD` environment variable. Run once, then remove those arguments and that password variable and restart. An existing account is never overwritten.
 
-The exam period must already have linked semesters and available slots. Use **Semester exams and durations** to choose which modules have exams and set their duration. Generate a fresh draft after changing requirements. Use **Check move** or **Check swap** to review the new start times; rooms are recalculated for the complete draft.
+The exam period must already have linked semesters and available slots. Use **Semester exams and durations** to choose which modules have exams and set their duration. Generate a fresh draft after changing requirements. Use **Check move** or **Check swap** to review the new start times; selected venues are checked again, and rooms are allocated for exams without a venue selection.
 
 A hard error blocks saving. Missing enrolments require manual review acknowledgement; the saved version stays DRAFT. Use only the reported exam details to handle repeat-student complaints. The application does not require access to the university's full student database for draft editing. A warning is not evidence that no other students have clashes.
 
@@ -29,14 +29,14 @@ All requests below require a signed-in admin session. Mutations also require the
 | GET /periods | List exam periods. |
 | GET /{periodId} | Read exam setup, possible start slots and saved draft IDs. |
 | PUT /{periodId}/exams/{moduleId} | Save `enabled` and `durationMinutes` for a module in the period. |
-| POST /{periodId}/preview?engine=java or gemini | Generate a draft without saving. Defaults to Java. Gemini proposes times using the same database settings, and Java validates and allocates rooms. |
-| POST /{periodId}/review | Validate `assignments: [{requirementId, startTimeslotId}]` and return issues and proposed room allocations. |
+| POST /{periodId}/preview?engine=java or gemini | Generate a draft without saving. Defaults to Java. Gemini proposes times and venues from the database inputs. Java validates them. |
+| POST /{periodId}/review | Validate assignments with requirementId, startTimeslotId and optional venueIds and return issues and proposed room allocations. |
 | POST /{periodId}/drafts | Revalidate the assignments and save a new DRAFT version. Include `manualStudentReview: true` after manual review if membership data is incomplete. |
 | GET /{periodId}/drafts/{id} | Open the saved version's start times for review with the current rules. |
 
 Save returns 201 with timetable ID and version, or 422 with validation issues or missing manual acknowledgement. No endpoint publishes a timetable. Editing a saved version creates a new draft on save.
 
-Gemini requires `GEMINI_API_KEY` in the backend's environment. The key must never be put into frontend code. For a Gemini preview, call `POST /api/admin/exam-timetables/1/preview?engine=gemini`. The response has the same `assignments` and `review` shape as Java. Gemini may take several minutes. If unavailable after retries the endpoint returns 503 and a readable issue. A rejected provider request or malformed response returns 502. A proposal that violates timetable rules returns 422. The admin can choose Java explicitly after a failure.
+Gemini requires `GEMINI_API_KEY` in the backend's environment. The key must never be put into frontend code. For a Gemini preview, call `POST /api/admin/exam-timetables/1/preview?engine=gemini`. Gemini assignments include venueIds. Send them back with the assignments when reviewing or saving to keep the proposed rooms. Gemini may take several minutes. If unavailable after retries the endpoint returns 503 and a readable issue. A rejected provider request or malformed response returns 502. If a complete proposal violates timetable rules, the backend sends the validation errors to Gemini for one revision. If the revised timetable still violates the rules, the endpoint returns 422. The admin can choose Java explicitly after a failure.
 
 ## Export a draft from IntelliJ
 

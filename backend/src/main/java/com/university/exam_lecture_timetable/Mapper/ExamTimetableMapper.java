@@ -2,6 +2,7 @@ package com.university.exam_lecture_timetable.Mapper;
 
 import com.university.exam_lecture_timetable.dto.request.StartAssignment;
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.Draft;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.RoomAllocation;
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.ScheduledExam;
 import com.university.exam_lecture_timetable.entity.EventAllocationEntity;
 import com.university.exam_lecture_timetable.entity.EventEntity;
@@ -19,9 +20,10 @@ public final class ExamTimetableMapper {
 
     private ExamTimetableMapper() {}
 
-    public static List<StartAssignment> starts(Draft draft) {
+    public static List<StartAssignment> starts(Draft draft, boolean preserveVenues) {
         return java.util.stream.Stream.concat(
-                draft.exams().stream().map(exam -> new StartAssignment(exam.requirementId(), exam.timeslotIds().getFirst())),
+                draft.exams().stream().map(exam -> new StartAssignment(exam.requirementId(), exam.timeslotIds().getFirst(),
+                        preserveVenues ? exam.venues().stream().map(RoomAllocation::venueId).toList() : null)),
                 draft.unscheduledExams().stream().map(exam -> new StartAssignment(exam.requirementId(), null)))
                 .toList();
     }

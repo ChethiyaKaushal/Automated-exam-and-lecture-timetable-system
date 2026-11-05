@@ -10,6 +10,7 @@ import com.university.exam_lecture_timetable.entity.*;
 import com.university.exam_lecture_timetable.service.AdminExamTimetableService;
 import com.university.exam_lecture_timetable.dto.request.StartAssignment;
 import com.university.exam_lecture_timetable.dto.request.DraftRequest;
+import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Saved;
 import jakarta.persistence.EntityManager;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -76,7 +77,16 @@ class AdminExamTimetableIntegrationTests {
                 .andExpect(status().is(422)).andExpect(jsonPath("$.manualReviewRequired").value(true));
         assertEquals(0, sql.queryForObject("select count(*) from timetable where period_id = ?", Integer.class, period));
 
-        var saved = service.save(period, swapped, true, "fixture-admin");
+        Long selectedVenue = tx.execute(status -> hall("Selected hall", 65));
+        var withVenues = swapped.stream().map(assignment -> new StartAssignment(
+                assignment.requirementId(), assignment.startTimeslotId(), List.of(selectedVenue))).toList();
+        String saveBody = json.writeValueAsString(new DraftRequest(withVenues, true));
+        String response = mvc.perform(post(api + "/drafts").with(user("fixture-admin").roles("ADMIN")).with(csrf())
+                .contentType("application/json").content(saveBody))
+                .andExpect(status().isCreated())
+                .andExpect(jsonPath("$.review.exams[0].venues[0].venueId").value(selectedVenue))
+                .andReturn().getResponse().getContentAsString();
+        var saved = json.readValue(response, Saved.class);
         assertNotNull(saved.timetableId());
         assertEquals(1, saved.version());
         assertEquals("DRAFT", sql.queryForObject("select status from timetable where timetable_id = ?",
@@ -92,7 +102,7 @@ class AdminExamTimetableIntegrationTests {
                 """, Integer.class, saved.timetableId()));
         assertEquals(1, sql.queryForObject("select count(*) from audit_log where entity_id = ? and action = 'EXAM_DRAFT_SAVED'",
                 Integer.class, saved.timetableId().toString()));
-        assertTrue(service.open(period, saved.timetableId()).assignments().containsAll(swapped));
+        assertTrue(service.open(period, saved.timetableId()).assignments().containsAll(withVenues));
         assertEquals(2, service.save(period, swapped, true, "fixture-admin").version());
     }
 
@@ -132,14 +142,19 @@ class AdminExamTimetableIntegrationTests {
                 em.persist(slot);
             }
         }
+        hall("Test hall", 40);
+        return List.of(period.getPeriodId(), module("AA1201", department, semester), module("AA1202", department, semester));
+    }
+
+    private Long hall(String name, int capacity) {
         var venue = new VenueEntity();
-        venue.setVenueName("Test hall");
+        venue.setVenueName(name);
         venue.setVenueType("Lecture Hall");
-        venue.setExamCapacity(40);
-        venue.setLectureCapacity(50);
+        venue.setExamCapacity(capacity);
+        venue.setLectureCapacity(capacity + 10);
         venue.setPriority(1);
         em.persist(venue);
-        return List.of(period.getPeriodId(), module("AA1201", department, semester), module("AA1202", department, semester));
+        return venue.getVenueId();
     }
 
     private long module(String code, DepartmentEntity department, SemesterEntity semester) {
