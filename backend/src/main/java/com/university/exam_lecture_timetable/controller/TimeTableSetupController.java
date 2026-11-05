@@ -12,16 +12,25 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.security.web.csrf.CsrfToken;
+import java.util.Map;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/timetablesetup")
+@RequestMapping("/api/admin/timetable-setup")
 public class TimeTableSetupController {
     private final TimetableSetupService service;
 
     public TimeTableSetupController(TimetableSetupService service) {
         this.service = service;
+    }
+
+    @GetMapping("/csrf")
+    public Map<String, String> csrf(CsrfToken token) {
+        return Map.of(
+                "header", token.getHeaderName(),
+                "token", token.getToken()
+        );
     }
 
     @GetMapping("/semesters")
