@@ -5,7 +5,11 @@ public final class GeminiProviderException extends RuntimeException {
     private final String code;
 
     public GeminiProviderException(int httpStatus, String code, String message) {
-        super(message);
+        this(httpStatus, code, message, null);
+    }
+
+    public GeminiProviderException(int httpStatus, String code, String message, Throwable cause) {
+        super(message, cause);
         this.httpStatus = httpStatus;
         this.code = code;
     }

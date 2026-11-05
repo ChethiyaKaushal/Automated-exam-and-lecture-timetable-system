@@ -19,6 +19,7 @@ public record CreateSetupRequestDto(
         String eventType,
 
         @NotEmpty
-        List<Long> semesterIds
+        List<Long> semesterIds,
+        List<@NotNull LocalDate> holidayDates
 ) {
 }

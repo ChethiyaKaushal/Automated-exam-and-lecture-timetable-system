@@ -32,6 +32,7 @@ public class TimetableSetupService {
     private final EventRequirementRepository requirements;
     private final SetupMapper mapper;
     private final TimetableSetupValidator validator;
+    private final ExamTimeslotService examTimeslots;
 
     public TimetableSetupService(
             SemesterRepository semesters,
@@ -39,7 +40,8 @@ public class TimetableSetupService {
             CalendarPeriodRepository periods,
             EventRequirementRepository requirements,
             SetupMapper mapper,
-            TimetableSetupValidator validator
+            TimetableSetupValidator validator,
+            ExamTimeslotService examTimeslots
             ) {
 
         this.semesters = semesters;
@@ -48,6 +50,7 @@ public class TimetableSetupService {
         this.requirements = requirements;
         this.mapper = mapper;
         this.validator = validator;
+        this.examTimeslots = examTimeslots;
 
     }
 
@@ -76,7 +79,16 @@ public class TimetableSetupService {
         period.setPeriodType(valid.eventType());
         period.setStartingDate(request.startingDate());
         period.setEndDate(request.endingDate());
-        return new SetupResponse(periods.save(period).getPeriodId(), valid.eventType());
+        boolean exam = RequirementType.EXAM.name().equals(valid.eventType());
+        if (exam) {
+            period.setPeriodName(request.academicYear() + " Exams (" + request.startingDate()
+                    + " to " + request.endingDate() + ")");
+        }
+        CalendarPeriodEntity saved = periods.save(period);
+        if (exam) {
+            examTimeslots.createFor(saved, request.holidayDates());
+        }
+        return new SetupResponse(saved.getPeriodId(), valid.eventType());
     }
 
     @Transactional(readOnly = true)

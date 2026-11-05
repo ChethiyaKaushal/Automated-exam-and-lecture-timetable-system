@@ -2,20 +2,25 @@ package com.university.exam_lecture_timetable.service;
 
 import com.university.exam_lecture_timetable.exception.ExamTimetableReviewException;
 import com.university.exam_lecture_timetable.exception.GeminiProviderException;
-import com.university.exam_lecture_timetable.validation.DrawingExamRule;
 import com.university.exam_lecture_timetable.validation.GeminiExamTimetableValidator;
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.Draft;
 import java.io.IOException;
 import java.net.URI;
+import java.net.UnknownHostException;
 import java.net.http.HttpClient;
+import java.net.http.HttpConnectTimeoutException;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.net.http.HttpTimeoutException;
+import java.nio.channels.UnresolvedAddressException;
 import java.time.Duration;
 import java.util.List;
 import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.NestedExceptionUtils;
 import org.springframework.stereotype.Service;
 import tools.jackson.core.JacksonException;
 import tools.jackson.databind.JsonNode;
@@ -36,10 +41,11 @@ public class GeminiExamTimetableService {
                 "status": {"type": "string", "enum": ["SCHEDULED", "UNSCHEDULED"]},
                 "reason": {"type": ["string", "null"]},
                 "exams": {"type": "array", "items": {
-                  "type": "object", "required": ["requirementId", "timeslotIds"],
+                  "type": "object", "required": ["requirementId", "startTimeslotId", "venueIds"],
                   "properties": {
                     "requirementId": {"type": "integer"},
-                    "timeslotIds": {"type": "array", "items": {"type": "integer"}}
+                    "startTimeslotId": {"type": "integer"},
+                    "venueIds": {"type": "array", "minItems": 1, "items": {"type": "integer"}}
                   }
                 }}
               }
@@ -48,23 +54,30 @@ public class GeminiExamTimetableService {
 
     private final ExamSchedulingInputService inputs;
     private final ExamTimetablePromptBuilder prompts;
-    private final ExamTimetableDraftService javaDrafts;
     private final JsonMapper mapper;
     private final String apiKey;
     private final String model;
+    private final URI modelsEndpoint;
 
+    @Autowired
     public GeminiExamTimetableService(
             ExamSchedulingInputService inputs, ExamTimetablePromptBuilder prompts,
-            ExamTimetableDraftService javaDrafts, JsonMapper mapper,
+            JsonMapper mapper,
             @Value("${GEMINI_API_KEY:}") String apiKey,
             @Value("${GEMINI_MODEL:gemini-3.6-flash}") String model
     ) {
+        this(inputs, prompts, mapper, apiKey, model,
+                URI.create("https://generativelanguage.googleapis.com/v1beta/models/"));
+    }
+
+    GeminiExamTimetableService(ExamSchedulingInputService inputs, ExamTimetablePromptBuilder prompts,
+                               JsonMapper mapper, String apiKey, String model, URI modelsEndpoint) {
         this.inputs = inputs;
         this.prompts = prompts;
-        this.javaDrafts = javaDrafts;
         this.mapper = mapper;
         this.apiKey = apiKey;
         this.model = model;
+        this.modelsEndpoint = modelsEndpoint;
     }
 
     public Draft generate(Long periodId) {
@@ -77,24 +90,43 @@ public class GeminiExamTimetableService {
         }
 
         var loaded = inputs.loadDraft(periodId);
-        var drawing = DrawingExamRule.assignments(loaded.input());
-        Draft baseline = javaDrafts.generate(loaded);
-        String prompt = prompts.build(loaded.input(), drawing, loaded.membershipComplete(),
-                baseline.allExamsPlaced() ? baseline.exams() : List.of());
-        JsonNode proposal;
+        String prompt = prompts.build(loaded.input(), loaded.membershipComplete());
+        JsonNode proposal = readProposal(prompt);
+        var review = GeminiExamTimetableValidator.review(loaded, proposal);
+        if (!review.valid()) {
+            var errors = review.issues().stream().filter(issue -> "ERROR".equals(issue.severity())).toList();
+            log.warn("Gemini proposal had {} validation errors. Requesting one revision.", errors.size());
+            JsonNode revision = readProposal(prompts.revise(prompt, proposal, errors));
+            review = GeminiExamTimetableValidator.review(loaded, revision);
+        }
+        return GeminiExamTimetableValidator.toDraft(loaded, review);
+    }
+
+    private JsonNode readProposal(String prompt) {
         try {
-            proposal = mapper.readTree(requestProposal(prompt));
+            return mapper.readTree(requestProposal(prompt));
         } catch (InterruptedException error) {
             Thread.currentThread().interrupt();
             throw new GeminiProviderException(503, "GEMINI_UNAVAILABLE", "The Gemini request was interrupted.");
         } catch (IOException error) {
-            throw new GeminiProviderException(503, "GEMINI_UNAVAILABLE",
-                    "The backend could not reach Gemini. Try again or choose Java.");
+            Throwable cause = NestedExceptionUtils.getMostSpecificCause(error);
+            log.warn("Gemini transport failed ({}; cause {}).",
+                    error.getClass().getSimpleName(), cause.getClass().getSimpleName());
+            String message;
+            if (cause instanceof UnknownHostException || cause instanceof UnresolvedAddressException) {
+                message = "DNS could not resolve the Gemini host. Check your internet connection and DNS settings.";
+            } else if (error instanceof HttpConnectTimeoutException) {
+                message = "Connecting to Gemini timed out. Check your network and retry.";
+            } else if (error instanceof HttpTimeoutException) {
+                message = "Gemini did not respond before the request timed out. Retry the export.";
+            } else {
+                message = "The backend could not reach Gemini. Check the network and retry.";
+            }
+            throw new GeminiProviderException(503, "GEMINI_UNAVAILABLE", message, error);
         } catch (JacksonException error) {
             throw new GeminiProviderException(502, "GEMINI_INVALID_RESPONSE",
                     "Gemini returned invalid JSON. Try again or choose Java.");
         }
-        return GeminiExamTimetableValidator.validate(loaded, drawing, proposal);
     }
 
     private String requestProposal(String prompt) throws IOException, InterruptedException {
@@ -104,7 +136,7 @@ public class GeminiExamTimetableService {
                         "responseMimeType", "application/json",
                         "responseJsonSchema", mapper.readTree(RESPONSE_SCHEMA)));
         var request = HttpRequest.newBuilder(
-                        URI.create("https://generativelanguage.googleapis.com/v1beta/models/" + model + ":generateContent"))
+                        modelsEndpoint.resolve("./" + model + ":generateContent"))
                 .timeout(Duration.ofMinutes(5))
                 .header("Content-Type", "application/json")
                 .header("x-goog-api-key", apiKey)

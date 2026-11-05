@@ -70,7 +70,7 @@ public class ExamTimetableReviewValidator {
                 issues.add(error("EXAM_DOES_NOT_FIT", label(exam) + " needs " + exam.durationMinutes()
                         + " uninterrupted minutes at the selected start. Choose another slot in this period.", id));
             } else {
-                placements.put(id, new Placement(exam, window));
+                placements.put(id, new Placement(exam, window, assignment.venueIds()));
             }
         }
         for (Exam exam : input.exams()) {
@@ -172,6 +172,7 @@ public class ExamTimetableReviewValidator {
         }
         var order = placements.values().stream()
                 .sorted(Comparator.<Placement>comparingInt(entry -> fixed.containsKey(entry.exam().requirementId()) ? 0 : 1)
+                        .thenComparing(entry -> entry.venueIds() == null)
                         .thenComparing(Comparator.comparingInt((Placement entry) -> entry.exam().studentCount()).reversed())
                         .thenComparing(Comparator.comparingInt((Placement entry) -> entry.exam().durationMinutes()).reversed())
                         .thenComparing(entry -> entry.exam().requirementId()))
@@ -183,7 +184,12 @@ public class ExamTimetableReviewValidator {
             Venue room = fixed.get(exam.requirementId());
             var free = (room == null ? venues : List.of(room)).stream()
                     .filter(venue -> bookings.get(venue.venueId()).stream().noneMatch(window::overlaps)).toList();
-            var chosen = ExamTimetableDraftService.chooseRooms(free, exam.studentCount());
+            var chosen = entry.venueIds() == null
+                    ? ExamTimetableDraftService.chooseRooms(free, exam.studentCount())
+                    : validateVenues(entry, room, free, issues);
+            if (chosen.isEmpty() && entry.venueIds() != null) {
+                continue;
+            }
             if (chosen.isEmpty()) {
                 issues.add(error("VENUES_UNAVAILABLE", label(exam) + " needs " + exam.studentCount()
                         + " seats on " + window.day() + " at " + window.start()
@@ -201,6 +207,35 @@ public class ExamTimetableReviewValidator {
                 .thenComparing(ScheduledExam::startTime).thenComparing(ScheduledExam::requirementId)).toList();
     }
 
+    private static List<Venue> validateVenues(Placement entry, Venue fixed, List<Venue> free, List<Issue> issues) {
+        Exam exam = entry.exam();
+        Set<Long> requested = new HashSet<>(entry.venueIds());
+        if (requested.isEmpty() || requested.contains(null) || requested.size() != entry.venueIds().size()) {
+            issues.add(error("INVALID_VENUE_SELECTION", label(exam) + " needs a list of distinct venue IDs.",
+                    exam.requirementId()));
+            return List.of();
+        }
+        if (fixed != null && !requested.equals(Set.of(fixed.venueId()))) {
+            issues.add(error("DRAWING_VENUE", label(exam) + " must use " + fixed.venueName() + ".",
+                    exam.requirementId()));
+            return List.of();
+        }
+
+        var chosen = free.stream().filter(venue -> requested.contains(venue.venueId())).toList();
+        if (chosen.size() != requested.size()) {
+            issues.add(error("VENUES_UNAVAILABLE", label(exam) + " has an unknown or unavailable venue on "
+                    + entry.window().day() + " at " + entry.window().start() + ".", exam.requirementId()));
+            return List.of();
+        }
+        long seats = chosen.stream().mapToLong(Venue::examCapacity).sum();
+        if (seats < exam.studentCount()) {
+            issues.add(error("INSUFFICIENT_VENUE_CAPACITY", label(exam) + " needs " + exam.studentCount()
+                    + " seats, but the selected venues provide " + seats + ".", exam.requirementId()));
+            return List.of();
+        }
+        return chosen;
+    }
+
     private static String label(Exam exam) {
         return exam.moduleCode() + " " + exam.moduleName() + " (" + exam.curriculum() + ")";
     }
@@ -209,7 +244,7 @@ public class ExamTimetableReviewValidator {
         return new Issue("ERROR", code, description, List.of(ids));
     }
 
-    private record Placement(Exam exam, Window window) {}
+    private record Placement(Exam exam, Window window, List<Long> venueIds) {}
 
     private record Window(LocalDate day, LocalTime start, LocalTime end, List<Long> ids) {
         private boolean overlaps(Window other) {
