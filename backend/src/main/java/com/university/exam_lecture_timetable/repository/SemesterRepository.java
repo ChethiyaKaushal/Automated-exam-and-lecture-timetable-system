@@ -16,4 +16,16 @@ public interface SemesterRepository extends JpaRepository<SemesterEntity, Long> 
 
     @Query("select s from SemesterEntity s where :date between s.startingDate and s.endDate")
     Optional<SemesterEntity> findCurrent(@Param("date") LocalDate date);
+
+    @Query("""
+    SELECT DISTINCT s.academicYear
+    FROM SemesterEntity s
+    WHERE s.academicYear IS NOT NULL
+    ORDER BY s.academicYear
+    """)
+    List<String> findDistinctAcademicYears();
+
+    List<SemesterEntity> findByAcademicYearOrderBySemesterNameAsc(
+            String academicYear
+    );
 }

@@ -1,0 +1,4537 @@
+{
+  "periodId" : 1,
+  "status" : "DRAFT",
+  "studentMembershipsComplete" : false,
+  "allExamsPlaced" : true,
+  "exams" : [ {
+    "requirementId" : 11,
+    "moduleCode" : "ME1201",
+    "moduleName" : "Engineering Drawing (Group A-I)",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 140,
+    "date" : "2026-12-01",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 1, 2, 3, 4, 5, 6 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 111,
+        "allocatedCount" : 140
+      } ]
+    } ]
+  }, {
+    "requirementId" : 12,
+    "moduleCode" : "ME1201",
+    "moduleName" : "Engineering Drawing (Group A-II)",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 140,
+    "date" : "2026-12-01",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 1, 2, 3, 4, 5, 6 ],
+    "venues" : [ {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 156,
+        "allocatedCount" : 140
+      } ]
+    } ]
+  }, {
+    "requirementId" : 17,
+    "moduleCode" : "CE2201",
+    "moduleName" : "Fundamentals of Fluid Mechanics",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 599,
+    "date" : "2026-12-01",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 1, 2, 3, 4, 5, 6 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 150,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 150,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 150,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 150,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 70,
+      "groups" : [ {
+        "groupId" : 150,
+        "allocatedCount" : 70
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "C-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 50,
+      "groups" : [ {
+        "groupId" : 150,
+        "allocatedCount" : 50
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "D-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 150,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "D-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 19,
+      "groups" : [ {
+        "groupId" : 150,
+        "allocatedCount" : 19
+      } ]
+    } ]
+  }, {
+    "requirementId" : 7,
+    "moduleCode" : "IS1003",
+    "moduleName" : "Proficiency in English",
+    "curriculum" : "C-23",
+    "durationMinutes" : 120,
+    "studentCount" : 588,
+    "date" : "2026-12-01",
+    "startTime" : "13:30",
+    "endTime" : "15:30",
+    "timeslotIds" : [ 7, 8, 9, 10 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 154,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 154,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 154,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 154,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 70,
+      "groups" : [ {
+        "groupId" : 154,
+        "allocatedCount" : 70
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "C-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 50,
+      "groups" : [ {
+        "groupId" : 154,
+        "allocatedCount" : 50
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "D-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 154,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "D-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 8,
+      "groups" : [ {
+        "groupId" : 154,
+        "allocatedCount" : 8
+      } ]
+    } ]
+  }, {
+    "requirementId" : 13,
+    "moduleCode" : "ME1201",
+    "moduleName" : "Engineering Drawing (Group B-I)",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 140,
+    "date" : "2026-12-01",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 7, 8, 9, 10, 11, 12 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 157,
+        "allocatedCount" : 140
+      } ]
+    } ]
+  }, {
+    "requirementId" : 15,
+    "moduleCode" : "ME1201",
+    "moduleName" : "Engineering Drawing (Group B-II)",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 126,
+    "date" : "2026-12-01",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 7, 8, 9, 10, 11, 12 ],
+    "venues" : [ {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 126,
+      "groups" : [ {
+        "groupId" : 158,
+        "allocatedCount" : 126
+      } ]
+    } ]
+  }, {
+    "requirementId" : 3,
+    "moduleCode" : "EE1102",
+    "moduleName" : "Programming Fundamentals",
+    "curriculum" : "C-23",
+    "durationMinutes" : 120,
+    "studentCount" : 561,
+    "date" : "2026-12-01",
+    "startTime" : "15:30",
+    "endTime" : "17:30",
+    "timeslotIds" : [ 11, 12, 13, 14 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 101,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 101,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 101,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 101,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 70,
+      "groups" : [ {
+        "groupId" : 101,
+        "allocatedCount" : 70
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "C-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 101,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "D-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 31,
+      "groups" : [ {
+        "groupId" : 101,
+        "allocatedCount" : 31
+      } ]
+    } ]
+  }, {
+    "requirementId" : 93,
+    "moduleCode" : "EE5210",
+    "moduleName" : "Hardware Description Language",
+    "curriculum" : "C-23",
+    "durationMinutes" : 120,
+    "studentCount" : 37,
+    "date" : "2026-12-01",
+    "startTime" : "15:30",
+    "endTime" : "17:30",
+    "timeslotIds" : [ 11, 12, 13, 14 ],
+    "venues" : [ {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 37,
+      "groups" : [ {
+        "groupId" : 135,
+        "allocatedCount" : 37
+      } ]
+    } ]
+  }, {
+    "requirementId" : 28,
+    "moduleCode" : "ME2302",
+    "moduleName" : "Fundamentals of Materials and Manufacturing Engineering",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 575,
+    "date" : "2026-12-02",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 16, 17, 18, 19, 20, 21 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 152,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 152,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 152,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 152,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 75,
+      "groups" : [ {
+        "groupId" : 152,
+        "allocatedCount" : 75
+      } ]
+    } ]
+  }, {
+    "requirementId" : 101,
+    "moduleCode" : "IS5101",
+    "moduleName" : "Engineering Ethics",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 298,
+    "date" : "2026-12-02",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 16, 17, 18, 19, 20, 21 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 74,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 70,
+      "allocatedCount" : 70,
+      "groups" : [ {
+        "groupId" : 74,
+        "allocatedCount" : 70
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 50,
+      "groups" : [ {
+        "groupId" : 74,
+        "allocatedCount" : 50
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 74,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 18,
+      "groups" : [ {
+        "groupId" : 74,
+        "allocatedCount" : 18
+      } ]
+    } ]
+  }, {
+    "requirementId" : 25,
+    "moduleCode" : "IS2401",
+    "moduleName" : "Linear Algebra and Differential Equations",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 566,
+    "date" : "2026-12-02",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 22, 23, 24, 25, 26, 27 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 106,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 106,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 106,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 106,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 66,
+      "groups" : [ {
+        "groupId" : 106,
+        "allocatedCount" : 66
+      } ]
+    } ]
+  }, {
+    "requirementId" : 106,
+    "moduleCode" : "IS5302",
+    "moduleName" : "Numerical Methods",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 298,
+    "date" : "2026-12-02",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 22, 23, 24, 25, 26, 27 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 90,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 90,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 50,
+      "groups" : [ {
+        "groupId" : 90,
+        "allocatedCount" : 50
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 90,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 8,
+      "groups" : [ {
+        "groupId" : 90,
+        "allocatedCount" : 8
+      } ]
+    } ]
+  }, {
+    "requirementId" : 19,
+    "moduleCode" : "CE2302",
+    "moduleName" : "Mechanics of Materials",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 564,
+    "date" : "2026-12-03",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 31, 32, 33, 34, 35, 36 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 146,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 146,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 146,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 146,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 64,
+      "groups" : [ {
+        "groupId" : 146,
+        "allocatedCount" : 64
+      } ]
+    } ]
+  }, {
+    "requirementId" : 30,
+    "moduleCode" : "CE3201",
+    "moduleName" : "Concrete Technology",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 126,
+    "date" : "2026-12-03",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 31, 32, 33, 34, 35, 36 ],
+    "venues" : [ {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 50,
+      "groups" : [ {
+        "groupId" : 76,
+        "allocatedCount" : 50
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 76,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 36,
+      "groups" : [ {
+        "groupId" : 76,
+        "allocatedCount" : 36
+      } ]
+    } ]
+  }, {
+    "requirementId" : 123,
+    "moduleCode" : "EC7201",
+    "moduleName" : "Information Security",
+    "curriculum" : "C-18",
+    "durationMinutes" : 120,
+    "studentCount" : 195,
+    "date" : "2026-12-03",
+    "startTime" : "09:00",
+    "endTime" : "11:00",
+    "timeslotIds" : [ 31, 32, 33, 34 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 26,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 75,
+      "groups" : [ {
+        "groupId" : 26,
+        "allocatedCount" : 75
+      } ]
+    } ]
+  }, {
+    "requirementId" : 23,
+    "moduleCode" : "EE2202",
+    "moduleName" : "Object Oriented Programming",
+    "curriculum" : "C-23",
+    "durationMinutes" : 120,
+    "studentCount" : 554,
+    "date" : "2026-12-03",
+    "startTime" : "13:30",
+    "endTime" : "15:30",
+    "timeslotIds" : [ 37, 38, 39, 40 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 51,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 51,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 51,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 51,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 74,
+      "groups" : [ {
+        "groupId" : 51,
+        "allocatedCount" : 74
+      } ]
+    } ]
+  }, {
+    "requirementId" : 39,
+    "moduleCode" : "EC3202",
+    "moduleName" : "Data Structures and Algorithms",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 192,
+    "date" : "2026-12-03",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 37, 38, 39, 40, 41, 42 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 138,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 70,
+      "allocatedCount" : 52,
+      "groups" : [ {
+        "groupId" : 138,
+        "allocatedCount" : 52
+      } ]
+    } ]
+  }, {
+    "requirementId" : 102,
+    "moduleCode" : "IS5123",
+    "moduleName" : "Project Management",
+    "curriculum" : "C-23",
+    "durationMinutes" : 120,
+    "studentCount" : 86,
+    "date" : "2026-12-03",
+    "startTime" : "13:30",
+    "endTime" : "15:30",
+    "timeslotIds" : [ 37, 38, 39, 40 ],
+    "venues" : [ {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 50,
+      "groups" : [ {
+        "groupId" : 10,
+        "allocatedCount" : 50
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 36,
+      "groups" : [ {
+        "groupId" : 10,
+        "allocatedCount" : 36
+      } ]
+    } ]
+  }, {
+    "requirementId" : 131,
+    "moduleCode" : "EC7212",
+    "moduleName" : "Advanced Data Communication",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 39,
+    "date" : "2026-12-03",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 37, 38, 39, 40, 41, 42 ],
+    "venues" : [ {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 39,
+      "groups" : [ {
+        "groupId" : 83,
+        "allocatedCount" : 39
+      } ]
+    } ]
+  }, {
+    "requirementId" : 119,
+    "moduleCode" : "CE7256",
+    "moduleName" : "Sustainable Built Environment Principles",
+    "curriculum" : "C-18",
+    "durationMinutes" : 120,
+    "studentCount" : 23,
+    "date" : "2026-12-03",
+    "startTime" : "15:30",
+    "endTime" : "17:30",
+    "timeslotIds" : [ 41, 42, 43, 44 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 23,
+      "groups" : [ {
+        "groupId" : 65,
+        "allocatedCount" : 23
+      } ]
+    } ]
+  }, {
+    "requirementId" : 124,
+    "moduleCode" : "EC7203",
+    "moduleName" : "Advanced Artificial Intelligence",
+    "curriculum" : "C-18",
+    "durationMinutes" : 120,
+    "studentCount" : 190,
+    "date" : "2026-12-03",
+    "startTime" : "15:30",
+    "endTime" : "17:30",
+    "timeslotIds" : [ 41, 42, 43, 44 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 44,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 50,
+      "groups" : [ {
+        "groupId" : 44,
+        "allocatedCount" : 50
+      } ]
+    } ]
+  }, {
+    "requirementId" : 125,
+    "moduleCode" : "EC7204",
+    "moduleName" : "Cloud Computing",
+    "curriculum" : "C-18",
+    "durationMinutes" : 120,
+    "studentCount" : 174,
+    "date" : "2026-12-03",
+    "startTime" : "15:30",
+    "endTime" : "17:30",
+    "timeslotIds" : [ 41, 42, 43, 44 ],
+    "venues" : [ {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 126,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 34,
+      "groups" : [ {
+        "groupId" : 126,
+        "allocatedCount" : 34
+      } ]
+    } ]
+  }, {
+    "requirementId" : 126,
+    "moduleCode" : "EC7205",
+    "moduleName" : "Computer Vision and Image Processing",
+    "curriculum" : "C-18",
+    "durationMinutes" : 120,
+    "studentCount" : 174,
+    "date" : "2026-12-03",
+    "startTime" : "15:30",
+    "endTime" : "17:30",
+    "timeslotIds" : [ 41, 42, 43, 44 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 8,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 54,
+      "groups" : [ {
+        "groupId" : 8,
+        "allocatedCount" : 54
+      } ]
+    } ]
+  }, {
+    "requirementId" : 21,
+    "moduleCode" : "EE2201",
+    "moduleName" : "Fundamentals of Electronics",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 553,
+    "date" : "2026-12-04",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 46, 47, 48, 49, 50, 51 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 19,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 19,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 19,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 19,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 73,
+      "groups" : [ {
+        "groupId" : 19,
+        "allocatedCount" : 73
+      } ]
+    } ]
+  }, {
+    "requirementId" : 34,
+    "moduleCode" : "CE3205",
+    "moduleName" : "Structural Analysis I",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 126,
+    "date" : "2026-12-04",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 46, 47, 48, 49, 50, 51 ],
+    "venues" : [ {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 50,
+      "groups" : [ {
+        "groupId" : 103,
+        "allocatedCount" : 50
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 103,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 36,
+      "groups" : [ {
+        "groupId" : 103,
+        "allocatedCount" : 36
+      } ]
+    } ]
+  }, {
+    "requirementId" : 42,
+    "moduleCode" : "EC3305",
+    "moduleName" : "Signals and Systems",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 191,
+    "date" : "2026-12-04",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 46, 47, 48, 49, 50, 51 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 31,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 70,
+      "allocatedCount" : 51,
+      "groups" : [ {
+        "groupId" : 31,
+        "allocatedCount" : 51
+      } ]
+    } ]
+  }, {
+    "requirementId" : 26,
+    "moduleCode" : "ME2201",
+    "moduleName" : "Engineering Mechanics",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 551,
+    "date" : "2026-12-04",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 52, 53, 54, 55, 56, 57 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 148,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 148,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 148,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 148,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 71,
+      "groups" : [ {
+        "groupId" : 148,
+        "allocatedCount" : 71
+      } ]
+    } ]
+  }, {
+    "requirementId" : 40,
+    "moduleCode" : "EC3203",
+    "moduleName" : "Electrical and Electronic Measurements",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 190,
+    "date" : "2026-12-04",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 52, 53, 54, 55, 56, 57 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 123,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 50,
+      "groups" : [ {
+        "groupId" : 123,
+        "allocatedCount" : 50
+      } ]
+    } ]
+  }, {
+    "requirementId" : 62,
+    "moduleCode" : "ME3204",
+    "moduleName" : "Manufacturing Processes and Practice",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 147,
+    "date" : "2026-12-04",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 52, 53, 54, 55, 56, 57 ],
+    "venues" : [ {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 70,
+      "groups" : [ {
+        "groupId" : 78,
+        "allocatedCount" : 70
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 78,
+        "allocatedCount" : 31
+      }, {
+        "groupId" : 79,
+        "allocatedCount" : 9
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 37,
+      "groups" : [ {
+        "groupId" : 79,
+        "allocatedCount" : 37
+      } ]
+    } ]
+  }, {
+    "requirementId" : 4,
+    "moduleCode" : "EE1301",
+    "moduleName" : "Fundamentals of Electricity",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 550,
+    "date" : "2026-12-07",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 61, 62, 63, 64, 65, 66 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 131,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 131,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 131,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 131,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 70,
+      "groups" : [ {
+        "groupId" : 131,
+        "allocatedCount" : 70
+      } ]
+    } ]
+  }, {
+    "requirementId" : 41,
+    "moduleCode" : "EC3301",
+    "moduleName" : "Analog Electronics",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 190,
+    "date" : "2026-12-07",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 61, 62, 63, 64, 65, 66 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 66,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 50,
+      "groups" : [ {
+        "groupId" : 66,
+        "allocatedCount" : 50
+      } ]
+    } ]
+  }, {
+    "requirementId" : 63,
+    "moduleCode" : "ME3206",
+    "moduleName" : "Strength of Materials",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 147,
+    "date" : "2026-12-07",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 61, 62, 63, 64, 65, 66 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 97,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 97,
+        "allocatedCount" : 20
+      }, {
+        "groupId" : 98,
+        "allocatedCount" : 20
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 27,
+      "groups" : [ {
+        "groupId" : 98,
+        "allocatedCount" : 27
+      } ]
+    } ]
+  }, {
+    "requirementId" : 1,
+    "moduleCode" : "CE1202",
+    "moduleName" : "Introduction to Infrastructure Planning",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 549,
+    "date" : "2026-12-07",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 67, 68, 69, 70, 71, 72 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 21,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 21,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 21,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 21,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 69,
+      "groups" : [ {
+        "groupId" : 21,
+        "allocatedCount" : 69
+      } ]
+    } ]
+  }, {
+    "requirementId" : 36,
+    "moduleCode" : "CE3303",
+    "moduleName" : "Engineering Surveying",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 132,
+    "date" : "2026-12-07",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 67, 68, 69, 70, 71, 72 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 37,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 50,
+      "groups" : [ {
+        "groupId" : 37,
+        "allocatedCount" : 50
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 2,
+      "groups" : [ {
+        "groupId" : 37,
+        "allocatedCount" : 2
+      } ]
+    } ]
+  }, {
+    "requirementId" : 68,
+    "moduleCode" : "ME3305",
+    "moduleName" : "Metallurgy for Engineers",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 147,
+    "date" : "2026-12-07",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 67, 68, 69, 70, 71, 72 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 68,
+        "allocatedCount" : 100
+      }, {
+        "groupId" : 69,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 7,
+      "groups" : [ {
+        "groupId" : 69,
+        "allocatedCount" : 7
+      } ]
+    } ]
+  }, {
+    "requirementId" : 16,
+    "moduleCode" : "ME1202",
+    "moduleName" : "Fundamentals of Thermodynamics",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 549,
+    "date" : "2026-12-08",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 76, 77, 78, 79, 80, 81 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 56,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 56,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 56,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 56,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 69,
+      "groups" : [ {
+        "groupId" : 56,
+        "allocatedCount" : 69
+      } ]
+    } ]
+  }, {
+    "requirementId" : 31,
+    "moduleCode" : "CE3202",
+    "moduleName" : "Construction Process and Technology",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 125,
+    "date" : "2026-12-08",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 76, 77, 78, 79, 80, 81 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 60,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 45,
+      "groups" : [ {
+        "groupId" : 60,
+        "allocatedCount" : 45
+      } ]
+    } ]
+  }, {
+    "requirementId" : 38,
+    "moduleCode" : "CE3304",
+    "moduleName" : "Fluid Mechanics",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 126,
+    "date" : "2026-12-08",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 76, 77, 78, 79, 80, 81 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 126,
+      "groups" : [ {
+        "groupId" : 129,
+        "allocatedCount" : 126
+      } ]
+    } ]
+  }, {
+    "requirementId" : 89,
+    "moduleCode" : "EE5201",
+    "moduleName" : "Communication Systems",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 75,
+    "date" : "2026-12-08",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 76, 77, 78, 79, 80, 81 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 36,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 35,
+      "groups" : [ {
+        "groupId" : 36,
+        "allocatedCount" : 35
+      } ]
+    } ]
+  }, {
+    "requirementId" : 8,
+    "moduleCode" : "IS1301",
+    "moduleName" : "Communication for Engineers",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 547,
+    "date" : "2026-12-08",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 82, 83, 84, 85, 86, 87 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 39,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 39,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 39,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 39,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 67,
+      "groups" : [ {
+        "groupId" : 39,
+        "allocatedCount" : 67
+      } ]
+    } ]
+  }, {
+    "requirementId" : 74,
+    "moduleCode" : "CE5201",
+    "moduleName" : "Building Services Engineering",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 124,
+    "date" : "2026-12-08",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 82, 83, 84, 85, 86, 87 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 124,
+      "groups" : [ {
+        "groupId" : 100,
+        "allocatedCount" : 124
+      } ]
+    } ]
+  }, {
+    "requirementId" : 76,
+    "moduleCode" : "CE5202",
+    "moduleName" : "Design of Steel Structures",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 124,
+    "date" : "2026-12-08",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 82, 83, 84, 85, 86, 87 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 114,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 44,
+      "groups" : [ {
+        "groupId" : 114,
+        "allocatedCount" : 44
+      } ]
+    } ]
+  }, {
+    "requirementId" : 90,
+    "moduleCode" : "EE5202",
+    "moduleName" : "Electronic Circuit Design",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 75,
+    "date" : "2026-12-08",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 82, 83, 84, 85, 86, 87 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 59,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 35,
+      "groups" : [ {
+        "groupId" : 59,
+        "allocatedCount" : 35
+      } ]
+    } ]
+  }, {
+    "requirementId" : 10,
+    "moduleCode" : "IS1402",
+    "moduleName" : "Mathematical Fundamentals for Engineers",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 547,
+    "date" : "2026-12-09",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 91, 92, 93, 94, 95, 96 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 1,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 1,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 120,
+      "groups" : [ {
+        "groupId" : 1,
+        "allocatedCount" : 120
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 1,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "C-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 67,
+      "groups" : [ {
+        "groupId" : 1,
+        "allocatedCount" : 67
+      } ]
+    } ]
+  }, {
+    "requirementId" : 78,
+    "moduleCode" : "CE5204",
+    "moduleName" : "Structural Analysis III",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 124,
+    "date" : "2026-12-09",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 91, 92, 93, 94, 95, 96 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 124,
+      "groups" : [ {
+        "groupId" : 24,
+        "allocatedCount" : 124
+      } ]
+    } ]
+  }, {
+    "requirementId" : 86,
+    "moduleCode" : "CE5303",
+    "moduleName" : "Hydraulic Engineering",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 124,
+    "date" : "2026-12-09",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 91, 92, 93, 94, 95, 96 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 57,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 44,
+      "groups" : [ {
+        "groupId" : 57,
+        "allocatedCount" : 44
+      } ]
+    } ]
+  }, {
+    "requirementId" : 91,
+    "moduleCode" : "EE5203",
+    "moduleName" : "Machine Learning",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 75,
+    "date" : "2026-12-09",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 91, 92, 93, 94, 95, 96 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 54,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 35,
+      "groups" : [ {
+        "groupId" : 54,
+        "allocatedCount" : 35
+      } ]
+    } ]
+  }, {
+    "requirementId" : 56,
+    "moduleCode" : "IS3301",
+    "moduleName" : "Complex Analysis and Mathematical Transforms",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 538,
+    "date" : "2026-12-09",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 97, 98, 99, 100, 101, 102 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 11,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 11,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 11,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 120,
+      "allocatedCount" : 118,
+      "groups" : [ {
+        "groupId" : 11,
+        "allocatedCount" : 118
+      } ]
+    } ]
+  }, {
+    "requirementId" : 87,
+    "moduleCode" : "CE5305",
+    "moduleName" : "Traffic and Transport Engineering",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 124,
+    "date" : "2026-12-09",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 97, 98, 99, 100, 101, 102 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 140,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 44,
+      "groups" : [ {
+        "groupId" : 140,
+        "allocatedCount" : 44
+      } ]
+    } ]
+  }, {
+    "requirementId" : 97,
+    "moduleCode" : "EE5304",
+    "moduleName" : "Power Electronics",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 75,
+    "date" : "2026-12-09",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 97, 98, 99, 100, 101, 102 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 18,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 35,
+      "groups" : [ {
+        "groupId" : 18,
+        "allocatedCount" : 35
+      } ]
+    } ]
+  }, {
+    "requirementId" : 122,
+    "moduleCode" : "CE7304",
+    "moduleName" : "Geotechnical Engineering Design",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 124,
+    "date" : "2026-12-09",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 97, 98, 99, 100, 101, 102 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 5,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 70,
+      "allocatedCount" : 44,
+      "groups" : [ {
+        "groupId" : 5,
+        "allocatedCount" : 44
+      } ]
+    } ]
+  }, {
+    "requirementId" : 59,
+    "moduleCode" : "IS3321",
+    "moduleName" : "Fundamentals of Management for Engineers",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 510,
+    "date" : "2026-12-10",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 106, 107, 108, 109, 110, 111 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 48,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 48,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 48,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 120,
+      "allocatedCount" : 90,
+      "groups" : [ {
+        "groupId" : 48,
+        "allocatedCount" : 90
+      } ]
+    } ]
+  }, {
+    "requirementId" : 83,
+    "moduleCode" : "CE5253",
+    "moduleName" : "Advanced Surveying",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 122,
+    "date" : "2026-12-10",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 106, 107, 108, 109, 110, 111 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 4,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 42,
+      "groups" : [ {
+        "groupId" : 4,
+        "allocatedCount" : 42
+      } ]
+    } ]
+  }, {
+    "requirementId" : 99,
+    "moduleCode" : "EE5305",
+    "moduleName" : "Power Systems II",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 75,
+    "date" : "2026-12-10",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 106, 107, 108, 109, 110, 111 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 96,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 35,
+      "groups" : [ {
+        "groupId" : 96,
+        "allocatedCount" : 35
+      } ]
+    } ]
+  }, {
+    "requirementId" : 118,
+    "moduleCode" : "CE7202",
+    "moduleName" : "Computer Analysis of Structures",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 122,
+    "date" : "2026-12-10",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 106, 107, 108, 109, 110, 111 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 29,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 70,
+      "allocatedCount" : 42,
+      "groups" : [ {
+        "groupId" : 29,
+        "allocatedCount" : 42
+      } ]
+    } ]
+  }, {
+    "requirementId" : 60,
+    "moduleCode" : "IS3322",
+    "moduleName" : "Society and the Engineers",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 494,
+    "date" : "2026-12-10",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 112, 113, 114, 115, 116, 117 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 84,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 84,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 140,
+      "groups" : [ {
+        "groupId" : 84,
+        "allocatedCount" : 140
+      } ]
+    }, {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "B-II",
+      "examCapacity" : 80,
+      "allocatedCount" : 74,
+      "groups" : [ {
+        "groupId" : 84,
+        "allocatedCount" : 74
+      } ]
+    } ]
+  }, {
+    "requirementId" : 81,
+    "moduleCode" : "CE5251",
+    "moduleName" : "Design of Timber and Masonary Structures",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 112,
+    "date" : "2026-12-10",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 112, 113, 114, 115, 116, 117 ],
+    "venues" : [ {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 70,
+      "groups" : [ {
+        "groupId" : 42,
+        "allocatedCount" : 70
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 42,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "B-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 2,
+      "groups" : [ {
+        "groupId" : 42,
+        "allocatedCount" : 2
+      } ]
+    } ]
+  }, {
+    "requirementId" : 121,
+    "moduleCode" : "CE7303",
+    "moduleName" : "Construction Environmental Management",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 122,
+    "date" : "2026-12-10",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 112, 113, 114, 115, 116, 117 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 77,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 42,
+      "groups" : [ {
+        "groupId" : 77,
+        "allocatedCount" : 42
+      } ]
+    } ]
+  }, {
+    "requirementId" : 128,
+    "moduleCode" : "EC7208",
+    "moduleName" : "Optimization Techniques for Engineers",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 119,
+    "date" : "2026-12-10",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 112, 113, 114, 115, 116, 117 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 119,
+      "groups" : [ {
+        "groupId" : 61,
+        "allocatedCount" : 119
+      } ]
+    } ]
+  }, {
+    "requirementId" : 65,
+    "moduleCode" : "ME3301",
+    "moduleName" : "Applied Thermodynamics",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 101,
+    "date" : "2026-12-11",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 121, 122, 123, 124, 125, 126 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 101,
+      "groups" : [ {
+        "groupId" : 30,
+        "allocatedCount" : 101
+      } ]
+    } ]
+  }, {
+    "requirementId" : 66,
+    "moduleCode" : "ME3303",
+    "moduleName" : "Fluid Mechanic",
+    "curriculum" : "UNSPECIFIED",
+    "durationMinutes" : 180,
+    "studentCount" : 100,
+    "date" : "2026-12-11",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 121, 122, 123, 124, 125, 126 ],
+    "venues" : [ {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 100,
+      "groups" : [ {
+        "groupId" : 143,
+        "allocatedCount" : 100
+      } ]
+    } ]
+  }, {
+    "requirementId" : 109,
+    "moduleCode" : "ME5204",
+    "moduleName" : "Production Planning and Control",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 99,
+    "date" : "2026-12-11",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 121, 122, 123, 124, 125, 126 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 99,
+      "groups" : [ {
+        "groupId" : 134,
+        "allocatedCount" : 99
+      } ]
+    } ]
+  }, {
+    "requirementId" : 112,
+    "moduleCode" : "ME5301",
+    "moduleName" : "Advanced Control Systems",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 99,
+    "date" : "2026-12-11",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 121, 122, 123, 124, 125, 126 ],
+    "venues" : [ {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 70,
+      "groups" : [ {
+        "groupId" : 15,
+        "allocatedCount" : 70
+      } ]
+    }, {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 29,
+      "groups" : [ {
+        "groupId" : 15,
+        "allocatedCount" : 29
+      } ]
+    } ]
+  }, {
+    "requirementId" : 114,
+    "moduleCode" : "ME5302",
+    "moduleName" : "Computer Aided Design",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 99,
+    "date" : "2026-12-11",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 121, 122, 123, 124, 125, 126 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 40,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 19,
+      "groups" : [ {
+        "groupId" : 40,
+        "allocatedCount" : 19
+      } ]
+    } ]
+  }, {
+    "requirementId" : 117,
+    "moduleCode" : "ME5305",
+    "moduleName" : "Refrigeration and Air – Conditioning",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 99,
+    "date" : "2026-12-11",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 121, 122, 123, 124, 125, 126 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 80,
+      "groups" : [ {
+        "groupId" : 108,
+        "allocatedCount" : 80
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 19,
+      "groups" : [ {
+        "groupId" : 108,
+        "allocatedCount" : 19
+      } ]
+    } ]
+  }, {
+    "requirementId" : 120,
+    "moduleCode" : "CE7257",
+    "moduleName" : "Railway Geotechnics",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 105,
+    "date" : "2026-12-11",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 121, 122, 123, 124, 125, 126 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 105,
+      "groups" : [ {
+        "groupId" : 89,
+        "allocatedCount" : 105
+      } ]
+    } ]
+  }, {
+    "requirementId" : 43,
+    "moduleCode" : "EE3202",
+    "moduleName" : "Data Structures and Algorithms",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 74,
+    "date" : "2026-12-11",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 127, 128, 129, 130, 131, 132 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 74,
+      "groups" : [ {
+        "groupId" : 136,
+        "allocatedCount" : 74
+      } ]
+    } ]
+  }, {
+    "requirementId" : 45,
+    "moduleCode" : "EE3203",
+    "moduleName" : "Electrical and Electronic Measurements",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 74,
+    "date" : "2026-12-11",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 127, 128, 129, 130, 131, 132 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 74,
+      "groups" : [ {
+        "groupId" : 121,
+        "allocatedCount" : 74
+      } ]
+    } ]
+  }, {
+    "requirementId" : 46,
+    "moduleCode" : "EE3205",
+    "moduleName" : "Power and Energy",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 74,
+    "date" : "2026-12-11",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 127, 128, 129, 130, 131, 132 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 6,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 34,
+      "groups" : [ {
+        "groupId" : 6,
+        "allocatedCount" : 34
+      } ]
+    } ]
+  }, {
+    "requirementId" : 48,
+    "moduleCode" : "EE3301",
+    "moduleName" : "Analog Electronics",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 74,
+    "date" : "2026-12-11",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 127, 128, 129, 130, 131, 132 ],
+    "venues" : [ {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 70,
+      "groups" : [ {
+        "groupId" : 67,
+        "allocatedCount" : 70
+      } ]
+    }, {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 50,
+      "allocatedCount" : 4,
+      "groups" : [ {
+        "groupId" : 67,
+        "allocatedCount" : 4
+      } ]
+    } ]
+  }, {
+    "requirementId" : 110,
+    "moduleCode" : "ME5210",
+    "moduleName" : "Electric and Hybrid Vehicle Engineering (TE)",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 75,
+    "date" : "2026-12-11",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 127, 128, 129, 130, 131, 132 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 75,
+      "groups" : [ {
+        "groupId" : 55,
+        "allocatedCount" : 75
+      } ]
+    } ]
+  }, {
+    "requirementId" : 144,
+    "moduleCode" : "ME7211",
+    "moduleName" : "Energy Technology",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 81,
+    "date" : "2026-12-11",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 127, 128, 129, 130, 131, 132 ],
+    "venues" : [ {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 81,
+      "groups" : [ {
+        "groupId" : 7,
+        "allocatedCount" : 81
+      } ]
+    } ]
+  }, {
+    "requirementId" : 149,
+    "moduleCode" : "ME7302",
+    "moduleName" : "Heat and Mass Transfer",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 99,
+    "date" : "2026-12-11",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 127, 128, 129, 130, 131, 132 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 99,
+      "groups" : [ {
+        "groupId" : 63,
+        "allocatedCount" : 99
+      } ]
+    } ]
+  }, {
+    "requirementId" : 150,
+    "moduleCode" : "ME7303",
+    "moduleName" : "Production and Operations Management",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 99,
+    "date" : "2026-12-11",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 127, 128, 129, 130, 131, 132 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 99,
+      "groups" : [ {
+        "groupId" : 128,
+        "allocatedCount" : 99
+      } ]
+    } ]
+  }, {
+    "requirementId" : 50,
+    "moduleCode" : "EE3304",
+    "moduleName" : "Engineering Electromagnetism",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 74,
+    "date" : "2026-12-14",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 136, 137, 138, 139, 140, 141 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 74,
+      "groups" : [ {
+        "groupId" : 99,
+        "allocatedCount" : 74
+      } ]
+    } ]
+  }, {
+    "requirementId" : 52,
+    "moduleCode" : "EE3306",
+    "moduleName" : "Signals and Systems",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 74,
+    "date" : "2026-12-14",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 136, 137, 138, 139, 140, 141 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 74,
+      "groups" : [ {
+        "groupId" : 32,
+        "allocatedCount" : 74
+      } ]
+    } ]
+  }, {
+    "requirementId" : 69,
+    "moduleCode" : "MN3201",
+    "moduleName" : "Fundamentals of Naval Architecture",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 45,
+    "date" : "2026-12-14",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 136, 137, 138, 139, 140, 141 ],
+    "venues" : [ {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 45,
+      "groups" : [ {
+        "groupId" : 142,
+        "allocatedCount" : 45
+      } ]
+    } ]
+  }, {
+    "requirementId" : 70,
+    "moduleCode" : "MN3204",
+    "moduleName" : "Maritime English -I",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 45,
+    "date" : "2026-12-14",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 136, 137, 138, 139, 140, 141 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 45,
+      "groups" : [ {
+        "groupId" : 120,
+        "allocatedCount" : 45
+      } ]
+    } ]
+  }, {
+    "requirementId" : 71,
+    "moduleCode" : "MN3302",
+    "moduleName" : "Engineering Knowledge (General) I",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 49,
+    "date" : "2026-12-14",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 136, 137, 138, 139, 140, 141 ],
+    "venues" : [ {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 49,
+      "groups" : [ {
+        "groupId" : 35,
+        "allocatedCount" : 49
+      } ]
+    } ]
+  }, {
+    "requirementId" : 72,
+    "moduleCode" : "MN3303",
+    "moduleName" : "Engineering Knowledge (Motor) I",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 47,
+    "date" : "2026-12-14",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 136, 137, 138, 139, 140, 141 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 47,
+      "groups" : [ {
+        "groupId" : 88,
+        "allocatedCount" : 47
+      } ]
+    } ]
+  }, {
+    "requirementId" : 73,
+    "moduleCode" : "MN3305",
+    "moduleName" : "Hydrostatics and stability of Marine Vehicles",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 45,
+    "date" : "2026-12-14",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 136, 137, 138, 139, 140, 141 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 40,
+      "groups" : [ {
+        "groupId" : 125,
+        "allocatedCount" : 40
+      } ]
+    }, {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-II",
+      "examCapacity" : 40,
+      "allocatedCount" : 5,
+      "groups" : [ {
+        "groupId" : 125,
+        "allocatedCount" : 5
+      } ]
+    } ]
+  }, {
+    "requirementId" : 95,
+    "moduleCode" : "EE5213",
+    "moduleName" : "Power System Analysis",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 54,
+    "date" : "2026-12-14",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 136, 137, 138, 139, 140, 141 ],
+    "venues" : [ {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 54,
+      "groups" : [ {
+        "groupId" : 113,
+        "allocatedCount" : 54
+      } ]
+    } ]
+  }, {
+    "requirementId" : 129,
+    "moduleCode" : "EC7210",
+    "moduleName" : "Robotics and Automation",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 73,
+    "date" : "2026-12-14",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 136, 137, 138, 139, 140, 141 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 73,
+      "groups" : [ {
+        "groupId" : 118,
+        "allocatedCount" : 73
+      } ]
+    } ]
+  }, {
+    "requirementId" : 37,
+    "moduleCode" : "CE3303",
+    "moduleName" : "Fluid Mechanics",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 22,
+    "date" : "2026-12-14",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 142, 143, 144, 145, 146, 147 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 22,
+      "groups" : [ {
+        "groupId" : 130,
+        "allocatedCount" : 22
+      } ]
+    } ]
+  }, {
+    "requirementId" : 75,
+    "moduleCode" : "CE5202",
+    "moduleName" : "Design of Steel Structures",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 33,
+    "date" : "2026-12-14",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 142, 143, 144, 145, 146, 147 ],
+    "venues" : [ {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 33,
+      "groups" : [ {
+        "groupId" : 115,
+        "allocatedCount" : 33
+      } ]
+    } ]
+  }, {
+    "requirementId" : 88,
+    "moduleCode" : "CE5306",
+    "moduleName" : "Traffic and Transport Engineering",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 20,
+    "date" : "2026-12-14",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 142, 143, 144, 145, 146, 147 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 20,
+      "groups" : [ {
+        "groupId" : 141,
+        "allocatedCount" : 20
+      } ]
+    } ]
+  }, {
+    "requirementId" : 134,
+    "moduleCode" : "EE7205",
+    "moduleName" : "Digital Signal Processing",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 22,
+    "date" : "2026-12-14",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 142, 143, 144, 145, 146, 147 ],
+    "venues" : [ {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 22,
+      "groups" : [ {
+        "groupId" : 86,
+        "allocatedCount" : 22
+      } ]
+    } ]
+  }, {
+    "requirementId" : 135,
+    "moduleCode" : "EE7207",
+    "moduleName" : "Electrical Installations I",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 41,
+    "date" : "2026-12-14",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 142, 143, 144, 145, 146, 147 ],
+    "venues" : [ {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 41,
+      "groups" : [ {
+        "groupId" : 110,
+        "allocatedCount" : 41
+      } ]
+    } ]
+  }, {
+    "requirementId" : 136,
+    "moduleCode" : "EE7209",
+    "moduleName" : "Machine Learning",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 28,
+    "date" : "2026-12-14",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 142, 143, 144, 145, 146, 147 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 28,
+      "groups" : [ {
+        "groupId" : 53,
+        "allocatedCount" : 28
+      } ]
+    } ]
+  }, {
+    "requirementId" : 138,
+    "moduleCode" : "EE7215",
+    "moduleName" : "Power System Protection",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 36,
+    "date" : "2026-12-14",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 142, 143, 144, 145, 146, 147 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 36,
+      "groups" : [ {
+        "groupId" : 14,
+        "allocatedCount" : 36
+      } ]
+    } ]
+  }, {
+    "requirementId" : 139,
+    "moduleCode" : "EE7217",
+    "moduleName" : "Telecommunication Networks",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 25,
+    "date" : "2026-12-14",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 142, 143, 144, 145, 146, 147 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 25,
+      "groups" : [ {
+        "groupId" : 144,
+        "allocatedCount" : 25
+      } ]
+    } ]
+  }, {
+    "requirementId" : 142,
+    "moduleCode" : "EE7221",
+    "moduleName" : "Robotics and Automation",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 24,
+    "date" : "2026-12-14",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 142, 143, 144, 145, 146, 147 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 24,
+      "groups" : [ {
+        "groupId" : 117,
+        "allocatedCount" : 24
+      } ]
+    } ]
+  }, {
+    "requirementId" : 145,
+    "moduleCode" : "ME7212",
+    "moduleName" : "Naval Architecture and Hull Design",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 31,
+    "date" : "2026-12-14",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 142, 143, 144, 145, 146, 147 ],
+    "venues" : [ {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 31,
+      "groups" : [ {
+        "groupId" : 23,
+        "allocatedCount" : 31
+      } ]
+    } ]
+  }, {
+    "requirementId" : 18,
+    "moduleCode" : "CE2302",
+    "moduleName" : "Mechanics of Materials",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 12,
+    "date" : "2026-12-15",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 151, 152, 153, 154, 155, 156 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 12,
+      "groups" : [ {
+        "groupId" : 147,
+        "allocatedCount" : 12
+      } ]
+    } ]
+  }, {
+    "requirementId" : 22,
+    "moduleCode" : "EE2202",
+    "moduleName" : "Introduction to Electronic Engineering",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 15,
+    "date" : "2026-12-15",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 151, 152, 153, 154, 155, 156 ],
+    "venues" : [ {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 15,
+      "groups" : [ {
+        "groupId" : 20,
+        "allocatedCount" : 15
+      } ]
+    } ]
+  }, {
+    "requirementId" : 55,
+    "moduleCode" : "IS3301",
+    "moduleName" : "Basic Economics",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 14,
+    "date" : "2026-12-15",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 151, 152, 153, 154, 155, 156 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 14,
+      "groups" : [ {
+        "groupId" : 49,
+        "allocatedCount" : 14
+      } ]
+    } ]
+  }, {
+    "requirementId" : 80,
+    "moduleCode" : "CE5251",
+    "moduleName" : "Design of Timber and Masonary Structures",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 14,
+    "date" : "2026-12-15",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 151, 152, 153, 154, 155, 156 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 14,
+      "groups" : [ {
+        "groupId" : 43,
+        "allocatedCount" : 14
+      } ]
+    } ]
+  }, {
+    "requirementId" : 94,
+    "moduleCode" : "EE5212",
+    "moduleName" : "Operating Systems",
+    "curriculum" : "C-23",
+    "durationMinutes" : 120,
+    "studentCount" : 13,
+    "date" : "2026-12-15",
+    "startTime" : "09:00",
+    "endTime" : "11:00",
+    "timeslotIds" : [ 151, 152, 153, 154 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 13,
+      "groups" : [ {
+        "groupId" : 116,
+        "allocatedCount" : 13
+      } ]
+    } ]
+  }, {
+    "requirementId" : 103,
+    "moduleCode" : "IS5221",
+    "moduleName" : "Industrial Management",
+    "curriculum" : "C-23",
+    "durationMinutes" : 120,
+    "studentCount" : 19,
+    "date" : "2026-12-15",
+    "startTime" : "09:00",
+    "endTime" : "11:00",
+    "timeslotIds" : [ 151, 152, 153, 154 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 19,
+      "groups" : [ {
+        "groupId" : 28,
+        "allocatedCount" : 19
+      } ]
+    } ]
+  }, {
+    "requirementId" : 133,
+    "moduleCode" : "EE7204",
+    "moduleName" : "Computer Vision and Image Processing",
+    "curriculum" : "C-18",
+    "durationMinutes" : 120,
+    "studentCount" : 13,
+    "date" : "2026-12-15",
+    "startTime" : "09:00",
+    "endTime" : "11:00",
+    "timeslotIds" : [ 151, 152, 153, 154 ],
+    "venues" : [ {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 13,
+      "groups" : [ {
+        "groupId" : 9,
+        "allocatedCount" : 13
+      } ]
+    } ]
+  }, {
+    "requirementId" : 137,
+    "moduleCode" : "EE7213",
+    "moduleName" : "Power Electronic Application",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 15,
+    "date" : "2026-12-15",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 151, 152, 153, 154, 155, 156 ],
+    "venues" : [ {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 15,
+      "groups" : [ {
+        "groupId" : 45,
+        "allocatedCount" : 15
+      } ]
+    } ]
+  }, {
+    "requirementId" : 141,
+    "moduleCode" : "EE7220",
+    "moduleName" : "Optimization Techniques for Engineers",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 14,
+    "date" : "2026-12-15",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 151, 152, 153, 154, 155, 156 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 14,
+      "groups" : [ {
+        "groupId" : 62,
+        "allocatedCount" : 14
+      } ]
+    } ]
+  }, {
+    "requirementId" : 148,
+    "moduleCode" : "ME7218",
+    "moduleName" : "Computational Fluid Dynamics for Design and Analysis of Engineering Systems",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 18,
+    "date" : "2026-12-15",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 151, 152, 153, 154, 155, 156 ],
+    "venues" : [ {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 18,
+      "groups" : [ {
+        "groupId" : 46,
+        "allocatedCount" : 18
+      } ]
+    } ]
+  }, {
+    "requirementId" : 6,
+    "moduleCode" : "IS1003",
+    "moduleName" : "Proficiency in English",
+    "curriculum" : "C-18",
+    "durationMinutes" : 120,
+    "studentCount" : 11,
+    "date" : "2026-12-15",
+    "startTime" : "13:30",
+    "endTime" : "15:30",
+    "timeslotIds" : [ 157, 158, 159, 160 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 11,
+      "groups" : [ {
+        "groupId" : 155,
+        "allocatedCount" : 11
+      } ]
+    } ]
+  }, {
+    "requirementId" : 33,
+    "moduleCode" : "CE3205",
+    "moduleName" : "Structural Analysis I",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 11,
+    "date" : "2026-12-15",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 157, 158, 159, 160, 161, 162 ],
+    "venues" : [ {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 11,
+      "groups" : [ {
+        "groupId" : 104,
+        "allocatedCount" : 11
+      } ]
+    } ]
+  }, {
+    "requirementId" : 35,
+    "moduleCode" : "CE3302",
+    "moduleName" : "Engineering Surveying",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 10,
+    "date" : "2026-12-15",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 157, 158, 159, 160, 161, 162 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 10,
+      "groups" : [ {
+        "groupId" : 38,
+        "allocatedCount" : 10
+      } ]
+    } ]
+  }, {
+    "requirementId" : 51,
+    "moduleCode" : "EE3305",
+    "moduleName" : "Signals And Systems",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 9,
+    "date" : "2026-12-15",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 157, 158, 159, 160, 161, 162 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 9,
+      "groups" : [ {
+        "groupId" : 33,
+        "allocatedCount" : 9
+      } ]
+    } ]
+  }, {
+    "requirementId" : 77,
+    "moduleCode" : "CE5204",
+    "moduleName" : "Integrated Solid Waste Management",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 12,
+    "date" : "2026-12-15",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 157, 158, 159, 160, 161, 162 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 12,
+      "groups" : [ {
+        "groupId" : 47,
+        "allocatedCount" : 12
+      } ]
+    } ]
+  }, {
+    "requirementId" : 92,
+    "moduleCode" : "EE5207",
+    "moduleName" : "Advanced Digital Communications",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 10,
+    "date" : "2026-12-15",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 157, 158, 159, 160, 161, 162 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 10,
+      "groups" : [ {
+        "groupId" : 81,
+        "allocatedCount" : 10
+      } ]
+    } ]
+  }, {
+    "requirementId" : 107,
+    "moduleCode" : "IS5306",
+    "moduleName" : "Numerical Methods",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 11,
+    "date" : "2026-12-15",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 157, 158, 159, 160, 161, 162 ],
+    "venues" : [ {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 11,
+      "groups" : [ {
+        "groupId" : 91,
+        "allocatedCount" : 11
+      } ]
+    } ]
+  }, {
+    "requirementId" : 127,
+    "moduleCode" : "EC7206",
+    "moduleName" : "Digital Signal Processing",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 11,
+    "date" : "2026-12-15",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 157, 158, 159, 160, 161, 162 ],
+    "venues" : [ {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 11,
+      "groups" : [ {
+        "groupId" : 87,
+        "allocatedCount" : 11
+      } ]
+    } ]
+  }, {
+    "requirementId" : 140,
+    "moduleCode" : "EE7219",
+    "moduleName" : "Information Security",
+    "curriculum" : "C-18",
+    "durationMinutes" : 120,
+    "studentCount" : 11,
+    "date" : "2026-12-15",
+    "startTime" : "13:30",
+    "endTime" : "15:30",
+    "timeslotIds" : [ 157, 158, 159, 160 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 11,
+      "groups" : [ {
+        "groupId" : 27,
+        "allocatedCount" : 11
+      } ]
+    } ]
+  }, {
+    "requirementId" : 146,
+    "moduleCode" : "ME7216",
+    "moduleName" : "Mobile Robots Design",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 10,
+    "date" : "2026-12-15",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 157, 158, 159, 160, 161, 162 ],
+    "venues" : [ {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 10,
+      "groups" : [ {
+        "groupId" : 22,
+        "allocatedCount" : 10
+      } ]
+    } ]
+  }, {
+    "requirementId" : 20,
+    "moduleCode" : "EE2201",
+    "moduleName" : "Computer Programming II",
+    "curriculum" : "C-18",
+    "durationMinutes" : 120,
+    "studentCount" : 6,
+    "date" : "2026-12-15",
+    "startTime" : "15:30",
+    "endTime" : "17:30",
+    "timeslotIds" : [ 161, 162, 163, 164 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 6,
+      "groups" : [ {
+        "groupId" : 52,
+        "allocatedCount" : 6
+      } ]
+    } ]
+  }, {
+    "requirementId" : 143,
+    "moduleCode" : "EE7222",
+    "moduleName" : "Cloud Computing",
+    "curriculum" : "C-18",
+    "durationMinutes" : 120,
+    "studentCount" : 2,
+    "date" : "2026-12-15",
+    "startTime" : "15:30",
+    "endTime" : "17:30",
+    "timeslotIds" : [ 161, 162, 163, 164 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 2,
+      "groups" : [ {
+        "groupId" : 127,
+        "allocatedCount" : 2
+      } ]
+    } ]
+  }, {
+    "requirementId" : 24,
+    "moduleCode" : "IS2401",
+    "moduleName" : "Linear Algebra and Differential Equations",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 7,
+    "date" : "2026-12-16",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 166, 167, 168, 169, 170, 171 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 7,
+      "groups" : [ {
+        "groupId" : 107,
+        "allocatedCount" : 7
+      } ]
+    } ]
+  }, {
+    "requirementId" : 32,
+    "moduleCode" : "CE3204",
+    "moduleName" : "Structural Analysis I",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 8,
+    "date" : "2026-12-16",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 166, 167, 168, 169, 170, 171 ],
+    "venues" : [ {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 8,
+      "groups" : [ {
+        "groupId" : 105,
+        "allocatedCount" : 8
+      } ]
+    } ]
+  }, {
+    "requirementId" : 54,
+    "moduleCode" : "EE3355",
+    "moduleName" : "Signals And Systems",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 9,
+    "date" : "2026-12-16",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 166, 167, 168, 169, 170, 171 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 9,
+      "groups" : [ {
+        "groupId" : 34,
+        "allocatedCount" : 9
+      } ]
+    } ]
+  }, {
+    "requirementId" : 57,
+    "moduleCode" : "IS3303",
+    "moduleName" : "Complex Analysis and Mathematical Transforms",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 8,
+    "date" : "2026-12-16",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 166, 167, 168, 169, 170, 171 ],
+    "venues" : [ {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 8,
+      "groups" : [ {
+        "groupId" : 12,
+        "allocatedCount" : 8
+      } ]
+    } ]
+  }, {
+    "requirementId" : 64,
+    "moduleCode" : "ME3210",
+    "moduleName" : "Principles and Applications of Microcontrollers",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 6,
+    "date" : "2026-12-16",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 166, 167, 168, 169, 170, 171 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 6,
+      "groups" : [ {
+        "groupId" : 119,
+        "allocatedCount" : 6
+      } ]
+    } ]
+  }, {
+    "requirementId" : 79,
+    "moduleCode" : "CE5205",
+    "moduleName" : "Structural Analysis III",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 7,
+    "date" : "2026-12-16",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 166, 167, 168, 169, 170, 171 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 7,
+      "groups" : [ {
+        "groupId" : 25,
+        "allocatedCount" : 7
+      } ]
+    } ]
+  }, {
+    "requirementId" : 85,
+    "moduleCode" : "CE5303",
+    "moduleName" : "Hydraulic Engineering",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 7,
+    "date" : "2026-12-16",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 166, 167, 168, 169, 170, 171 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 7,
+      "groups" : [ {
+        "groupId" : 58,
+        "allocatedCount" : 7
+      } ]
+    } ]
+  }, {
+    "requirementId" : 108,
+    "moduleCode" : "ME5204",
+    "moduleName" : "Production Planning and Control",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 7,
+    "date" : "2026-12-16",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 166, 167, 168, 169, 170, 171 ],
+    "venues" : [ {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 7,
+      "groups" : [ {
+        "groupId" : 133,
+        "allocatedCount" : 7
+      } ]
+    } ]
+  }, {
+    "requirementId" : 130,
+    "moduleCode" : "EC7211",
+    "moduleName" : "Telecommunication Networks",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 9,
+    "date" : "2026-12-16",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 166, 167, 168, 169, 170, 171 ],
+    "venues" : [ {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 9,
+      "groups" : [ {
+        "groupId" : 145,
+        "allocatedCount" : 9
+      } ]
+    } ]
+  }, {
+    "requirementId" : 132,
+    "moduleCode" : "EE7203",
+    "moduleName" : "Advanced Data Communication",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 8,
+    "date" : "2026-12-16",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 166, 167, 168, 169, 170, 171 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 8,
+      "groups" : [ {
+        "groupId" : 82,
+        "allocatedCount" : 8
+      } ]
+    } ]
+  }, {
+    "requirementId" : 5,
+    "moduleCode" : "EE1302",
+    "moduleName" : "Introduction to Electrical Engineering",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 4,
+    "date" : "2026-12-16",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 172, 173, 174, 175, 176, 177 ],
+    "venues" : [ {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 4,
+      "groups" : [ {
+        "groupId" : 132,
+        "allocatedCount" : 4
+      } ]
+    } ]
+  }, {
+    "requirementId" : 14,
+    "moduleCode" : "ME1201",
+    "moduleName" : "Engineering Drawing (Group B-II)",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 2,
+    "date" : "2026-12-16",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 172, 173, 174, 175, 176, 177 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 2,
+      "groups" : [ {
+        "groupId" : 112,
+        "allocatedCount" : 2
+      } ]
+    } ]
+  }, {
+    "requirementId" : 29,
+    "moduleCode" : "ME2302",
+    "moduleName" : "Introduction to Materials Science and Manufacturing Engineering",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 3,
+    "date" : "2026-12-16",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 172, 173, 174, 175, 176, 177 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 3,
+      "groups" : [ {
+        "groupId" : 153,
+        "allocatedCount" : 3
+      } ]
+    } ]
+  }, {
+    "requirementId" : 44,
+    "moduleCode" : "EE3203",
+    "moduleName" : "Electrical and Electronic Measurements",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 5,
+    "date" : "2026-12-16",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 172, 173, 174, 175, 176, 177 ],
+    "venues" : [ {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 5,
+      "groups" : [ {
+        "groupId" : 122,
+        "allocatedCount" : 5
+      } ]
+    } ]
+  }, {
+    "requirementId" : 47,
+    "moduleCode" : "EE3252",
+    "moduleName" : "Electrical and Electronic Measurements",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 3,
+    "date" : "2026-12-16",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 172, 173, 174, 175, 176, 177 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 3,
+      "groups" : [ {
+        "groupId" : 124,
+        "allocatedCount" : 3
+      } ]
+    } ]
+  }, {
+    "requirementId" : 49,
+    "moduleCode" : "EE3302",
+    "moduleName" : "Data Structures and Algorithms",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 5,
+    "date" : "2026-12-16",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 172, 173, 174, 175, 176, 177 ],
+    "venues" : [ {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 5,
+      "groups" : [ {
+        "groupId" : 137,
+        "allocatedCount" : 5
+      } ]
+    } ]
+  }, {
+    "requirementId" : 82,
+    "moduleCode" : "CE5252",
+    "moduleName" : "Remote sensing and GIS",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 3,
+    "date" : "2026-12-16",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 172, 173, 174, 175, 176, 177 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 3,
+      "groups" : [ {
+        "groupId" : 3,
+        "allocatedCount" : 3
+      } ]
+    } ]
+  }, {
+    "requirementId" : 100,
+    "moduleCode" : "IS5101",
+    "moduleName" : "Engineering Ethics",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 3,
+    "date" : "2026-12-16",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 172, 173, 174, 175, 176, 177 ],
+    "venues" : [ {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 3,
+      "groups" : [ {
+        "groupId" : 75,
+        "allocatedCount" : 3
+      } ]
+    } ]
+  }, {
+    "requirementId" : 104,
+    "moduleCode" : "IS5222",
+    "moduleName" : "Organizational Behaviour and Human Resource Management",
+    "curriculum" : "C-23",
+    "durationMinutes" : 180,
+    "studentCount" : 4,
+    "date" : "2026-12-16",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 172, 173, 174, 175, 176, 177 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 4,
+      "groups" : [ {
+        "groupId" : 13,
+        "allocatedCount" : 4
+      } ]
+    } ]
+  }, {
+    "requirementId" : 147,
+    "moduleCode" : "ME7217",
+    "moduleName" : "Aerospace Engineering",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 6,
+    "date" : "2026-12-16",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 172, 173, 174, 175, 176, 177 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 6,
+      "groups" : [ {
+        "groupId" : 50,
+        "allocatedCount" : 6
+      } ]
+    } ]
+  }, {
+    "requirementId" : 9,
+    "moduleCode" : "IS1402",
+    "moduleName" : "Mathematical Fundamentals for Engineers",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 1,
+    "date" : "2026-12-17",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 181, 182, 183, 184, 185, 186 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 1,
+      "groups" : [ {
+        "groupId" : 2,
+        "allocatedCount" : 1
+      } ]
+    } ]
+  }, {
+    "requirementId" : 27,
+    "moduleCode" : "ME2201",
+    "moduleName" : "Fundamentals of Engineering Thermodynamics",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 2,
+    "date" : "2026-12-17",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 181, 182, 183, 184, 185, 186 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 2,
+      "groups" : [ {
+        "groupId" : 149,
+        "allocatedCount" : 2
+      } ]
+    } ]
+  }, {
+    "requirementId" : 53,
+    "moduleCode" : "EE3351",
+    "moduleName" : "Data Structures and Algorithms",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 1,
+    "date" : "2026-12-17",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 181, 182, 183, 184, 185, 186 ],
+    "venues" : [ {
+      "venueId" : 7,
+      "venueName" : "LT2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 1,
+      "groups" : [ {
+        "groupId" : 139,
+        "allocatedCount" : 1
+      } ]
+    } ]
+  }, {
+    "requirementId" : 58,
+    "moduleCode" : "IS3307",
+    "moduleName" : "Society and the Engineers",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 2,
+    "date" : "2026-12-17",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 181, 182, 183, 184, 185, 186 ],
+    "venues" : [ {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 2,
+      "groups" : [ {
+        "groupId" : 85,
+        "allocatedCount" : 2
+      } ]
+    } ]
+  }, {
+    "requirementId" : 61,
+    "moduleCode" : "ME3203",
+    "moduleName" : "Manufacturing Processes and Practices",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 1,
+    "date" : "2026-12-17",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 181, 182, 183, 184, 185, 186 ],
+    "venues" : [ {
+      "venueId" : 3,
+      "venueName" : "AUD",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 120,
+      "allocatedCount" : 1,
+      "groups" : [ {
+        "groupId" : 80,
+        "allocatedCount" : 1
+      } ]
+    } ]
+  }, {
+    "requirementId" : 67,
+    "moduleCode" : "ME3304",
+    "moduleName" : "Metallurgy for Engineers",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 2,
+    "date" : "2026-12-17",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 181, 182, 183, 184, 185, 186 ],
+    "venues" : [ {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 2,
+      "groups" : [ {
+        "groupId" : 70,
+        "allocatedCount" : 2
+      } ]
+    } ]
+  }, {
+    "requirementId" : 84,
+    "moduleCode" : "CE5301",
+    "moduleName" : "Construction Process and Technology",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 1,
+    "date" : "2026-12-17",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 181, 182, 183, 184, 185, 186 ],
+    "venues" : [ {
+      "venueId" : 1,
+      "venueName" : "DO1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 1,
+      "groups" : [ {
+        "groupId" : 73,
+        "allocatedCount" : 1
+      } ]
+    } ]
+  }, {
+    "requirementId" : 96,
+    "moduleCode" : "EE5303",
+    "moduleName" : "Power Electronics",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 1,
+    "date" : "2026-12-17",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 181, 182, 183, 184, 185, 186 ],
+    "venues" : [ {
+      "venueId" : 2,
+      "venueName" : "DO2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 1,
+      "groups" : [ {
+        "groupId" : 17,
+        "allocatedCount" : 1
+      } ]
+    } ]
+  }, {
+    "requirementId" : 98,
+    "moduleCode" : "EE5304",
+    "moduleName" : "Power Systems II",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 1,
+    "date" : "2026-12-17",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 181, 182, 183, 184, 185, 186 ],
+    "venues" : [ {
+      "venueId" : 4,
+      "venueName" : "NCC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 140,
+      "allocatedCount" : 1,
+      "groups" : [ {
+        "groupId" : 95,
+        "allocatedCount" : 1
+      } ]
+    } ]
+  }, {
+    "requirementId" : 113,
+    "moduleCode" : "ME5302",
+    "moduleName" : "Computer Aided Design",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 2,
+    "date" : "2026-12-17",
+    "startTime" : "09:00",
+    "endTime" : "12:00",
+    "timeslotIds" : [ 181, 182, 183, 184, 185, 186 ],
+    "venues" : [ {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 2,
+      "groups" : [ {
+        "groupId" : 41,
+        "allocatedCount" : 2
+      } ]
+    } ]
+  }, {
+    "requirementId" : 2,
+    "moduleCode" : "EE1101",
+    "moduleName" : "Computer Programming I",
+    "curriculum" : "C-18",
+    "durationMinutes" : 120,
+    "studentCount" : 1,
+    "date" : "2026-12-17",
+    "startTime" : "13:30",
+    "endTime" : "15:30",
+    "timeslotIds" : [ 187, 188, 189, 190 ],
+    "venues" : [ {
+      "venueId" : 6,
+      "venueName" : "LT1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 80,
+      "allocatedCount" : 1,
+      "groups" : [ {
+        "groupId" : 102,
+        "allocatedCount" : 1
+      } ]
+    } ]
+  }, {
+    "requirementId" : 105,
+    "moduleCode" : "IS5302",
+    "moduleName" : "Financial Management",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 1,
+    "date" : "2026-12-17",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 187, 188, 189, 190, 191, 192 ],
+    "venues" : [ {
+      "venueId" : 8,
+      "venueName" : "LR1",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 1,
+      "groups" : [ {
+        "groupId" : 92,
+        "allocatedCount" : 1
+      } ]
+    } ]
+  }, {
+    "requirementId" : 111,
+    "moduleCode" : "ME5301",
+    "moduleName" : "Advanced Control Systems",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 1,
+    "date" : "2026-12-17",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 187, 188, 189, 190, 191, 192 ],
+    "venues" : [ {
+      "venueId" : 9,
+      "venueName" : "LR2",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 40,
+      "allocatedCount" : 1,
+      "groups" : [ {
+        "groupId" : 16,
+        "allocatedCount" : 1
+      } ]
+    } ]
+  }, {
+    "requirementId" : 115,
+    "moduleCode" : "ME5303",
+    "moduleName" : "Mechanical Engineering Design",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 1,
+    "date" : "2026-12-17",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 187, 188, 189, 190, 191, 192 ],
+    "venues" : [ {
+      "venueId" : 5,
+      "venueName" : "SR",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 50,
+      "allocatedCount" : 1,
+      "groups" : [ {
+        "groupId" : 71,
+        "allocatedCount" : 1
+      } ]
+    } ]
+  }, {
+    "requirementId" : 116,
+    "moduleCode" : "ME5305",
+    "moduleName" : "Refrigeration and Air – Conditioning",
+    "curriculum" : "C-18",
+    "durationMinutes" : 180,
+    "studentCount" : 1,
+    "date" : "2026-12-17",
+    "startTime" : "13:30",
+    "endTime" : "16:30",
+    "timeslotIds" : [ 187, 188, 189, 190, 191, 192 ],
+    "venues" : [ {
+      "venueId" : 10,
+      "venueName" : "CC",
+      "allocationLabel" : "A-I",
+      "examCapacity" : 70,
+      "allocatedCount" : 1,
+      "groups" : [ {
+        "groupId" : 109,
+        "allocatedCount" : 1
+      } ]
+    } ]
+  } ],
+  "unscheduledExams" : [ ]
+}
