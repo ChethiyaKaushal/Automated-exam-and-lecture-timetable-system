@@ -2,6 +2,7 @@ package com.university.exam_lecture_timetable.config;
 
 import com.university.exam_lecture_timetable.entity.AppUserEntity;
 import com.university.exam_lecture_timetable.entity.RoleEntity;
+import com.university.exam_lecture_timetable.entity.RoleName;
 import com.university.exam_lecture_timetable.repository.AppUserRepository;
 import com.university.exam_lecture_timetable.repository.RoleRepository;
 import org.slf4j.LoggerFactory;
@@ -48,12 +49,14 @@ public class TimetableAdminBootstrap implements ApplicationRunner {
         if (users.existsByUsername(username) || users.existsByEmail(email)) {
             throw new IllegalStateException("Admin setup will not replace an existing account. Remove the setup arguments.");
         }
-        var role = roles.findByName("ADMIN").orElseGet(() -> {
+
+        var role = roles.findByName(RoleName.ADMIN).orElseGet(() -> {
             var newRole = new RoleEntity();
-            newRole.setName("ADMIN");
+            newRole.setName(RoleName.ADMIN);
             newRole.setDescription("Exam timetable administrator");
             return roles.save(newRole);
         });
+
         var user = new AppUserEntity();
         user.setUsername(username);
         user.setEmail(email);
