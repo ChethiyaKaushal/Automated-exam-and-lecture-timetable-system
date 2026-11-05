@@ -3,6 +3,7 @@ package com.university.exam_lecture_timetable.config;
 import com.university.exam_lecture_timetable.repository.AppUserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
@@ -19,6 +20,8 @@ public class AdminTimetableSecurity {
     SecurityFilterChain timetableSecurity(HttpSecurity http) throws Exception {
         return http.authorizeHttpRequests(rules -> rules
                         .requestMatchers("/admin/**", "/api/admin/**").hasAnyAuthority("ADMIN", "ROLE_ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/timetablesetup/setup", "/api/timetablesetup/requirements")
+                        .hasAnyAuthority("ADMIN", "ROLE_ADMIN")
                         .anyRequest().permitAll())
                 .formLogin(form -> form.defaultSuccessUrl("/admin/timetable.html", false))
                 .logout(Customizer.withDefaults())

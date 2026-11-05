@@ -16,7 +16,22 @@ Open `http://localhost:8081/admin/timetable.html` and sign in with an enabled ac
 
 If there is no admin account, create one by adding `--timetable-admin.create=YOUR_USERNAME --timetable-admin.email=YOUR_EMAIL` to IntelliJ Program arguments and adding a strong `TIMETABLE_ADMIN_PASSWORD` environment variable. Run once, then remove those arguments and that password variable and restart. An existing account is never overwritten.
 
-The exam period must already have linked semesters and available slots. Use **Semester exams and durations** to choose which modules have exams and set their duration. Generate a fresh draft after changing requirements. Use **Check move** or **Check swap** to review the new start times; selected venues are checked again, and rooms are allocated for exams without a venue selection.
+Create an exam period with `POST /api/timetablesetup/setup` while signed in as an admin and include the CSRF header. The request takes the start and end dates, academic year, event type, and selected semester IDs. Send any additional holiday dates in the optional `holidayDates` array.
+
+    {
+      "startingDate": "2026-12-18",
+      "endingDate": "2026-12-28",
+      "academicYear": "2025/2026",
+      "eventType": "EXAM",
+      "semesterIds": [1, 3],
+      "holidayDates": ["2026-12-24"]
+    }
+
+The EXAM period and its timeslots are saved together. The date range is inclusive. Eligible weekdays get 30-minute slots from 09:00 to 12:00 and 13:30 to 18:00. The backend also skips dates in the application setting `timetable.exam.holiday-dates`. Add dates to that setting or send them with the request for periods beyond the configured calendar. A period with zero eligible days returns 400. Lecture periods keep their existing slot behavior.
+
+Use the returned `periodId` when saving module requirements and generating a preview. `POST /api/timetablesetup/requirements` saves exam durations and requires the same admin session and CSRF header.
+
+The exam period must have linked semesters and available slots. Use **Semester exams and durations** to choose which modules have exams and set their duration. Generate a fresh draft after changing requirements. Use **Check move** or **Check swap** to review the new start times; selected venues are checked again, and rooms are allocated for exams without a venue selection.
 
 A hard error blocks saving. Missing enrolments require manual review acknowledgement; the saved version stays DRAFT. Use only the reported exam details to handle repeat-student complaints. The application does not require access to the university's full student database for draft editing. A warning is not evidence that no other students have clashes.
 
