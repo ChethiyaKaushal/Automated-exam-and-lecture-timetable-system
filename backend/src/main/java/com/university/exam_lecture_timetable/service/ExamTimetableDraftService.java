@@ -6,6 +6,7 @@ import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.Gro
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.RoomAllocation;
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.ScheduledExam;
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.UnscheduledExam;
+import com.university.exam_lecture_timetable.exception.ExamTimetableReviewException;
 import com.university.exam_lecture_timetable.validation.DrawingExamRule;
 import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Exam;
 import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Group;
@@ -145,7 +146,7 @@ public class ExamTimetableDraftService {
     private static void checkNonOverlappingSlots(List<Window> slots) {
         for (int i = 1; i < slots.size(); i++) {
             if (slots.get(i - 1).overlaps(slots.get(i))) {
-                throw new IllegalStateException("The draft scheduler needs a grid of nonoverlapping timeslots.");
+                throw new ExamTimetableReviewException("The draft scheduler needs a grid of nonoverlapping timeslots.");
             }
         }
     }

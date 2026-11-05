@@ -7,6 +7,7 @@ import com.university.exam_lecture_timetable.entity.RequirementType;
 import com.university.exam_lecture_timetable.entity.TimeslotEntity;
 import com.university.exam_lecture_timetable.entity.VenueAvailabilityEntity;
 import com.university.exam_lecture_timetable.entity.VenueEntity;
+import com.university.exam_lecture_timetable.exception.ExamTimetableReviewException;
 import com.university.exam_lecture_timetable.repository.CalendarPeriodRepository;
 import com.university.exam_lecture_timetable.repository.ExamRequirementRepository;
 import com.university.exam_lecture_timetable.repository.StudentGroupRepository;
@@ -64,15 +65,15 @@ public class ExamSchedulingInputService {
 
     private DraftInput prepare(Long periodId, boolean allowIncompleteMembership) {
         if (periodId == null || periodId <= 0) {
-            throw new IllegalArgumentException("A positive exam period ID is required.");
+            throw new ExamTimetableReviewException("A positive exam period ID is required.");
         }
         CalendarPeriodEntity period = periodRepository.findById(periodId)
-                .orElseThrow(() -> new IllegalArgumentException("Unknown calendar period " + periodId + "."));
+                .orElseThrow(() -> new ExamTimetableReviewException("Unknown calendar period " + periodId + "."));
         List<ExamRequirementEntity> requirements =
                 examRepository.findActiveByPeriodAndType(
                         periodId, RequirementType.EXAM);
         if (requirements.isEmpty()) {
-            throw new IllegalStateException("No active exam requirements are assigned to period " + periodId + ".");
+            throw new ExamTimetableReviewException("No active exam requirements are assigned to period " + periodId + ".");
         }
 
         List<ExamWithStudents> exams = loadExams(requirements, allowIncompleteMembership);
@@ -112,13 +113,13 @@ public class ExamSchedulingInputService {
         Long requirementId = exam.getRequirementId();
         Integer duration = exam.getExamDurationMinutes();
         if (duration == null || duration <= 0) {
-            throw new IllegalStateException("Exam requirement " + requirementId + " needs a positive duration.");
+            throw new ExamTimetableReviewException("Exam requirement " + requirementId + " needs a positive duration.");
         }
 
         var module = exam.getRequirement().getModule();
         Map<Long, GroupMembers> groups = groupsByModule.get(module.getModuleId());
         if (groups == null || groups.isEmpty()) {
-            throw new IllegalStateException("Module " + module.getModuleId() + " has no student groups.");
+            throw new ExamTimetableReviewException("Module " + module.getModuleId() + " has no student groups.");
         }
 
         Set<Long> studentIds = new HashSet<>();
@@ -132,12 +133,12 @@ public class ExamSchedulingInputService {
             Integer declaredSize = group.declaredSize();
             if (declaredSize == null || declaredSize <= 0 || memberCount > declaredSize
                     || (!allowIncompleteMembership && memberCount != declaredSize)) {
-                throw new IllegalStateException(
+                throw new ExamTimetableReviewException(
                         "Student group " + groupId + " needs a complete, nonempty membership matching group_size.");
             }
             for (Long studentId : group.studentIds()) {
                 if (!studentIds.add(studentId)) {
-                    throw new IllegalStateException(
+                    throw new ExamTimetableReviewException(
                             "Student groups for exam requirement " + requirementId
                                     + " share members. Assign each student to one group for this exam.");
                 }
@@ -158,17 +159,17 @@ public class ExamSchedulingInputService {
         Long periodId = period.getPeriodId();
         var slots = timeslotRepository.findByPeriod_PeriodIdOrderByDateAscTimeslotAsc(periodId);
         if (slots.isEmpty()) {
-            throw new IllegalStateException("No timeslots are defined for period " + periodId + ".");
+            throw new ExamTimetableReviewException("No timeslots are defined for period " + periodId + ".");
         }
 
         for (TimeslotEntity slot : slots) {
             if (slot.getDate() == null || slot.getStartTime() == null || slot.getEndTime() == null
                     || !slot.getEndTime().isAfter(slot.getStartTime())) {
-                throw new IllegalStateException("Timeslot " + slot.getTimeslotId() + " has invalid date or times.");
+                throw new ExamTimetableReviewException("Timeslot " + slot.getTimeslotId() + " has invalid date or times.");
             }
             if ((period.getStartingDate() != null && slot.getDate().isBefore(period.getStartingDate()))
                     || (period.getEndDate() != null && slot.getDate().isAfter(period.getEndDate()))) {
-                throw new IllegalStateException("Timeslot " + slot.getTimeslotId() + " is outside period " + periodId + ".");
+                throw new ExamTimetableReviewException("Timeslot " + slot.getTimeslotId() + " is outside period " + periodId + ".");
             }
         }
         return slots.stream()
@@ -196,7 +197,7 @@ public class ExamSchedulingInputService {
                 .filter(venue -> venue.unavailableTimeslotIds().size() < slotCount)
                 .toList();
         if (venues.isEmpty()) {
-            throw new IllegalStateException("No eligible exam venues are available in period " + periodId + ".");
+            throw new ExamTimetableReviewException("No eligible exam venues are available in period " + periodId + ".");
         }
         return venues;
     }

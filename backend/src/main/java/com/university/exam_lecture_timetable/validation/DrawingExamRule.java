@@ -2,6 +2,7 @@ package com.university.exam_lecture_timetable.validation;
 
 import com.university.exam_lecture_timetable.dto.ExamSchedulingInput;
 import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Exam;
+import com.university.exam_lecture_timetable.exception.ExamTimetableReviewException;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,7 @@ public final class DrawingExamRule {
             return List.of();
         }
         if (input.exams().stream().filter(DrawingExamRule::isDrawing).count() != 4) {
-            throw new IllegalStateException("ME1201 C-23 requires exactly four Engineering Drawing exam groups.");
+            throw new ExamTimetableReviewException("ME1201 C-23 requires exactly four Engineering Drawing exam groups.");
         }
 
         return List.of(
@@ -38,7 +39,7 @@ public final class DrawingExamRule {
                 .toList();
         var venues = input.venues().stream().filter(room -> venue.equals(room.venueName())).toList();
         if (exams.size() != 1 || exams.getFirst().durationMinutes() != 180 || venues.size() != 1) {
-            throw new IllegalStateException("ME1201 C-23 " + group + " needs one three-hour exam and venue " + venue + ".");
+            throw new ExamTimetableReviewException("ME1201 C-23 " + group + " needs one three-hour exam and venue " + venue + ".");
         }
         return new Assignment(exams.getFirst(), venues.getFirst(), LocalTime.parse(start));
     }

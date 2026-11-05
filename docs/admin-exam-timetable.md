@@ -10,7 +10,7 @@ The backend packages follow the team layout under `com.university.exam_lecture_t
 | `service` | Load database data, generate drafts, call Gemini and save reviewed versions. |
 | `validation` | Drawing rules, review of proposed edits and Gemini response validation. |
 | `Mapper` | Convert scheduled exams into existing timetable event, slot and allocation entities. |
-| `exception` | Format errors for the admin API. |
+| `exception` | Handle setup and exam errors in GlobalExceptionHandler. Exam review and Gemini errors include the issues list used by the admin page. |
 
 Open `http://localhost:8081/admin/timetable.html` and sign in with an enabled account whose role is ADMIN or ROLE_ADMIN. Use the existing application's PostgreSQL settings and keep schema mode at validate.
 

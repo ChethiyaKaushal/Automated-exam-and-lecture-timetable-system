@@ -1,5 +1,6 @@
 package com.university.exam_lecture_timetable.service;
 
+import com.university.exam_lecture_timetable.exception.ExamTimetableReviewException;
 import com.university.exam_lecture_timetable.exception.GeminiProviderException;
 import com.university.exam_lecture_timetable.validation.DrawingExamRule;
 import com.university.exam_lecture_timetable.validation.GeminiExamTimetableValidator;
@@ -72,7 +73,7 @@ public class GeminiExamTimetableService {
                     "Set GEMINI_API_KEY on the backend before generating with Gemini.");
         }
         if (!model.matches("[A-Za-z0-9][A-Za-z0-9._-]*")) {
-            throw new IllegalArgumentException("GEMINI_MODEL must be a Gemini model ID without the models/ prefix.");
+            throw new ExamTimetableReviewException("GEMINI_MODEL must be a Gemini model ID without the models/ prefix.");
         }
 
         var loaded = inputs.loadDraft(periodId);

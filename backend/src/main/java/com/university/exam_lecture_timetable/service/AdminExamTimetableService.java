@@ -22,6 +22,7 @@ import com.university.exam_lecture_timetable.entity.RequirementType;
 import com.university.exam_lecture_timetable.entity.TimeslotEntity;
 import com.university.exam_lecture_timetable.entity.TimetableEntity;
 import com.university.exam_lecture_timetable.entity.TimetableStatus;
+import com.university.exam_lecture_timetable.exception.ExamTimetableReviewException;
 import com.university.exam_lecture_timetable.repository.AppUserRepository;
 import com.university.exam_lecture_timetable.repository.CalendarPeriodRepository;
 import com.university.exam_lecture_timetable.repository.EventRepository;
@@ -87,7 +88,7 @@ public class AdminExamTimetableService {
         Map<Long, EventRequirementEntity> byModule = new HashMap<>();
         for (var config : configurations) {
             if (byModule.putIfAbsent(config.getModule().getModuleId(), config) != null) {
-                throw new IllegalStateException("An exam module has duplicate requirements in this period.");
+                throw new ExamTimetableReviewException("An exam module has duplicate requirements in this period.");
             }
         }
         List<ExamOption> options = new ArrayList<>();
@@ -117,16 +118,16 @@ public class AdminExamTimetableService {
     @Transactional
     public void configure(long periodId, long moduleId, boolean enabled, int duration) {
         var period = requirePeriod(periodId, true);
-        var module = modules.findById(moduleId).orElseThrow(() -> new IllegalArgumentException("Module not found."));
+        var module = modules.findById(moduleId).orElseThrow(() -> new ExamTimetableReviewException("Module not found."));
         if (period.getSemesters().stream().noneMatch(s -> s.getSemesterId().equals(module.getSemester().getSemesterId()))) {
-            throw new IllegalArgumentException("That module's semester is not included in this exam period.");
+            throw new ExamTimetableReviewException("That module's semester is not included in this exam period.");
         }
         if (duration != 120 && duration != 180) {
-            throw new IllegalArgumentException("Select a two-hour or a three-hour exam duration.");
+            throw new ExamTimetableReviewException("Select a two-hour or a three-hour exam duration.");
         }
         if ("ME1201".equals(module.getModuleCode()) && "C-23".equals(module.getCurriculum())
                 && (!enabled || duration != 180)) {
-            throw new IllegalArgumentException("Drawing C-23 uses four fixed three-hour groups.");
+            throw new ExamTimetableReviewException("Drawing C-23 uses four fixed three-hour groups.");
         }
 
         var matches = em.createQuery("""
@@ -135,7 +136,7 @@ public class AdminExamTimetableService {
                 """, EventRequirementEntity.class).setParameter("period", period)
                 .setParameter("module", module).setParameter("type", RequirementType.EXAM).getResultList();
         if (matches.size() > 1) {
-            throw new IllegalStateException("That module has duplicate requirements in this period.");
+            throw new ExamTimetableReviewException("That module has duplicate requirements in this period.");
         }
         if (matches.isEmpty() && !enabled) {
             return;
@@ -172,7 +173,7 @@ public class AdminExamTimetableService {
         var draft = switch (engine) {
             case "java" -> generator.generate(periodId);
             case "gemini" -> gemini.generate(periodId);
-            default -> throw new IllegalArgumentException("Choose java or gemini as the draft engine.");
+            default -> throw new ExamTimetableReviewException("Choose java or gemini as the draft engine.");
         };
         var assignments = ExamTimetableMapper.starts(draft);
         return new Preview(assignments, reviews.review(periodId, assignments));
@@ -188,7 +189,7 @@ public class AdminExamTimetableService {
                 .filter(t -> t.getPeriod().getPeriodId().equals(periodId))
                 .filter(t -> t.getDepartment() == null && t.getTimetableType() == RequirementType.EXAM
                         && t.getStatus() == TimetableStatus.DRAFT)
-                .orElseThrow(() -> new IllegalArgumentException("Draft not found for this exam period."));
+                .orElseThrow(() -> new ExamTimetableReviewException("Draft not found for this exam period."));
         var assignments = timetable.getEvents().stream().map(event -> {
             var first = event.getEventSlots().stream().map(EventSlotEntity::getTimeslot)
                     .min(Comparator.comparing(TimeslotEntity::getDate).thenComparing(TimeslotEntity::getStartTime));
@@ -207,7 +208,7 @@ public class AdminExamTimetableService {
         }
 
         AppUserEntity admin = users.findByUsername(username)
-                .orElseThrow(() -> new IllegalStateException("The authenticated admin account no longer exists."));
+                .orElseThrow(() -> new ExamTimetableReviewException("The authenticated admin account no longer exists."));
         int version = timetables.findFirstByPeriod_PeriodIdAndDepartment_DepartmentIdOrderByVersionNumDesc(periodId, null)
                 .map(t -> t.getVersionNum() + 1).orElse(1);
         var timetable = new TimetableEntity();
@@ -235,7 +236,7 @@ public class AdminExamTimetableService {
         var period = lock ? em.find(CalendarPeriodEntity.class, id, LockModeType.PESSIMISTIC_WRITE)
                 : em.find(CalendarPeriodEntity.class, id);
         if (period == null || !"EXAM".equalsIgnoreCase(period.getPeriodType())) {
-            throw new IllegalArgumentException("Select a valid exam period.");
+            throw new ExamTimetableReviewException("Select a valid exam period.");
         }
         return period;
     }

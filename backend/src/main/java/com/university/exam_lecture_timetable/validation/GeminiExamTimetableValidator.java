@@ -8,6 +8,7 @@ import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Slot;
 import com.university.exam_lecture_timetable.dto.ExamSchedulingInput.Venue;
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.Draft;
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableDraft.ScheduledExam;
+import com.university.exam_lecture_timetable.exception.ExamTimetableReviewException;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -171,8 +172,8 @@ public final class GeminiExamTimetableValidator {
         return items.stream().collect(Collectors.toMap(key, Function.identity()));
     }
 
-    private static IllegalStateException invalid(String reason) {
-        return new IllegalStateException("Gemini timetable rejected: " + reason);
+    private static ExamTimetableReviewException invalid(String reason) {
+        return new ExamTimetableReviewException("Gemini timetable rejected: " + reason);
     }
 
     private record TimedExam(Exam exam, Window window, List<Long> timeslotIds) {}

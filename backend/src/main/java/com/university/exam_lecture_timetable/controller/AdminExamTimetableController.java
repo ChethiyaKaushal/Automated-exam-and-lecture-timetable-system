@@ -8,6 +8,7 @@ import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Review;
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Saved;
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Setup;
+import com.university.exam_lecture_timetable.exception.ExamTimetableReviewException;
 import com.university.exam_lecture_timetable.service.AdminExamTimetableService;
 import java.security.Principal;
 import java.util.List;
@@ -46,7 +47,7 @@ public class AdminExamTimetableController {
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void configure(@PathVariable long periodId, @PathVariable long moduleId, @RequestBody ExamSettings settings) {
         if (settings.enabled() == null || settings.durationMinutes() == null) {
-            throw new IllegalArgumentException("Choose whether the exam is enabled and its duration.");
+            throw new ExamTimetableReviewException("Choose whether the exam is enabled and its duration.");
         }
         timetables.configure(periodId, moduleId, settings.enabled(), settings.durationMinutes());
     }
@@ -79,7 +80,7 @@ public class AdminExamTimetableController {
 
     private static List<StartAssignment> assignments(DraftRequest request) {
         if (request.assignments() == null) {
-            throw new IllegalArgumentException("Send the proposed exam start times.");
+            throw new ExamTimetableReviewException("Send the proposed exam start times.");
         }
         return request.assignments();
     }
