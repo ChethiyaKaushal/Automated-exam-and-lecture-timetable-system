@@ -1,8 +1,8 @@
 package com.university.exam_lecture_timetable.Mapper;
 
-import com.university.exam_lecture_timetable.dto.respose.AcademicYearResponseDto;
-import com.university.exam_lecture_timetable.dto.respose.ModuleResponseDto;
-import com.university.exam_lecture_timetable.dto.respose.SemesterResponseDto;
+import com.university.exam_lecture_timetable.dto.response.AcademicYearResponseDto;
+import com.university.exam_lecture_timetable.dto.response.ModuleResponseDto;
+import com.university.exam_lecture_timetable.dto.response.SemesterResponseDto;
 import com.university.exam_lecture_timetable.entity.*;
 import org.springframework.stereotype.Component;
 
