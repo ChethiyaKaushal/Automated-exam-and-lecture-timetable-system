@@ -132,9 +132,9 @@ export async function login(request: Request) {
     let input;
     try { input = await request.json(); }
     catch { throw new ServiceError("Invalid JSON request.", 400); }
-    if (!input || typeof input.username !== "string" || !input.username.trim()
+    if (!input || typeof input.email !== "string" || !input.email.trim()
       || typeof input.password !== "string" || !input.password) {
-      throw new ServiceError("Enter your username and password.", 400);
+      throw new ServiceError("Enter your email and password.", 400);
     }
     const page = await session.fetch("/login", { headers: { Accept: "text/html" }, method: "GET" });
     if (!page.ok) throw new ServiceError("Unable to load the timetable service login form.", 502);
@@ -144,14 +144,14 @@ export async function login(request: Request) {
       if (/\bname\s*=\s*["']_csrf["']/i.test(tag)) token = tag.match(/\bvalue\s*=\s*["']([^"']*)["']/i)?.[1] || "";
     }
     if (!token) throw new ServiceError("The backend login form did not provide a CSRF token.", 502);
-    const form = new URLSearchParams({ username: input.username, password: input.password, _csrf: token });
+    const form = new URLSearchParams({ username: input.email.trim(), password: input.password, _csrf: token });
     if (input.rememberMe === true) form.set("remember-me", "on");
     const result = await session.fetch("/login", {
       method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded", Accept: "text/html" }, body: form.toString(),
     });
     const location = result.headers.get("location");
     if (location && new URL(location, "http://backend").pathname.endsWith("/login")) {
-      throw new ServiceError("Login failed. Check your username and password and account status.", 401);
+      throw new ServiceError("Login failed. Check your email, password, and account status.", 401);
     }
     if (result.status < 300 || result.status >= 400 || !location) {
       throw new ServiceError(result.status === 403 ? "The login security token was rejected. Please try signing in again." : "The timetable service could not sign you in.", result.status === 403 ? 403 : 401);

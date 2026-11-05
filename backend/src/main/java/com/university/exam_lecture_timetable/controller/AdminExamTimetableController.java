@@ -10,11 +10,12 @@ import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Setup;
 import com.university.exam_lecture_timetable.exception.ExamTimetableReviewException;
 import com.university.exam_lecture_timetable.service.AdminExamTimetableService;
-import java.security.Principal;
+import com.university.exam_lecture_timetable.security.UserPrincipal;
 import java.util.List;
 import java.util.Map;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.web.bind.annotation.*;
 
@@ -71,10 +72,11 @@ public class AdminExamTimetableController {
 
     @PostMapping("/{periodId}/drafts")
     public ResponseEntity<Saved> save(
-            @PathVariable long periodId, @RequestBody DraftRequest request, Principal principal
+            @PathVariable long periodId, @RequestBody DraftRequest request,
+            @AuthenticationPrincipal UserPrincipal admin
     ) {
         var result = timetables.save(periodId, assignments(request),
-                Boolean.TRUE.equals(request.manualStudentReview()), principal.getName());
+                Boolean.TRUE.equals(request.manualStudentReview()), admin == null ? null : admin.getId());
         return ResponseEntity.status(result.timetableId() == null ? 422 : 201).body(result);
     }
 

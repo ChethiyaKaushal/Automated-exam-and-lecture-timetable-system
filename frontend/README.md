@@ -47,7 +47,7 @@ The `@/` alias resolves to `src/`. Shared layout components belong in `component
 1. Start PostgreSQL and your existing Spring Boot application. Its configured port is **8081**.
 2. In this directory, optionally copy `.env.example` to `.env.local`. Set `SPRING_BOOT_API_URL` if the backend runs elsewhere. This is a server-only setting; restart Next.js after changing it.
 3. Run `npm install` if dependencies are missing, then `npm run dev`.
-4. Open http://localhost:3000 and sign in using an existing Spring Security ADMIN account. The existing login form now authenticates with Spring Boot before opening the timetable workspace.
+4. Open http://localhost:3000 and sign in with the email of an existing ADMIN account in the backend users table. The existing login form now authenticates with Spring Boot before opening the timetable workspace.
 
 For production: `npm run build`, then `npm start`.
 
@@ -83,7 +83,7 @@ The backend uses the selected academic year and dates to label the exam period.
 
 The server proxy uses no-store requests, a 15-second timeout for normal requests and an 11-minute timeout for Gemini previews. It preserves API errors and handles 204 responses without parsing JSON. Browser requests remain on the frontend origin, so no backend CORS changes are needed.
 
-The `/api/auth/login` proxy fetches Spring's generated `/login` form to obtain its pre-authentication CSRF token, submits the credentials to Spring's form login, and checks admin authorization using the protected CSRF endpoint. It relays the rotated session cookie to the browser with frontend scope and HttpOnly. Backend cookie Domain is removed and Path is set to `/`; Secure and SameSite attributes are retained. The Remember me field is forwarded, but persistence remains controlled by Spring's configuration.
+The `/api/auth/login` proxy fetches Spring's generated `/login` form to obtain its pre-authentication CSRF token, submits the email and password to Spring's form login, and checks admin authorization using the protected CSRF endpoint. It relays the rotated session cookie to the browser with frontend scope and HttpOnly. Backend cookie Domain is removed and Path is set to `/`; Secure and SameSite attributes are retained. The Remember me field is forwarded, but persistence remains controlled by Spring's configuration.
 
 All timetable requests forward the browser's backend session cookie. Before each POST, the proxy calls `GET /api/admin/timetable-setup/csrf` with that same session and sends the returned header/token with the POST. An existing session does not need a new Set-Cookie response. Cookie rotations and deletions are relayed to the browser, including on error responses. Failed token requests prevent writes; saves are never automatically retried. Login redirects become JSON 401 errors, and access-denied responses remain 403.
 
@@ -91,6 +91,6 @@ All timetable requests forward the browser's backend session cookie. Before each
 
 Timetable setup data is protected by Spring's existing admin authorization. Frontend page shells can still render without authentication; their backend data requests require an authorized session. The lecture timetable currently shows a placeholder.
 
-Run `npm test` for proxy and login regression tests. To verify against running Next.js and Spring Boot servers, provide `TEST_ADMIN_USERNAME` and `TEST_ADMIN_PASSWORD` for an existing ADMIN account and run `npm run test:integration`. This checks login, academic years, semester filtering, module review and invalid-request handling without creating timetable records.
+Run `npm test` for proxy and login regression tests. To verify against running Next.js and Spring Boot servers, provide `TEST_ADMIN_EMAIL` and `TEST_ADMIN_PASSWORD` for an existing ADMIN account and run `npm run test:integration`. This checks login, academic years, semester filtering, module review and invalid-request handling without creating timetable records.
 
 Run `npm run test:integration` while the frontend is running to verify rendered pages, real read endpoints, and safe validation failures. This check does not create database records.

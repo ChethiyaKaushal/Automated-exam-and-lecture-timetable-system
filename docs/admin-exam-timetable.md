@@ -12,9 +12,12 @@ The backend packages follow the team layout under `com.university.exam_lecture_t
 | `Mapper` | Convert scheduled exams into existing timetable event, slot and allocation entities. |
 | `exception` | Handle setup and exam errors in GlobalExceptionHandler. Exam review and Gemini errors include the issues list used by the admin page. |
 
-Open `http://localhost:8081/admin/timetable.html` and sign in with an enabled account whose role is ADMIN or ROLE_ADMIN. Use the existing application's PostgreSQL settings and keep schema mode at validate.
+## PostgreSQL and admin login
 
-If there is no admin account, create one by adding `--timetable-admin.create=YOUR_USERNAME --timetable-admin.email=YOUR_EMAIL` to IntelliJ Program arguments and adding a strong `TIMETABLE_ADMIN_PASSWORD` environment variable. Run once, then remove those arguments and that password variable and restart. An existing account is never overwritten.
+- For an existing timetable database, run `database/migrations/connect-auth-timetable.sql` once, then keep Hibernate schema mode at `validate`. The upgrade keeps the previous timetable and audit ownership references. New saves record the authenticated `users.id` alongside that legacy structure.
+- Set `DB_PASSWORD` and `APP_JWT_SECRET` in the Spring Boot run environment. Use a randomly generated JWT secret of at least 32 bytes. Set `DB_URL` and `DB_USERNAME` if your PostgreSQL connection differs from the configured defaults.
+- If there is no admin in `users`, add `--timetable-admin.create="YOUR NAME" --timetable-admin.email=YOUR_EMAIL` to IntelliJ Program arguments and set `TIMETABLE_ADMIN_PASSWORD` in Environment variables. Run once, remove the two arguments and the password variable, and restart. Existing accounts are preserved.
+- Open the Next.js frontend and sign in with the admin's email. The timetable workflow uses a Spring session and CSRF. The separate backend authentication API issues JWTs for its token-based routes.
 
 Create an exam period with `POST /api/admin/timetable-setup/setup` while signed in as an admin. Get the CSRF header name and token from `GET /api/admin/timetable-setup/csrf` first. The request takes the start and end dates, academic year, event type, and selected semester IDs. Send any additional holiday dates in the optional `holidayDates` array.
 

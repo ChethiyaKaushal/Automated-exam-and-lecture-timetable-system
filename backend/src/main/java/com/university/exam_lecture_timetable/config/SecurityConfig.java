@@ -6,6 +6,7 @@ import com.university.exam_lecture_timetable.security.CustomUserDetailsService;
 import com.university.exam_lecture_timetable.security.JwtAccessDeniedHandler;
 import com.university.exam_lecture_timetable.security.JwtAuthenticationEntryPoint;
 import com.university.exam_lecture_timetable.security.JwtAuthenticationFilter;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
@@ -53,6 +54,13 @@ public class SecurityConfig {
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authConfig) throws Exception {
         return authConfig.getAuthenticationManager();
+    }
+
+    @Bean
+    FilterRegistrationBean<JwtAuthenticationFilter> jwtServletRegistration(JwtAuthenticationFilter filter) {
+        var registration = new FilterRegistrationBean<>(filter);
+        registration.setEnabled(false);
+        return registration;
     }
 
     @Bean

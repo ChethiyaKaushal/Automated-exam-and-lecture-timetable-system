@@ -238,7 +238,7 @@ test('Spring form login preserves pre-auth CSRF session, rotates session and ver
       assert.equal(init.headers.get('cookie'), 'JSESSIONID=preauth');
       const form = new URLSearchParams(init.body);
       assert.equal(form.get('_csrf'), 'login-token');
-      assert.equal(form.get('username'), 'admin');
+      assert.equal(form.get('username'), 'admin@example.invalid');
       assert.equal(form.get('password'), 'test&password');
       return new Response(null, { status: 302, headers: { Location: '/admin/timetable.html', 'Set-Cookie': 'JSESSIONID=authenticated; Path=/; HttpOnly' } });
     }
@@ -246,7 +246,7 @@ test('Spring form login preserves pre-auth CSRF session, rotates session and ver
     assert.equal(init.headers.get('cookie'), 'JSESSIONID=authenticated');
     return Response.json({ header: 'X-CSRF-TOKEN', token: 'authenticated-token' });
   });
-  const response = await signIn(post({ username: 'admin', password: 'test&password' }));
+  const response = await signIn(post({ email: ' admin@example.invalid ',  password: 'test&password' }));
   assert.equal(response.status, 200);
   assert.equal(calls.length, 3);
   assert.match(response.headers.get('set-cookie'), /JSESSIONID=authenticated/);
@@ -261,7 +261,7 @@ test('wrong credentials and non-admin users cannot enter the workspace', async (
       if (calls === 1) return new Response('<input name="_csrf" value="token">');
       if (calls === 2) return new Response(null, { status: 302, headers: { Location: admin ? '/admin/timetable.html' : '/login?error' } });
       return new Response('Forbidden', { status: 403 });
-    })(post({ username: 'user', password: 'password' }));
+    })(post({ email: 'user@example.invalid', password: 'password' }));
     assert.equal(response.status, admin ? 403 : 401);
     assert.equal(calls, admin ? 3 : 2);
   }

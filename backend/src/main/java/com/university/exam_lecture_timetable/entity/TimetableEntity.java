@@ -62,6 +62,10 @@ public class TimetableEntity {
     @JoinColumn(name = "created_by")
     private AppUserEntity createdByUser;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "created_by_auth_user_id")
+    private UserEntity createdByAuthUser;
+
     // Timetable -> Publisher
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "published_by")

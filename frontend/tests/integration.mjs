@@ -20,11 +20,11 @@ for (const path of ['/', '/admin/generate', '/admin/timetable', '/admin/exam-tim
   assert.match(await response.text(), /Timetable Management System/);
   console.log('PASS page', path);
 }
-assert.ok(process.env.TEST_ADMIN_USERNAME && process.env.TEST_ADMIN_PASSWORD,
-  'Set TEST_ADMIN_USERNAME and TEST_ADMIN_PASSWORD to an existing ADMIN account to run authenticated integration checks.');
+assert.ok(process.env.TEST_ADMIN_EMAIL && process.env.TEST_ADMIN_PASSWORD,
+  'Set TEST_ADMIN_EMAIL and TEST_ADMIN_PASSWORD to an existing ADMIN account to run authenticated integration checks.');
 const login = await fetch(base + '/api/auth/login', {
   method: 'POST', headers: { 'Content-Type': 'application/json', Origin: new URL(base).origin },
-  body: JSON.stringify({ username: process.env.TEST_ADMIN_USERNAME, password: process.env.TEST_ADMIN_PASSWORD }),
+  body: JSON.stringify({ email: process.env.TEST_ADMIN_EMAIL, password: process.env.TEST_ADMIN_PASSWORD }),
 });
 assert.equal(login.status, 200, 'ADMIN login must succeed');
 console.log('PASS ADMIN login');

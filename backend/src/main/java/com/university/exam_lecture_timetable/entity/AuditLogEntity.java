@@ -46,6 +46,10 @@ public class AuditLogEntity {
     @JoinColumn(name = "user_id")
     private AppUserEntity user;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "auth_user_id")
+    private UserEntity authUser;
+
     @PrePersist
     protected void onCreate() {
         if (occurredAt == null) {

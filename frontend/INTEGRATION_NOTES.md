@@ -9,6 +9,6 @@ The frontend is now matched to the controllers and DTOs in this repository. See 
 - Exam requirements send { periodIds: [periodId], modules: [{ moduleId, hasExam, examDurationMinutes }] }.
 - Successful requirements writes return 204 No Content.
 - Generate saves the calendar period and requirements before calling the exam preview endpoint. The exam dashboard handles edits, validation messages, manual review and versioned saves.
-- The existing MIS login screen now submits to the frontend login proxy, which uses Spring form login and verifies ADMIN access before navigating. Session cookies are forwarded on GET and POST requests; CSRF tokens use the same session, and rotated cookies are returned to the browser.
+- The existing MIS login screen now submits to the frontend login proxy, which submits the admin email through Spring form login and verifies ADMIN access before navigating. Session cookies are forwarded on GET and POST requests; CSRF tokens use the same session, and rotated cookies are returned to the browser.
 - Backend login redirects produce a sign-in error instead of a misleading connection failure. The backend API base path is `/api/admin/timetable-setup`.
 - Exam dashboard requests go through the existing session and CSRF proxy to /api/admin/exam-timetables.

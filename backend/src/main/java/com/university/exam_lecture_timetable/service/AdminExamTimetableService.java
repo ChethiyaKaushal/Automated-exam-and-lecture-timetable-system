@@ -11,7 +11,8 @@ import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.Setup;
 import com.university.exam_lecture_timetable.dto.response.ExamTimetableResponses.SlotOption;
 import com.university.exam_lecture_timetable.validation.ExamTimetableReviewValidator;
-import com.university.exam_lecture_timetable.entity.AppUserEntity;
+import com.university.exam_lecture_timetable.entity.RoleName;
+import com.university.exam_lecture_timetable.entity.UserEntity;
 import com.university.exam_lecture_timetable.entity.AuditLogEntity;
 import com.university.exam_lecture_timetable.entity.CalendarPeriodEntity;
 import com.university.exam_lecture_timetable.entity.EventRequirementEntity;
@@ -23,7 +24,7 @@ import com.university.exam_lecture_timetable.entity.TimeslotEntity;
 import com.university.exam_lecture_timetable.entity.TimetableEntity;
 import com.university.exam_lecture_timetable.entity.TimetableStatus;
 import com.university.exam_lecture_timetable.exception.ExamTimetableReviewException;
-import com.university.exam_lecture_timetable.repository.AppUserRepository;
+import com.university.exam_lecture_timetable.repository.UserRepository;
 import com.university.exam_lecture_timetable.repository.CalendarPeriodRepository;
 import com.university.exam_lecture_timetable.repository.EventRepository;
 import com.university.exam_lecture_timetable.repository.ModuleRepository;
@@ -36,6 +37,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,14 +50,14 @@ public class AdminExamTimetableService {
     private final TimeslotRepository slots;
     private final TimetableRepository timetables;
     private final EventRepository events;
-    private final AppUserRepository users;
+    private final UserRepository users;
     private final ExamTimetableDraftService generator;
     private final GeminiExamTimetableService gemini;
     private final ExamTimetableReviewValidator reviews;
 
     public AdminExamTimetableService(
             EntityManager em, CalendarPeriodRepository periods, ModuleRepository modules, TimeslotRepository slots,
-            TimetableRepository timetables, EventRepository events, AppUserRepository users,
+            TimetableRepository timetables, EventRepository events, UserRepository users,
             ExamTimetableDraftService generator, GeminiExamTimetableService gemini, ExamTimetableReviewValidator reviews
     ) {
         this.em = em;
@@ -202,15 +204,19 @@ public class AdminExamTimetableService {
     }
 
     @Transactional
-    public Saved save(long periodId, List<StartAssignment> assignments, boolean manualReview, String username) {
+    public Saved save(long periodId, List<StartAssignment> assignments, boolean manualReview, Long adminId) {
+        if (adminId == null) {
+            throw new AccessDeniedException("Sign in again with an administrator account.");
+        }
+        UserEntity admin = users.findById(adminId)
+                .filter(user -> user.isEnabled() && user.isAccountNonLocked() && user.hasRole(RoleName.ADMIN))
+                .orElseThrow(() -> new AccessDeniedException("Your account can no longer save exam timetables."));
         var period = requirePeriod(periodId, true);
         var review = reviews.review(periodId, assignments);
         if (!review.valid() || (!review.studentMembershipsComplete() && !manualReview)) {
             return new Saved(null, null, review, !review.studentMembershipsComplete() && !manualReview);
         }
 
-        AppUserEntity admin = users.findByUsername(username)
-                .orElseThrow(() -> new ExamTimetableReviewException("The authenticated admin account no longer exists."));
         int version = timetables.findFirstByPeriod_PeriodIdAndDepartment_DepartmentIdOrderByVersionNumDesc(periodId, null)
                 .map(t -> t.getVersionNum() + 1).orElse(1);
         var timetable = new TimetableEntity();
@@ -218,7 +224,7 @@ public class AdminExamTimetableService {
         timetable.setVersionNum(version);
         timetable.setTimetableType(RequirementType.EXAM);
         timetable.setStatus(TimetableStatus.DRAFT);
-        timetable.setCreatedByUser(admin);
+        timetable.setCreatedByAuthUser(admin);
         timetables.save(timetable);
         for (var scheduled : review.exams()) {
             events.save(ExamTimetableMapper.toEvent(em, timetable, scheduled));
@@ -227,7 +233,7 @@ public class AdminExamTimetableService {
         audit.setAction("EXAM_DRAFT_SAVED");
         audit.setEntryType("TIMETABLE");
         audit.setEntityId(timetable.getTimetableId().toString());
-        audit.setUser(admin);
+        audit.setAuthUser(admin);
         audit.setDetails("Version " + version + "; student memberships complete: "
                 + review.studentMembershipsComplete() + "; manual review acknowledged: " + manualReview);
         em.persist(audit);

@@ -13,7 +13,7 @@ const credentialInput = "h-[42px] w-full rounded-full border border-[#e2d4b7] bg
 export default function LoginPage() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<"login" | "about">("login");
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [loginError, setLoginError] = useState("");
@@ -28,7 +28,7 @@ export default function LoginPage() {
       const response = await fetch("/api/auth/login", {
         method: "POST", credentials: "same-origin",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ username, password, rememberMe }),
+        body: JSON.stringify({ email, password, rememberMe }),
       });
       const result = await response.json();
       if (!response.ok) throw new Error(result.message || "Unable to sign in.");
@@ -117,19 +117,19 @@ export default function LoginPage() {
               <form className="mt-5 space-y-[15px]" onSubmit={handleLogin}>
                 {loginError && <p role="alert" className="rounded-xl border border-rose-200 bg-rose-50 p-3 text-sm text-rose-800">{loginError}</p>}
                 <div className="space-y-[5px]">
-                  <label htmlFor="username" className={fieldLabel}>
+                  <label htmlFor="email" className={fieldLabel}>
                     <User size={14} className="text-[#7a4a1d]" aria-hidden="true" />
-                    Username :
+                    Email :
                   </label>
                   <input
-                    id="username"
-                    name="username"
-                    type="text"
+                    id="email"
+                    name="email"
+                    type="email"
                     required
                     autoComplete="username"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}
-                    placeholder="Enter administrative username"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="Enter administrative email"
                     className={credentialInput}
                   />
                 </div>

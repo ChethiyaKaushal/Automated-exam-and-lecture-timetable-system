@@ -92,8 +92,10 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional(readOnly = true)
     public Page<UserResponse> getAllUsers(String search, Pageable pageable) {
-        return userRepository.searchUsers(search, pageable)
-                .map(UserResponse::fromEntity);
+        var users = search == null || search.isBlank()
+                ? userRepository.findAll(pageable)
+                : userRepository.searchUsers(search, pageable);
+        return users.map(UserResponse::fromEntity);
     }
 
     @Override

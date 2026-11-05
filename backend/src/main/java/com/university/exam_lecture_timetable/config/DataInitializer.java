@@ -16,8 +16,6 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Arrays;
 import java.util.Set;
 
-import static com.university.exam_lecture_timetable.entity.RoleName.EXAM_TIMETABLE_OFFICER;
-
 @Component
 public class DataInitializer implements CommandLineRunner {
     private static final Logger logger = LoggerFactory.getLogger(DataInitializer.class);
@@ -29,7 +27,7 @@ public class DataInitializer implements CommandLineRunner {
     @Value("${app.security.initial-admin.email:admin@university.edu}")
     private String adminEmail;
 
-    @Value("${app.security.initial-admin.password:Admin@12345}")
+    @Value("${app.security.initial-admin.password:}")
     private String adminPassword;
 
     @Value("${app.security.initial-admin.name:System Administrator}")
@@ -67,7 +65,7 @@ public class DataInitializer implements CommandLineRunner {
     }
 
     private void initializeAdminUser() {
-        if (!userRepository.existsByEmail(adminEmail)) {
+        if (!adminPassword.isBlank() && !userRepository.existsByEmail(adminEmail)) {
             RoleEntity adminRole = roleRepository.findByName(RoleName.ADMIN)
                     .orElseThrow(() -> new IllegalStateException("ADMIN role not initialized"));
 
@@ -81,7 +79,7 @@ public class DataInitializer implements CommandLineRunner {
             admin.setRoles(Set.of(adminRole));
 
             userRepository.save(admin);
-            logger.info("Initialized default administrator account: {}", adminEmail);
+            logger.info("Initialized administrator account: {}", adminEmail);
         }
     }
 }

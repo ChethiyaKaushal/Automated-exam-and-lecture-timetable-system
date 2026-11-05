@@ -1,10 +1,14 @@
 package com.university.exam_lecture_timetable.exception;
 
+import com.university.exam_lecture_timetable.controller.AuthController;
+import com.university.exam_lecture_timetable.controller.UserController;
 import com.university.exam_lecture_timetable.dto.response.ErrorResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import org.hibernate.exception.ConstraintViolationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.AccessDeniedException;
@@ -18,7 +22,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 import java.util.Map;
 
-@RestControllerAdvice
+@Order(Ordered.HIGHEST_PRECEDENCE)
+@RestControllerAdvice(assignableTypes = {AuthController.class, UserController.class})
 public class AuthenticationExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationExceptionHandler.class);
 
