@@ -37,3 +37,11 @@ All requests below require a signed-in admin session. Mutations also require the
 Save returns 201 with timetable ID and version, or 422 with validation issues or missing manual acknowledgement. No endpoint publishes a timetable. Editing a saved version creates a new draft on save.
 
 Gemini requires `GEMINI_API_KEY` in the backend's environment. The key must never be put into frontend code. For a Gemini preview, call `POST /api/admin/exam-timetables/1/preview?engine=gemini`. The response has the same `assignments` and `review` shape as Java. Gemini may take several minutes. If unavailable after retries the endpoint returns 503 and a readable issue. A rejected provider request or malformed response returns 502. A proposal that violates timetable rules returns 422. The admin can choose Java explicitly after a failure.
+
+## Export a draft from IntelliJ
+
+Set the working directory to the repository root and use these program arguments for a Gemini export.
+
+    --exam-draft.period-id=1 --exam-draft.engine=gemini
+
+Each successful run creates a new JSON file in the local docs/timetables/runs directory. The console prints the full path. Use engine=java to export from the Java scheduler. If you set exam-draft.output to an exact path, that file must be new.
