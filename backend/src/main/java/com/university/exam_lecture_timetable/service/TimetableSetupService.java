@@ -3,9 +3,9 @@ package com.university.exam_lecture_timetable.service;
 import com.university.exam_lecture_timetable.Mapper.SetupMapper;
 import com.university.exam_lecture_timetable.dto.request.CreateSetupRequestDto;
 import com.university.exam_lecture_timetable.dto.request.ModuleFilterRequestDto;
-import com.university.exam_lecture_timetable.dto.respose.AcademicYearResponseDto;
-import com.university.exam_lecture_timetable.dto.respose.ModuleResponseDto;
-import com.university.exam_lecture_timetable.dto.respose.SemesterResponseDto;
+import com.university.exam_lecture_timetable.dto.response.AcademicYearResponseDto;
+import com.university.exam_lecture_timetable.dto.response.ModuleResponseDto;
+import com.university.exam_lecture_timetable.dto.response.SemesterResponseDto;
 import com.university.exam_lecture_timetable.entity.ExamRequirementEntity;
 import com.university.exam_lecture_timetable.repository.CalendarPeriodRepository;
 import com.university.exam_lecture_timetable.repository.EventRequirementRepository;
@@ -22,7 +22,7 @@ import com.university.exam_lecture_timetable.entity.CalendarPeriodEntity;
 import com.university.exam_lecture_timetable.entity.EventRequirementEntity;
 import com.university.exam_lecture_timetable.entity.RequirementType;
 import com.university.exam_lecture_timetable.dto.request.SaveRequirementsRequest;
-import com.university.exam_lecture_timetable.dto.respose.SetupResponse;
+import com.university.exam_lecture_timetable.dto.response.SetupResponse;
 
 @Service
 public class TimetableSetupService {
