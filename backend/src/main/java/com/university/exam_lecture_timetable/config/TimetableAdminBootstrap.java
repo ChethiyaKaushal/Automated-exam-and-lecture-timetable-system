@@ -49,12 +49,7 @@ public class TimetableAdminBootstrap implements ApplicationRunner {
         if (users.existsByUsername(username) || users.existsByEmail(email)) {
             throw new IllegalStateException("Admin setup will not replace an existing account. Remove the setup arguments.");
         }
-//        var role = roles.findByName("ADMIN").orElseGet(() -> {
-//            var newRole = new RoleEntity();
-//            newRole.setName("ADMIN");
-//            newRole.setDescription("Exam timetable administrator");
-//            return roles.save(newRole);
-//        });
+
         var role = roles.findByName(RoleName.ADMIN).orElseGet(() -> {
             var newRole = new RoleEntity();
             newRole.setName(RoleName.ADMIN);
