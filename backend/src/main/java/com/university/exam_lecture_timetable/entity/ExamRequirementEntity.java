@@ -28,4 +28,11 @@ public class ExamRequirementEntity {
     @Column(name = "exam_duration_minutes", nullable = false)
     private Integer examDurationMinutes;
 
+    @Column(name = "exam_gap_days")
+    private Integer examGapDays;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "required_venue_type")
+    private VenueType requiredVenueType;
+
 }
