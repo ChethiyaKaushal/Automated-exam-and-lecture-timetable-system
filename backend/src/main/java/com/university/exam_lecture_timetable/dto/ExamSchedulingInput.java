@@ -2,7 +2,7 @@ package com.university.exam_lecture_timetable.dto;
 
 import java.util.List;
 
-/** Scheduling data passed to the prompt. Student identities stay in the backend. */
+// Scheduling data passed to the prompt. Student identities stay in the backend.
 public record ExamSchedulingInput(
         Long periodId,
         List<Exam> exams,

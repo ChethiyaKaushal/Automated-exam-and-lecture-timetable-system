@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ExamTimeslotService {
 
+    //initializing timeslots.
     private static final LocalTime MORNING_START = LocalTime.of(9, 0);
     private static final LocalTime MORNING_END = LocalTime.NOON;
     private static final LocalTime AFTERNOON_START = LocalTime.of(13, 30);
@@ -30,6 +31,7 @@ public class ExamTimeslotService {
     private final TimeslotRepository timeslots;
     private final Set<LocalDate> configuredHolidays;
 
+    //parse configured holiday dates into an unmodifiable set for exam scheduling.
     public ExamTimeslotService(TimeslotRepository timeslots,
                                @Value("${timetable.exam.holiday-dates:}") String holidayDates) {
         this.timeslots = timeslots;
@@ -38,6 +40,7 @@ public class ExamTimeslotService {
                 .collect(Collectors.toUnmodifiableSet());
     }
 
+    //Assigning slots by considering holidays and working days.
     void createFor(CalendarPeriodEntity period, List<LocalDate> holidayDates) {
         Set<LocalDate> excluded = new HashSet<>(configuredHolidays);
         if (holidayDates != null) {
@@ -62,6 +65,7 @@ public class ExamTimeslotService {
         timeslots.saveAll(slots);
     }
 
+    //create 30min slots and add them in to slots list.
     private static void addSession(List<TimeslotEntity> slots, CalendarPeriodEntity period, LocalDate date,
                                    LocalTime start, LocalTime end) {
         for (LocalTime time = start; time.isBefore(end); time = time.plusMinutes(SLOT_MINUTES)) {
