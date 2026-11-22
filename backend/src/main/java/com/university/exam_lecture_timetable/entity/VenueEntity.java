@@ -18,8 +18,9 @@ public class VenueEntity {
     @Column(name = "venue_id")
     private Long venueId;
 
-    @Column(name = "venue_type",  nullable = false)
-    private String venueType;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "venue_type", nullable = false)
+    private VenueType venueType;
 
     @Column(name = "venue_name",   nullable = false)
     private String venueName;
