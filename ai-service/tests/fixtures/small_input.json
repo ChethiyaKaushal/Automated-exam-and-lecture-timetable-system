@@ -1,0 +1,372 @@
+{
+  "periodId": 1,
+  "exams": [
+    {
+      "requirementId": 101,
+      "moduleId": 11,
+      "moduleCode": "ME1201",
+      "moduleName": "Engineering Drawing",
+      "curriculum": "C-23",
+      "departmentId": 3,
+      "semesterId": 1,
+      "durationMinutes": 180,
+      "examGapDays": 0,
+      "requiredVenueType": "DRAWING_OFFICE",
+      "studentCount": 140,
+      "groups": [
+        {
+          "groupId": 11,
+          "studentCount": 140
+        }
+      ]
+    },
+    {
+      "requirementId": 102,
+      "moduleId": 12,
+      "moduleCode": "IS1402",
+      "moduleName": "Business Statistics",
+      "curriculum": "C-23",
+      "departmentId": 5,
+      "semesterId": 2,
+      "durationMinutes": 180,
+      "examGapDays": 2,
+      "requiredVenueType": null,
+      "studentCount": 380,
+      "groups": [
+        {
+          "groupId": 21,
+          "studentCount": 200
+        },
+        {
+          "groupId": 22,
+          "studentCount": 180
+        }
+      ]
+    },
+    {
+      "requirementId": 103,
+      "moduleId": 13,
+      "moduleCode": "IS1402",
+      "moduleName": "Business Statistics",
+      "curriculum": "C-18",
+      "departmentId": 5,
+      "semesterId": 2,
+      "durationMinutes": 180,
+      "examGapDays": 0,
+      "requiredVenueType": null,
+      "studentCount": 25,
+      "groups": [
+        {
+          "groupId": 31,
+          "studentCount": 25
+        }
+      ]
+    },
+    {
+      "requirementId": 104,
+      "moduleId": 14,
+      "moduleCode": "EE1102",
+      "moduleName": "Programming Fundamentals",
+      "curriculum": "C-23",
+      "departmentId": 2,
+      "semesterId": 1,
+      "durationMinutes": 120,
+      "examGapDays": 0,
+      "requiredVenueType": "COMPUTER_CENTER",
+      "studentCount": 110,
+      "groups": [
+        {
+          "groupId": 41,
+          "studentCount": 110
+        }
+      ]
+    },
+    {
+      "requirementId": 105,
+      "moduleId": 15,
+      "moduleCode": "CE2201",
+      "moduleName": "Structural Analysis",
+      "curriculum": "C-23",
+      "departmentId": 1,
+      "semesterId": 3,
+      "durationMinutes": 180,
+      "examGapDays": 0,
+      "requiredVenueType": null,
+      "studentCount": 300,
+      "groups": [
+        {
+          "groupId": 51,
+          "studentCount": 300
+        }
+      ]
+    }
+  ],
+  "timeslots": [
+    {
+      "timeslotId": 1,
+      "date": "2026-12-01",
+      "startTime": "09:00",
+      "endTime": "09:30"
+    },
+    {
+      "timeslotId": 2,
+      "date": "2026-12-01",
+      "startTime": "09:30",
+      "endTime": "10:00"
+    },
+    {
+      "timeslotId": 3,
+      "date": "2026-12-01",
+      "startTime": "10:00",
+      "endTime": "10:30"
+    },
+    {
+      "timeslotId": 4,
+      "date": "2026-12-01",
+      "startTime": "10:30",
+      "endTime": "11:00"
+    },
+    {
+      "timeslotId": 5,
+      "date": "2026-12-01",
+      "startTime": "11:00",
+      "endTime": "11:30"
+    },
+    {
+      "timeslotId": 6,
+      "date": "2026-12-01",
+      "startTime": "11:30",
+      "endTime": "12:00"
+    },
+    {
+      "timeslotId": 7,
+      "date": "2026-12-01",
+      "startTime": "13:30",
+      "endTime": "14:00"
+    },
+    {
+      "timeslotId": 8,
+      "date": "2026-12-01",
+      "startTime": "14:00",
+      "endTime": "14:30"
+    },
+    {
+      "timeslotId": 9,
+      "date": "2026-12-01",
+      "startTime": "14:30",
+      "endTime": "15:00"
+    },
+    {
+      "timeslotId": 10,
+      "date": "2026-12-01",
+      "startTime": "15:00",
+      "endTime": "15:30"
+    },
+    {
+      "timeslotId": 11,
+      "date": "2026-12-01",
+      "startTime": "15:30",
+      "endTime": "16:00"
+    },
+    {
+      "timeslotId": 12,
+      "date": "2026-12-01",
+      "startTime": "16:00",
+      "endTime": "16:30"
+    },
+    {
+      "timeslotId": 13,
+      "date": "2026-12-01",
+      "startTime": "16:30",
+      "endTime": "17:00"
+    },
+    {
+      "timeslotId": 14,
+      "date": "2026-12-01",
+      "startTime": "17:00",
+      "endTime": "17:30"
+    },
+    {
+      "timeslotId": 15,
+      "date": "2026-12-01",
+      "startTime": "17:30",
+      "endTime": "18:00"
+    },
+    {
+      "timeslotId": 16,
+      "date": "2026-12-02",
+      "startTime": "09:00",
+      "endTime": "09:30"
+    },
+    {
+      "timeslotId": 17,
+      "date": "2026-12-02",
+      "startTime": "09:30",
+      "endTime": "10:00"
+    },
+    {
+      "timeslotId": 18,
+      "date": "2026-12-02",
+      "startTime": "10:00",
+      "endTime": "10:30"
+    },
+    {
+      "timeslotId": 19,
+      "date": "2026-12-02",
+      "startTime": "10:30",
+      "endTime": "11:00"
+    },
+    {
+      "timeslotId": 20,
+      "date": "2026-12-02",
+      "startTime": "11:00",
+      "endTime": "11:30"
+    },
+    {
+      "timeslotId": 21,
+      "date": "2026-12-02",
+      "startTime": "11:30",
+      "endTime": "12:00"
+    },
+    {
+      "timeslotId": 22,
+      "date": "2026-12-02",
+      "startTime": "13:30",
+      "endTime": "14:00"
+    },
+    {
+      "timeslotId": 23,
+      "date": "2026-12-02",
+      "startTime": "14:00",
+      "endTime": "14:30"
+    },
+    {
+      "timeslotId": 24,
+      "date": "2026-12-02",
+      "startTime": "14:30",
+      "endTime": "15:00"
+    },
+    {
+      "timeslotId": 25,
+      "date": "2026-12-02",
+      "startTime": "15:00",
+      "endTime": "15:30"
+    },
+    {
+      "timeslotId": 26,
+      "date": "2026-12-02",
+      "startTime": "15:30",
+      "endTime": "16:00"
+    },
+    {
+      "timeslotId": 27,
+      "date": "2026-12-02",
+      "startTime": "16:00",
+      "endTime": "16:30"
+    },
+    {
+      "timeslotId": 28,
+      "date": "2026-12-02",
+      "startTime": "16:30",
+      "endTime": "17:00"
+    },
+    {
+      "timeslotId": 29,
+      "date": "2026-12-02",
+      "startTime": "17:00",
+      "endTime": "17:30"
+    },
+    {
+      "timeslotId": 30,
+      "date": "2026-12-02",
+      "startTime": "17:30",
+      "endTime": "18:00"
+    }
+  ],
+  "venues": [
+    {
+      "venueId": 1,
+      "venueName": "DO1",
+      "venueType": "DRAWING_OFFICE",
+      "examCapacity": 140,
+      "priority": 1,
+      "unavailableTimeslotIds": []
+    },
+    {
+      "venueId": 2,
+      "venueName": "AUD",
+      "venueType": "AUDITORIUM",
+      "examCapacity": 300,
+      "priority": 1,
+      "unavailableTimeslotIds": []
+    },
+    {
+      "venueId": 3,
+      "venueName": "LT1",
+      "venueType": "LECTURE_THEATRE",
+      "examCapacity": 150,
+      "priority": 2,
+      "unavailableTimeslotIds": [
+        16,
+        17,
+        18
+      ]
+    },
+    {
+      "venueId": 4,
+      "venueName": "NCC",
+      "venueType": "LECTURE_HALL",
+      "examCapacity": 140,
+      "priority": 1,
+      "unavailableTimeslotIds": []
+    },
+    {
+      "venueId": 5,
+      "venueName": "CC",
+      "venueType": "COMPUTER_CENTER",
+      "examCapacity": 120,
+      "priority": 2,
+      "unavailableTimeslotIds": []
+    }
+  ],
+  "conflictPairs": [
+    {
+      "firstRequirementId": 101,
+      "secondRequirementId": 105,
+      "conflictType": "DIFFERENT_DAY",
+      "firstHasProperStudents": true,
+      "secondHasProperStudents": true
+    },
+    {
+      "firstRequirementId": 102,
+      "secondRequirementId": 104,
+      "conflictType": "NO_TIME_OVERLAP",
+      "firstHasProperStudents": true,
+      "secondHasProperStudents": false
+    },
+    {
+      "firstRequirementId": 103,
+      "secondRequirementId": 105,
+      "conflictType": "NO_TIME_OVERLAP",
+      "firstHasProperStudents": false,
+      "secondHasProperStudents": false
+    }
+  ],
+  "sharedExamGroups": [
+    {
+      "requirementIds": [
+        102,
+        103
+      ]
+    }
+  ],
+  "fixedAssignments": [
+    {
+      "requirementId": 101,
+      "startTimeslotId": 1,
+      "venueIds": [
+        1
+      ]
+    }
+  ]
+}
