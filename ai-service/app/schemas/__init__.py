@@ -21,6 +21,7 @@ from app.schemas.solver_output import (
     SolverOutput,
     SolverStats,
     SolveStatus,
+    UnscheduledExam,
     VenueAllocation,
 )
 
@@ -45,5 +46,6 @@ __all__ = [
     "SolverOutput",
     "SolverStats",
     "SolveStatus",
+    "UnscheduledExam",
     "VenueAllocation",
 ]

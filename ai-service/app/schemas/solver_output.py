@@ -29,6 +29,8 @@ class DiagnosticCode(str, Enum):
     TIME_LIMIT_REACHED = "TIME_LIMIT_REACHED"
     INTERNAL_ERROR = "INTERNAL_ERROR"
     NO_SOLUTION_FOUND = "NO_SOLUTION_FOUND"
+    # Phase 2 result: not every exam fits in the given dates; see SolverOutput.unscheduled.
+    PARTIAL_SCHEDULE = "PARTIAL_SCHEDULE"
 
 
 class DiagnosticSource(str, Enum):
@@ -128,6 +130,18 @@ class Diagnostic(CamelModel):
         return message
 
 
+class UnscheduledExam(CamelModel):
+    requirement_id: int
+    # Admin-readable, e.g. "EE1102 could not be placed within the given dates."
+    message: str
+
+    @model_validator(mode="after")
+    def check_message(self) -> "UnscheduledExam":
+        if not self.message.strip():
+            raise ValueError(f"Unscheduled exam {self.requirement_id}: message must not be empty.")
+        return self
+
+
 class SolverStats(CamelModel):
     objective_value: float | None = None
     best_bound: float | None = None
@@ -139,26 +153,48 @@ class SolverOutput(CamelModel):
     status: SolveStatus
     period_id: int
     assignments: list[Assignment] = Field(default_factory=list)
+    # Phase 2 only: exams that could not be placed. Empty when every exam is assigned.
+    unscheduled: list[UnscheduledExam] = Field(default_factory=list)
     diagnostics: list[Diagnostic] = Field(default_factory=list)
     stats: SolverStats
 
     @model_validator(mode="after")
     def check_status(self) -> "SolverOutput":
         status = self.status.value
+        codes = {diagnostic.code for diagnostic in self.diagnostics}
+        partial = DiagnosticCode.PARTIAL_SCHEDULE.value
         if self.status in SOLVED:
-            if not self.assignments:
-                raise ValueError(f"Status {status} needs at least one assignment.")
-            repeated = _duplicates(assignment.requirement_id for assignment in self.assignments)
+            if not self.assignments and not self.unscheduled:
+                raise ValueError(f"Status {status} needs at least one assignment or unscheduled exam.")
+            assigned_ids = [assignment.requirement_id for assignment in self.assignments]
+            unscheduled_ids = [exam.requirement_id for exam in self.unscheduled]
+            repeated = _duplicates(assigned_ids)
             if repeated:
                 raise ValueError(f"requirementIds {repeated} are assigned more than once.")
+            repeated = _duplicates(unscheduled_ids)
+            if repeated:
+                raise ValueError(f"requirementIds {repeated} are unscheduled more than once.")
+            both = sorted(set(assigned_ids) & set(unscheduled_ids))
+            if both:
+                raise ValueError(f"requirementIds {both} are both assigned and unscheduled.")
+            if self.unscheduled and DiagnosticCode.PARTIAL_SCHEDULE not in codes:
+                raise ValueError(
+                    f"Status {status} has unscheduled requirementIds {unscheduled_ids} "
+                    f"but no {partial} diagnostic."
+                )
+            if not self.unscheduled and DiagnosticCode.PARTIAL_SCHEDULE in codes:
+                raise ValueError(f"Status {status} has a {partial} diagnostic but no unscheduled exams.")
             return self
 
-        # All or nothing, and the admin always gets a reason.
+        # No timetable at all, and the admin always gets a reason.
         if self.assignments:
             raise ValueError(f"Status {status} must not include assignments.")
+        if self.unscheduled:
+            raise ValueError(f"Status {status} must not include unscheduled exams.")
         if not self.diagnostics:
             raise ValueError(f"Status {status} needs at least one diagnostic.")
-        codes = {diagnostic.code for diagnostic in self.diagnostics}
+        if DiagnosticCode.PARTIAL_SCHEDULE in codes:
+            raise ValueError(f"Status {status} must not include a {partial} diagnostic.")
         required = {
             SolveStatus.UNKNOWN: DiagnosticCode.TIME_LIMIT_REACHED,
             SolveStatus.MODEL_INVALID: DiagnosticCode.INTERNAL_ERROR,
