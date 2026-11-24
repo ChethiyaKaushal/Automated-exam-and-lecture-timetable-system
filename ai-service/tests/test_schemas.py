@@ -149,6 +149,7 @@ def test_output_fixture_parses(output_data):
 
     assert parsed.status.value == "OPTIMAL"
     assert len(parsed.assignments) == 5
+    assert parsed.unscheduled == []
     dumped = parsed.model_dump(by_alias=True, mode="json")
     assert "startTimeslotId" in dumped["assignments"][0]
     assert dumped["stats"]["timeLimitSeconds"] == 60.0
@@ -189,10 +190,99 @@ def test_output_rejects_model_invalid_without_internal_error():
         SolverOutput.model_validate(data)
 
 
-def test_output_rejects_optimal_without_assignments(output_data):
+def test_output_rejects_optimal_without_assignments_or_unscheduled(output_data):
     output_data["assignments"] = []
-    with pytest.raises(ValidationError, match="needs at least one assignment"):
+    assert output_data.get("unscheduled", []) == []
+    with pytest.raises(ValidationError, match="needs at least one assignment or unscheduled exam"):
         SolverOutput.model_validate(output_data)
+
+
+# ---------- Partial schedules (phase 2) ----------
+
+
+def partial_output(output_data: dict) -> dict:
+    """FEASIBLE phase-2 result: EE1102 (104) could not be placed, the other four exams are assigned."""
+    data = copy.deepcopy(output_data)
+    data["status"] = "FEASIBLE"
+    data["assignments"] = [a for a in data["assignments"] if a["requirementId"] != 104]
+    data["unscheduled"] = [
+        {"requirementId": 104, "message": "EE1102 could not be placed within the given dates."}
+    ]
+    data["diagnostics"] = [
+        {
+            "code": "PARTIAL_SCHEDULE",
+            "source": "SOLVER",
+            "message": "1 of 5 exams could not be placed within the given dates.",
+            "requirementIds": [104],
+            "details": {"scheduledExams": 4, "unscheduledExams": 1},
+        }
+    ]
+    return data
+
+
+def test_output_partial_schedule_parses(output_data):
+    parsed = SolverOutput.model_validate(partial_output(output_data))
+
+    assert len(parsed.assignments) == 4
+    assert [exam.requirement_id for exam in parsed.unscheduled] == [104]
+    dumped = parsed.model_dump(by_alias=True, mode="json")
+    assert dumped["unscheduled"][0]["requirementId"] == 104
+
+
+def test_output_partial_schedule_with_only_unscheduled_parses(output_data):
+    data = partial_output(output_data)
+    data["assignments"] = []
+    data["unscheduled"] = [
+        {"requirementId": rid, "message": f"Exam {rid} could not be placed within the given dates."}
+        for rid in (101, 102, 103, 104, 105)
+    ]
+
+    parsed = SolverOutput.model_validate(data)
+
+    assert parsed.assignments == []
+    assert len(parsed.unscheduled) == 5
+
+
+def test_output_rejects_unscheduled_without_partial_diagnostic(output_data):
+    data = partial_output(output_data)
+    data["diagnostics"] = []
+    with pytest.raises(ValidationError, match=r"unscheduled requirementIds \[104\] but no PARTIAL_SCHEDULE"):
+        SolverOutput.model_validate(data)
+
+
+def test_output_rejects_partial_diagnostic_without_unscheduled(output_data):
+    data = partial_output(output_data)
+    data["unscheduled"] = []
+    with pytest.raises(ValidationError, match="PARTIAL_SCHEDULE diagnostic but no unscheduled exams"):
+        SolverOutput.model_validate(data)
+
+
+def test_output_rejects_exam_both_assigned_and_unscheduled(output_data):
+    data = partial_output(output_data)
+    data["unscheduled"][0]["requirementId"] = 105
+    with pytest.raises(ValidationError, match=r"\[105\] are both assigned and unscheduled"):
+        SolverOutput.model_validate(data)
+
+
+def test_output_rejects_duplicate_unscheduled_requirement_id(output_data):
+    data = partial_output(output_data)
+    data["unscheduled"].append(copy.deepcopy(data["unscheduled"][0]))
+    with pytest.raises(ValidationError, match=r"\[104\] are unscheduled more than once"):
+        SolverOutput.model_validate(data)
+
+
+def test_output_rejects_infeasible_with_unscheduled():
+    data = infeasible_output()
+    data["unscheduled"] = [{"requirementId": 105, "message": "CE2201 could not be placed."}]
+    with pytest.raises(ValidationError, match="must not include unscheduled exams"):
+        SolverOutput.model_validate(data)
+
+
+def test_output_rejects_blank_unscheduled_message(output_data):
+    data = partial_output(output_data)
+    data["unscheduled"][0]["message"] = "   "
+    with pytest.raises(ValidationError, match="Unscheduled exam 104: message must not be empty"):
+        SolverOutput.model_validate(data)
 
 
 def test_output_rejects_duplicate_requirement_id(output_data):
