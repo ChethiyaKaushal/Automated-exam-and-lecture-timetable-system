@@ -131,6 +131,8 @@ public class TimetableSetupService {
             exam.setRequirement(requirement);
             exam.setHasExam(true);
             exam.setExamDurationMinutes(input.examDurationMinutes());
+            exam.setExamGapDays(input.examGapDays());
+            exam.setRequiredVenueType(input.requiredVenueType());
             requirement.setExamRequirement(exam);
 
             requirements.save(requirement);

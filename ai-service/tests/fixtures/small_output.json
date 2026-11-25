@@ -1,0 +1,175 @@
+{
+  "status": "OPTIMAL",
+  "periodId": 1,
+  "assignments": [
+    {
+      "requirementId": 101,
+      "studentCount": 140,
+      "date": "2026-12-01",
+      "startTime": "09:00",
+      "endTime": "12:00",
+      "startTimeslotId": 1,
+      "timeslotIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "venues": [
+        {
+          "venueId": 1,
+          "allocatedCount": 140,
+          "groups": [
+            {
+              "groupId": 11,
+              "allocatedCount": 140
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "requirementId": 104,
+      "studentCount": 110,
+      "date": "2026-12-01",
+      "startTime": "09:00",
+      "endTime": "11:00",
+      "startTimeslotId": 1,
+      "timeslotIds": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "venues": [
+        {
+          "venueId": 5,
+          "allocatedCount": 110,
+          "groups": [
+            {
+              "groupId": 41,
+              "allocatedCount": 110
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "requirementId": 102,
+      "studentCount": 380,
+      "date": "2026-12-01",
+      "startTime": "13:30",
+      "endTime": "16:30",
+      "startTimeslotId": 7,
+      "timeslotIds": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "venues": [
+        {
+          "venueId": 2,
+          "allocatedCount": 300,
+          "groups": [
+            {
+              "groupId": 21,
+              "allocatedCount": 200
+            },
+            {
+              "groupId": 22,
+              "allocatedCount": 100
+            }
+          ]
+        },
+        {
+          "venueId": 3,
+          "allocatedCount": 80,
+          "groups": [
+            {
+              "groupId": 22,
+              "allocatedCount": 80
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "requirementId": 103,
+      "studentCount": 25,
+      "date": "2026-12-01",
+      "startTime": "13:30",
+      "endTime": "16:30",
+      "startTimeslotId": 7,
+      "timeslotIds": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "venues": [
+        {
+          "venueId": 3,
+          "allocatedCount": 25,
+          "groups": [
+            {
+              "groupId": 31,
+              "allocatedCount": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "requirementId": 105,
+      "studentCount": 300,
+      "date": "2026-12-02",
+      "startTime": "09:00",
+      "endTime": "12:00",
+      "startTimeslotId": 16,
+      "timeslotIds": [
+        16,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "venues": [
+        {
+          "venueId": 2,
+          "allocatedCount": 160,
+          "groups": [
+            {
+              "groupId": 51,
+              "allocatedCount": 160
+            }
+          ]
+        },
+        {
+          "venueId": 4,
+          "allocatedCount": 140,
+          "groups": [
+            {
+              "groupId": 51,
+              "allocatedCount": 140
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "diagnostics": [],
+  "stats": {
+    "objectiveValue": 42.0,
+    "bestBound": 42.0,
+    "solveTimeSeconds": 0.35,
+    "timeLimitSeconds": 60.0
+  }
+}
