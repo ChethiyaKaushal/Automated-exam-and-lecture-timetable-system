@@ -146,15 +146,14 @@ class SharedExamGroup(CamelModel):
 
 
 class FixedAssignment(CamelModel):
+    # The exam must use exactly these venues; the solver chooses the day and session.
     requirement_id: int
-    start_timeslot_id: int
-    # None lets the solver choose the venues.
-    venue_ids: list[int] | None = Field(default=None, min_length=1)
+    venue_ids: list[int] = Field(min_length=1)
 
     @field_validator("venue_ids")
     @classmethod
-    def check_unique(cls, ids: list[int] | None) -> list[int] | None:
-        repeated = _duplicates(ids or [])
+    def check_unique(cls, ids: list[int]) -> list[int]:
+        repeated = _duplicates(ids)
         if repeated:
             raise ValueError(f"Fixed assignment: venueIds {repeated} appear more than once.")
         return ids
@@ -226,11 +225,7 @@ class SolverInput(CamelModel):
             if rid in fixed_seen:
                 raise ValueError(f"Requirement {rid} has more than one fixed assignment.")
             fixed_seen.add(rid)
-            if fixed.start_timeslot_id not in slot_ids:
-                raise ValueError(
-                    f"Fixed assignment for requirement {rid}: unknown startTimeslotId {fixed.start_timeslot_id}."
-                )
-            unknown = sorted(set(fixed.venue_ids or []) - venue_ids)
+            unknown = sorted(set(fixed.venue_ids) - venue_ids)
             if unknown:
                 raise ValueError(f"Fixed assignment for requirement {rid}: unknown venueIds {unknown}.")
         return self

@@ -141,6 +141,60 @@ def test_input_rejects_slot_not_30_minutes(input_data):
         SolverInput.model_validate(input_data)
 
 
+# ---------- Fixed assignments ----------
+
+
+def test_input_fixed_assignments_parse(input_data):
+    parsed = SolverInput.model_validate(input_data)
+
+    assert len(parsed.fixed_assignments) == 1
+    assert parsed.fixed_assignments[0].requirement_id == 101
+    assert parsed.fixed_assignments[0].venue_ids == [1]
+    assert "fixedAssignments" in parsed.model_dump(by_alias=True)
+
+
+def test_input_fixed_assignments_default_to_empty(input_data):
+    del input_data["fixedAssignments"]
+
+    assert SolverInput.model_validate(input_data).fixed_assignments == []
+
+
+def test_input_rejects_fixed_assignments_unknown_requirement(input_data):
+    input_data["fixedAssignments"][0]["requirementId"] = 999
+    with pytest.raises(ValidationError, match="Fixed assignment: unknown requirementId 999"):
+        SolverInput.model_validate(input_data)
+
+
+def test_input_rejects_fixed_assignments_unknown_venue(input_data):
+    input_data["fixedAssignments"][0]["venueIds"] = [1, 99]
+    with pytest.raises(ValidationError, match=r"requirement 101: unknown venueIds \[99\]"):
+        SolverInput.model_validate(input_data)
+
+
+def test_input_rejects_fixed_assignments_duplicate_venue(input_data):
+    input_data["fixedAssignments"][0]["venueIds"] = [1, 1]
+    with pytest.raises(ValidationError, match=r"venueIds \[1\] appear more than once"):
+        SolverInput.model_validate(input_data)
+
+
+def test_input_rejects_two_fixed_assignments_for_one_exam(input_data):
+    input_data["fixedAssignments"].append({"requirementId": 101, "venueIds": [2]})
+    with pytest.raises(ValidationError, match="Requirement 101 has more than one fixed assignment"):
+        SolverInput.model_validate(input_data)
+
+
+def test_input_rejects_fixed_assignments_empty_venue_list(input_data):
+    input_data["fixedAssignments"][0]["venueIds"] = []
+    with pytest.raises(ValidationError, match="at least 1 item"):
+        SolverInput.model_validate(input_data)
+
+
+def test_input_rejects_old_style_fixed_start_time(input_data):
+    input_data["fixedAssignments"][0]["startTimeslotId"] = 1
+    with pytest.raises(ValidationError, match="Extra inputs are not permitted"):
+        SolverInput.model_validate(input_data)
+
+
 # ---------- SolverOutput ----------
 
 
@@ -149,6 +203,7 @@ def test_output_fixture_parses(output_data):
 
     assert parsed.status.value == "OPTIMAL"
     assert len(parsed.assignments) == 5
+    assert all(assignment.part == 1 for assignment in parsed.assignments)
     assert parsed.unscheduled == []
     dumped = parsed.model_dump(by_alias=True, mode="json")
     assert "startTimeslotId" in dumped["assignments"][0]
@@ -287,7 +342,7 @@ def test_output_rejects_blank_unscheduled_message(output_data):
 
 def test_output_rejects_duplicate_requirement_id(output_data):
     assignment(output_data, 103)["requirementId"] = 102
-    with pytest.raises(ValidationError, match="assigned more than once"):
+    with pytest.raises(ValidationError, match=r"Requirement 102: parts \[1\] are assigned more than once"):
         SolverOutput.model_validate(output_data)
 
 
@@ -329,3 +384,91 @@ def test_output_rejects_first_timeslot_not_start(output_data):
     assignment(output_data, 104)["startTimeslotId"] = 2
     with pytest.raises(ValidationError, match="but startTimeslotId is 2"):
         SolverOutput.model_validate(output_data)
+
+
+# ---------- Split drawing exams (Group A morning / Group B evening) ----------
+
+
+def split_output(output_data: dict) -> dict:
+    """ME1201 (101) split into part 1 at 09:00-12:00 (290 students) and part 2 at 13:30-16:30 (256)."""
+    data = copy.deepcopy(output_data)
+    data["assignments"] = [a for a in data["assignments"] if a["requirementId"] != 101]
+
+    def part(number, start, end, slot_ids, venues):
+        return {
+            "requirementId": 101, "part": number, "studentCount": sum(count for _, _, count in venues),
+            "date": "2026-12-01", "startTime": start, "endTime": end,
+            "startTimeslotId": slot_ids[0], "timeslotIds": slot_ids,
+            "venues": [
+                {"venueId": venue, "allocatedCount": count, "groups": [{"groupId": group, "allocatedCount": count}]}
+                for venue, group, count in venues
+            ],
+        }
+
+    # Venue 1 = DO1, venue 6 = a second drawing office; groups 11-14 are illustrative.
+    data["assignments"] += [
+        part(1, "09:00", "12:00", [1, 2, 3, 4, 5, 6], [(1, 11, 140), (6, 12, 150)]),
+        part(2, "13:30", "16:30", [7, 8, 9, 10, 11, 12], [(1, 13, 140), (6, 14, 116)]),
+    ]
+    return data
+
+
+def split_parts(data: dict) -> list[dict]:
+    return sorted((a for a in data["assignments"] if a["requirementId"] == 101), key=lambda a: a["part"])
+
+
+def test_output_split_exam_parses(output_data):
+    parsed = SolverOutput.model_validate(split_output(output_data))
+
+    parts = sorted((a for a in parsed.assignments if a.requirement_id == 101), key=lambda a: a.part)
+    assert [(p.part, p.student_count, f"{p.start_time:%H:%M}") for p in parts] == [
+        (1, 290, "09:00"),
+        (2, 256, "13:30"),
+    ]
+    dumped = parsed.model_dump(by_alias=True)
+    assert all("part" in assignment for assignment in dumped["assignments"])
+
+
+def test_output_rejects_same_part_twice(output_data):
+    data = split_output(output_data)
+    split_parts(data)[1]["part"] = 1
+    with pytest.raises(ValidationError, match=r"Requirement 101: parts \[1\] are assigned more than once"):
+        SolverOutput.model_validate(data)
+
+
+def test_output_rejects_part_2_without_part_1(output_data):
+    data = split_output(output_data)
+    data["assignments"].remove(split_parts(data)[0])
+    with pytest.raises(ValidationError, match=r"Requirement 101: parts \[2\] must be numbered 1 to 1"):
+        SolverOutput.model_validate(data)
+
+
+def test_output_rejects_split_parts_on_different_dates(output_data):
+    data = split_output(output_data)
+    split_parts(data)[1]["date"] = "2026-12-02"
+    with pytest.raises(ValidationError, match="Requirement 101: split parts must be on the same date"):
+        SolverOutput.model_validate(data)
+
+
+def test_output_rejects_part_2_starting_before_part_1_ends(output_data):
+    data = split_output(output_data)
+    split_parts(data)[1].update(startTime="11:00", endTime="14:00")
+    with pytest.raises(ValidationError, match="part 2 starts at 11:00, before part 1 ends at 12:00"):
+        SolverOutput.model_validate(data)
+
+
+def test_output_rejects_part_0(output_data):
+    assignment(output_data, 101)["part"] = 0
+    with pytest.raises(ValidationError, match="greater than or equal to 1"):
+        SolverOutput.model_validate(output_data)
+
+
+def test_output_rejects_split_exam_also_unscheduled(output_data):
+    data = split_output(output_data)
+    data["status"] = "FEASIBLE"
+    data["unscheduled"] = [{"requirementId": 101, "message": "ME1201 could not be placed within the given dates."}]
+    data["diagnostics"] = [
+        {"code": "PARTIAL_SCHEDULE", "source": "SOLVER", "message": "1 of 5 exams could not be placed."}
+    ]
+    with pytest.raises(ValidationError, match=r"\[101\] are both assigned and unscheduled"):
+        SolverOutput.model_validate(data)
