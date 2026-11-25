@@ -8,6 +8,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import com.university.exam_lecture_timetable.exception.GeminiProviderException;
 import com.university.exam_lecture_timetable.exception.GlobalExceptionHandler;
+import com.university.exam_lecture_timetable.exception.AuthenticationExceptionHandler;
 import com.university.exam_lecture_timetable.service.AiServiceClient;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,8 +23,9 @@ class AiServiceControllerTests {
     @BeforeEach
     void setup() {
         mvc = MockMvcBuilders.standaloneSetup(new AiServiceController(client))
-                .setControllerAdvice(new GlobalExceptionHandler()).build();
+                .setControllerAdvice(new AuthenticationExceptionHandler(), new GlobalExceptionHandler()).build();
     }
+    // Same order as the running app: AuthenticationExceptionHandler is registered first.
 
     @Test
     void showsTheAiServiceHealth() throws Exception {
