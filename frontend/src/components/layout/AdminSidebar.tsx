@@ -1,10 +1,11 @@
-﻿"use client";
+"use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import {
   CalendarDays,
+  Building2,
   Sparkles,
   GraduationCap,
   Settings,
@@ -16,6 +17,7 @@ import { useState } from "react";
 
 // Exactly the 3 main required navigation items
 const menuItems = [
+  { name: "Venue Management", href: "/admin/venues", icon: Building2, description: "Venues and availability" },
   {
     name: "Lecture Timetable",
     href: "/admin/timetable",
@@ -43,10 +45,11 @@ export default function AdminSidebar() {
   return (
     <>
       {/* Mobile menu trigger */}
-      <div className="fixed top-3 left-4 z-40 md:hidden">
+      <div className="fixed top-3 left-4 z-40">
         <button
           type="button"
           aria-label="Open navigation menu"
+          aria-expanded={mobileOpen}
           onClick={() => setMobileOpen(true)}
           className="flex h-10 w-10 items-center justify-center rounded-lg border border-[#f5c04a]/40 bg-[#4b2a0a] text-[#f5c04a] shadow-md transition hover:bg-[#3a2007]"
         >
@@ -59,13 +62,14 @@ export default function AdminSidebar() {
         <div
           role="presentation"
           onClick={() => setMobileOpen(false)}
-          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-xs md:hidden"
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-xs"
         />
       )}
 
       {/* Main Sidebar */}
       <aside
-        className={`fixed left-0 top-0 z-50 flex h-screen w-64 flex-col border-r border-[#e8d7b8] bg-[#4b2a0a] text-white shadow-xl transition-transform duration-300 md:translate-x-0 ${
+        inert={!mobileOpen}
+        className={`fixed left-0 top-0 z-50 flex h-screen w-64 flex-col border-r border-[#e8d7b8] bg-[#4b2a0a] text-white shadow-xl transition-transform duration-300 ${
           mobileOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -95,7 +99,7 @@ export default function AdminSidebar() {
             type="button"
             aria-label="Close navigation menu"
             onClick={() => setMobileOpen(false)}
-            className="rounded-lg p-1 text-amber-200/80 hover:bg-white/10 md:hidden"
+            className="rounded-lg p-1 text-amber-200/80 hover:bg-white/10"
           >
             <X size={20} />
           </button>

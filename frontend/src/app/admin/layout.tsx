@@ -11,7 +11,7 @@ export default function AdminLayout({
       <AdminSidebar />
       <AdminHeader />
 
-      <main className="min-h-screen pt-16 md:ml-64">
+      <main className="min-h-screen pt-16">
         {children}
       </main>
     </div>

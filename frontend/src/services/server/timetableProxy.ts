@@ -95,23 +95,30 @@ function failure(error: unknown) {
 async function proxyTimetable(path: string, request?: Request, timeoutMs?: number) {
   const session = new BackendSession(request);
   try {
-    const isPost = request?.method === "POST";
+    const method = request?.method ?? "GET";
+    const isWrite = ["POST", "PUT", "DELETE"].includes(method);
     let body: string | undefined;
     const headers: Record<string, string> = {};
-    if (isPost) {
+    if (isWrite && request) {
       checkOrigin(request);
-      try { body = JSON.stringify(await request.json()); }
-      catch { throw new ServiceError("Invalid JSON request.", 400); }
+      if (method !== "DELETE" && request.headers.get("content-type")?.includes("application/json")) {
+        try { body = JSON.stringify(await request.json()); }
+        catch { throw new ServiceError("Invalid JSON request.", 400); }
+      }
       const csrf = await getCsrf(session);
       headers[csrf.header] = csrf.token;
       headers["Content-Type"] = "application/json";
     }
-    const response = await session.fetch(path, { method: isPost ? "POST" : "GET", headers, body }, timeoutMs);
+    const response = await session.fetch(path, { method, headers, body }, timeoutMs);
     checkAuthentication(response);
     if (response.status === 204) return session.finish(new Response(null, { status: 204 }));
     const data = await readJson(response);
     return session.finish(NextResponse.json(data, { status: response.status }));
   } catch (error) { return session.finish(failure(error)); }
+}
+
+export function proxyVenues(path: string, request: Request) {
+  return proxyTimetable(`/api/admin/venues${path}`, request);
 }
 
 export function proxySetup(path: string, request?: Request) {
