@@ -22,31 +22,35 @@ Next.js admin UI
    │  POST /api/timetable/exams/{periodId}/preview?engine=agent      (existing proxy, 11 min timeout)
    ▼
 Spring Boot  (backend/, port 8081)
-   │  1. ExamSchedulingInputService.loadDraft(periodId)   → ExamSchedulingInput   (existing)
-   │  2. POST {AI_SERVICE_URL}/v1/exam-timetables/generate                         (new: AgentExamTimetableService)
-   │  3. ExamTimetableReviewValidator.review(...)          → issues, room seating   (existing, final check)
-   │  4. Admin reviews and saves with POST /drafts                                  (existing)
+   │  1. ExamSchedulingInputService loads the period from PostgreSQL               (existing)
+   │  2. Map it to the solver contract (SolverInput)                                (Malsha, Day 6)
+   │  3. AiServiceClient → POST {AI_SERVICE_URL}/v1/exam-timetables/generate        (Chethiya, Day 2–3)
+   │  4. ExamTimetableReviewValidator re-checks the result                          (existing, final check)
+   │  5. Admin reviews and saves with POST /drafts                                  (existing)
    ▼
 FastAPI AI service  (ai-service/, port 8000)
-   └─ LangGraph workflow
-        ├─ tool: solve_exam_timetable   → app/solver  (CP-SAT, Nimmitha + Malsha)
-        ├─ tool: check_timetable        → quick Python re-check of the solver output
-        └─ Gemini: diagnose infeasible input, explain result
+   ├─ app/main.py             GET /health, POST /v1/exam-timetables/generate
+   ├─ app/solver_gateway.py   the single place that calls the solver
+   └─ LangGraph workflow (Day 5)
+        ├─ tool: CP-SAT solver   → app/solver/  (Nimmitha + Malsha)
+        ├─ tool: check result
+        └─ Gemini: diagnose infeasible input, explain result (Day 7–8)
 ```
 
 Spring Boot stays the only component that talks to PostgreSQL and the only one the frontend calls. The AI
 service is stateless: it receives everything it needs in the request. Student identities never leave Spring
-Boot; the solver only receives counts and clashing requirement pairs.
+Boot; the solver only receives counts, groups and clashing requirement pairs.
 
 ## What we reuse (do not duplicate)
 
 | Sprint task | Existing code to build on |
 |---|---|
-| SolverInput schema (Nimmitha) | `dto/ExamSchedulingInput.java`. `ai-service/app/schemas.py` mirrors it field for field (camelCase JSON). Add fields to both together. |
-| Solver input mapping (Malsha) | `service/ExamSchedulingInputService.java` already maps JPA entities to `ExamSchedulingInput`. Extend it. |
+| Solver contract (Nimmitha) | `ai-service/app/schemas/solver_input.py` and `solver_output.py` are **the** contract. Every service uses them; do not create another schema. |
+| Solver input mapping (Malsha) | `service/ExamSchedulingInputService.java` already loads exams, slots, venues and clashes. Extend it to produce the `SolverInput` fields (venue type, priority, conflict type, shared papers, fixed sessions). |
 | Validation (Malsha) | `validation/ExamTimetableReviewValidator.java` re-checks every agent result before it is shown or saved. |
 | Persistence (Malsha) | `POST /api/admin/exam-timetables/{periodId}/drafts` already saves versioned DRAFT timetables. |
 | Generation API (Chethiya) | Existing `POST /{periodId}/preview?engine=` gets a third engine, `agent`. `java` stays as the fallback. |
+| Error responses | `GeminiProviderException` and `GlobalExceptionHandler` turn AI service failures into `{"issues":[...]}`. No new exception class. |
 | Generate button and display (Oshadi) | `GeneratePage.tsx` and `ExamTimetablePage.tsx` already call preview, review and save. |
 
 Once the agent engine is accepted, `GeminiExamTimetableService` and `ExamTimetablePromptBuilder` (Gemini
@@ -54,73 +58,61 @@ placing exams directly) can be removed. The Gemini API key then lives only in th
 
 ## Solver contract
 
-The JSON shapes are the contract between Spring Boot, FastAPI and the solver. The Python models are in
-`ai-service/app/schemas.py`.
+Defined by Nimmitha in `ai-service/app/schemas/`. JSON uses camelCase; unknown fields are rejected.
 
-### Request: `POST /v1/exam-timetables/generate`
+**Input, `SolverInput`:** `periodId`, `exams` (with `durationMinutes`, `studentCount`, `groups`,
+`examGapDays`, `requiredVenueType`), `timeslots` (exactly 30 minutes each), `venues` (with `venueType`,
+`examCapacity`, `priority`, `unavailableTimeslotIds`), `conflictPairs` (with `conflictType`),
+`sharedExamGroups` and `fixedAssignments`. Example: `ai-service/tests/fixtures/small_input.json`.
 
-```json
-{
-  "input": {
-    "periodId": 1,
-    "exams": [{"requirementId": 10, "moduleId": 3, "moduleCode": "EE1201", "moduleName": "Circuits",
-               "curriculum": "C-23", "durationMinutes": 180, "studentCount": 240,
-               "groups": [{"groupId": 7, "studentCount": 240}]}],
-    "timeslots": [{"timeslotId": 101, "date": "2026-12-18", "startTime": "09:00", "endTime": "09:30"}],
-    "venues": [{"venueId": 2, "venueName": "Main Hall", "examCapacity": 300, "unavailableTimeslotIds": []}],
-    "studentConflicts": [{"firstRequirementId": 10, "secondRequirementId": 11}]
-  },
-  "membershipComplete": true,
-  "options": {"timeLimitSeconds": 60, "explain": true}
-}
+**Output, `SolverOutput`:** `status`, `periodId`, `assignments` (date, start/end time, timeslot IDs and
+venue allocations per group), `unscheduled`, `diagnostics` and `stats`. Example:
+`ai-service/tests/fixtures/small_output.json`.
+
+| Status | Meaning |
+|---|---|
+| `OPTIMAL` / `FEASIBLE` | A timetable was found. A partial one lists the missing exams in `unscheduled` with a `PARTIAL_SCHEDULE` diagnostic. |
+| `INFEASIBLE` | The solver proved no timetable exists. At least one diagnostic explains why. |
+| `UNKNOWN` | Time limit reached without an answer (`TIME_LIMIT_REACHED` diagnostic). |
+| `MODEL_INVALID` | The solver could not run (`INTERNAL_ERROR` diagnostic). Also used while the CP-SAT solver is not connected yet. |
+
+### HTTP wrapper (`ai-service/app/schemas/api.py`)
+
+```
+Request:   { "input": SolverInput, "options": { "timeLimitSeconds": 60, "explain": true } }
+Response:  { "solver": "cp-sat", "output": SolverOutput, "explanation": "..." }
 ```
 
-### Response
-
-```json
-{
-  "status": "SCHEDULED",
-  "solver": "cp-sat",
-  "assignments": [{"requirementId": 10, "startTimeslotId": 101, "venueIds": [2]}],
-  "unscheduled": [],
-  "explanation": "All 42 exams were placed in 9 days without student clashes ...",
-  "steps": [{"node": "solve", "message": "CP-SAT found an optimal timetable in 3.2 s."}]
-}
-```
-
-- `status`: `SCHEDULED` (every exam placed), `INFEASIBLE` (solver proved no timetable exists), or
-  `FAILED` (time limit reached or an internal error).
-- `assignments`: one entry per placed exam. `startTimeslotId` is the first 30-minute slot. The exam uses
-  `durationMinutes / 30` consecutive slots on the same day.
-- `unscheduled`: exams that could not be placed, with a short reason.
-- `explanation`: plain-language summary for the admin (Gemini, or a fixed text when Gemini is off).
-- `steps`: what the workflow did, for the UI and the demo.
+`timeLimitSeconds` is optional (default `SOLVER_TIME_LIMIT_SECONDS`, at most 600). `explanation` is filled
+from Day 5 (workflow) and Day 7 (Gemini); until then it is `null`.
 
 ### Python solver interface
 
 The solver team implements one function. The rest of the service only depends on this signature:
 
 ```python
-# ai-service/app/solver/__init__.py
-def solve(problem: SchedulingInput, time_limit_seconds: float) -> SolverResult: ...
+def solve(problem: SolverInput, time_limit_seconds: float) -> SolverOutput: ...
 ```
 
-Until the CP-SAT model is merged, `app/solver/placeholder.py` is a small greedy scheduler so the end-to-end
-flow can be tested. It is replaced, not extended.
+`app/solver_gateway.py` calls it. Until the CP-SAT solver is merged, the gateway returns a valid
+`MODEL_INVALID` output ("solver not connected yet"). Connecting the real solver is a two-line change there
+(`solve` and `SOLVER_NAME = "cp-sat"`). If the solver raises an exception, the gateway returns an
+`INTERNAL_ERROR` diagnostic instead of crashing the service.
 
 ### Hard constraints (solver)
 
-1. Every enabled exam gets exactly one start time.
+1. Every exam gets one start time within the exam period.
 2. An exam occupies consecutive slots on one day and cannot cross the lunch break.
-3. Two exams in `studentConflicts` never overlap.
-4. A venue holds at most one exam per slot and is never used in its unavailable slots.
-5. The venues assigned to an exam seat all of its students (multi-hall allowed).
-6. ME1201 C-23 Engineering Drawing fixed sessions (`DrawingExamRule`).
+3. `conflictPairs`: `DIFFERENT_DAY` exams are on different days; `NO_TIME_OVERLAP` exams never overlap.
+4. `examGapDays` days between related exams.
+5. A venue holds at most one exam per slot and is never used in its unavailable slots.
+6. Venues match `requiredVenueType` and seat every student (multi-hall allowed).
+7. `sharedExamGroups` start in the same slot; `fixedAssignments` are kept (for example ME1201 drawing sessions).
 
 Soft goals (objective): spread each student's exams across days, then use as few and as well-filled halls as
-possible.
+possible, preferring venues by `priority`.
 
-## LangGraph workflow
+## LangGraph workflow (Day 5)
 
 ```
 START
@@ -131,55 +123,67 @@ check_input ── invalid ─────────────────�
   ▼                                                 │
 solve  (tool: CP-SAT)                               │
   │                                                 │
-  ├─ SCHEDULED ──► verify (tool: check_timetable) ──┤
+  ├─ OPTIMAL / FEASIBLE ──► verify (tool) ──────────┤
   │                                                 │
-  └─ INFEASIBLE / FAILED ──► diagnose (Gemini + tools, max 1 retry with an
-                                       admin-approved relaxation) ─┤
-                                                                   ▼
-                                                                explain (Gemini or fixed text)
-                                                                   │
-                                                                  END
+  └─ INFEASIBLE / UNKNOWN / MODEL_INVALID ──► diagnose (Gemini + tools, uses the
+                                     solver's diagnostics; max 1 retry with an
+                                     admin-approved relaxation) ─┤
+                                                                  ▼
+                                                               explain (Gemini or fixed text)
+                                                                  │
+                                                                 END
 ```
 
-State carried through the graph: the request, the solver result, issues found, the step log and the
-explanation. Each node appends one entry to `steps`.
-
-- **check_input**: rejects empty exams, slots or venues, and exams longer than any session, before the
-  solver runs.
-- **solve**: calls the solver tool with the time limit.
-- **verify**: re-checks clashes, capacity and venue double-booking in Python. Spring Boot checks again.
-- **diagnose**: only when the solver fails. Gemini receives counts and bottlenecks (for example: "exam X
-  needs 600 seats, largest free combination is 450") and the tools to compute them, and proposes changes such
-  as adding a day or a venue. It never edits the timetable.
-- **explain**: writes the summary shown to the admin.
+- **check_input**: input already passed `SolverInput` validation; this node checks things such as "no exam
+  fits any session" before the solver runs.
+- **solve**: calls the solver through `solver_gateway`.
+- **verify**: re-checks clashes, capacity and venue double-booking. Spring Boot checks again.
+- **diagnose**: only when there is no full timetable. Gemini reads the solver's `diagnostics` (for example
+  `CAPACITY_TOO_SMALL`, `NOT_ENOUGH_DAYS`) and proposes changes such as adding a day or a venue. It never
+  edits the timetable.
+- **explain**: writes the summary shown to the admin (`explanation`).
 
 ### Fallback
 
 - No `GEMINI_API_KEY`, or Gemini is down: the workflow still runs; diagnose and explain use fixed text.
-- AI service down: Spring Boot returns 503 with a readable issue. The admin can choose the Java engine.
+- AI service down: Spring Boot returns 503 `AI_SERVICE_UNAVAILABLE` with a readable message. The admin can
+  choose the Java engine.
+- `AuthenticationExceptionHandler` only handles `AuthController` and `UserController`, so timetable errors
+  keep their real status and message from `GlobalExceptionHandler`.
 
 ## API summary
 
-| Service | Method and path | Purpose |
-|---|---|---|
-| AI service | `GET /health` | Liveness, solver name, whether Gemini is configured. |
-| AI service | `POST /v1/exam-timetables/generate` | Run the workflow and return the contract above. |
-| Spring Boot | `POST /api/admin/exam-timetables/{periodId}/preview?engine=agent` | Load input, call the AI service, validate, return the existing `Preview`. |
+| Service | Method and path | Purpose | Status |
+|---|---|---|---|
+| AI service | `GET /health` | Liveness, solver name, whether Gemini is configured. | Done (Day 2) |
+| AI service | `POST /v1/exam-timetables/generate` | Validate `SolverInput`, run the solver, return `SolverOutput`. | Done (Day 2), solver pending |
+| Spring Boot | `GET /api/admin/ai-service/health` | Admin check that Spring Boot can reach the AI service. | Done (Day 2) |
+| Spring Boot | `POST /api/admin/exam-timetables/{periodId}/preview?engine=agent` | Load input, call the AI service, validate, return the existing `Preview`. | Day 3 |
 
 Configuration:
 
 | Setting | Where | Default |
 |---|---|---|
 | `AI_SERVICE_URL` | Spring Boot env (`timetable.ai-service.url`) | `http://localhost:8000` |
-| `GEMINI_API_KEY`, `GEMINI_MODEL` | AI service env only | unset, `gemini-3.6-flash` |
+| `DB_URL`, `DB_USERNAME`, `DB_PASSWORD` | Spring Boot env | local `timetable_sprint1`, `postgres`, none |
 | `SOLVER_TIME_LIMIT_SECONDS` | AI service env | `60` |
+| `GEMINI_API_KEY`, `GEMINI_MODEL` | AI service env only | unset, `gemini-3.6-flash` |
+
+## Running locally
+
+1. PostgreSQL running with the `timetable_sprint1` database.
+2. AI service: `cd ai-service`, activate `.venv`, `pip install -r requirements.txt`,
+   `uvicorn app.main:app --port 8000`.
+3. Spring Boot: run `ExamLectureTimetableApplication` with `DB_PASSWORD` and `APP_JWT_SECRET` set.
+4. Sign in as an admin at `http://localhost:8081/login`, then open
+   `http://localhost:8081/api/admin/ai-service/health`.
 
 ## Ownership
 
 | Area | Folder | Owner |
 |---|---|---|
-| FastAPI app, LangGraph workflow, Gemini, Spring Boot client | `ai-service/app/` (except `solver/`), `backend/.../service/AgentExamTimetableService.java` | Chethiya |
-| CP-SAT model: exam variables, period, duration, student clash, spacing | `ai-service/app/solver/` | Nimmitha |
+| FastAPI app, solver gateway, LangGraph workflow, Gemini, Spring Boot client | `ai-service/app/` (except `schemas/` and `solver/`), `backend/.../service/AiServiceClient.java`, `backend/.../controller/AiServiceController.java` | Chethiya |
+| Solver contract; CP-SAT model: exam variables, period, duration, student clash, spacing | `ai-service/app/schemas/`, `ai-service/app/solver/` | Nimmitha |
 | CP-SAT model: venue variables, capacity, availability, multi-hall, utilisation | `ai-service/app/solver/` | Malsha |
 | Input mapping, validation, persistence | existing backend services above | Malsha |
 | Venue/timeslot management UI, generate and display | `frontend/` | Oshadi |
