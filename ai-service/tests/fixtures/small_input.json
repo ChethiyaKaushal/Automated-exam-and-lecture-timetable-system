@@ -363,9 +363,14 @@
   "fixedAssignments": [
     {
       "requirementId": 101,
-      "startTimeslotId": 1,
       "venueIds": [
         1
+      ]
+    },
+    {
+      "requirementId": 104,
+      "venueIds": [
+        5
       ]
     }
   ]

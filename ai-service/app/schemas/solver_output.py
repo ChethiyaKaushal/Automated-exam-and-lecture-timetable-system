@@ -67,6 +67,8 @@ class VenueAllocation(CamelModel):
 
 class Assignment(CamelModel):
     requirement_id: int
+    # 1 = normal exam or morning part of a split drawing exam; 2 = evening part.
+    part: int = Field(default=1, ge=1)
     student_count: int = Field(gt=0)
     date: date
     start_time: time
@@ -166,15 +168,14 @@ class SolverOutput(CamelModel):
         if self.status in SOLVED:
             if not self.assignments and not self.unscheduled:
                 raise ValueError(f"Status {status} needs at least one assignment or unscheduled exam.")
-            assigned_ids = [assignment.requirement_id for assignment in self.assignments]
+            self._check_split_parts()
+            # A set, so the two parts of a split exam count once.
+            assigned_ids = {assignment.requirement_id for assignment in self.assignments}
             unscheduled_ids = [exam.requirement_id for exam in self.unscheduled]
-            repeated = _duplicates(assigned_ids)
-            if repeated:
-                raise ValueError(f"requirementIds {repeated} are assigned more than once.")
             repeated = _duplicates(unscheduled_ids)
             if repeated:
                 raise ValueError(f"requirementIds {repeated} are unscheduled more than once.")
-            both = sorted(set(assigned_ids) & set(unscheduled_ids))
+            both = sorted(assigned_ids & set(unscheduled_ids))
             if both:
                 raise ValueError(f"requirementIds {both} are both assigned and unscheduled.")
             if self.unscheduled and DiagnosticCode.PARTIAL_SCHEDULE not in codes:
@@ -202,3 +203,30 @@ class SolverOutput(CamelModel):
         if required is not None and required not in codes:
             raise ValueError(f"Status {status} needs a diagnostic with code {required.value}.")
         return self
+
+    def _check_split_parts(self) -> None:
+        """Each exam has parts 1..n; the parts of a split exam are on one date and in time order."""
+        parts_by_exam: dict[int, list[Assignment]] = {}
+        for assignment in self.assignments:
+            parts_by_exam.setdefault(assignment.requirement_id, []).append(assignment)
+
+        for rid, parts in parts_by_exam.items():
+            numbers = sorted(part.part for part in parts)
+            repeated = _duplicates(numbers)
+            if repeated:
+                raise ValueError(f"Requirement {rid}: parts {repeated} are assigned more than once.")
+            if numbers != list(range(1, len(numbers) + 1)):
+                raise ValueError(f"Requirement {rid}: parts {numbers} must be numbered 1 to {len(numbers)}.")
+            if len(parts) == 1:
+                continue
+
+            ordered = sorted(parts, key=lambda part: part.part)
+            dates = sorted({part.date.isoformat() for part in ordered})
+            if len(dates) > 1:
+                raise ValueError(f"Requirement {rid}: split parts must be on the same date, got {dates}.")
+            for previous, current in zip(ordered, ordered[1:]):
+                if current.start_time < previous.end_time:
+                    raise ValueError(
+                        f"Requirement {rid}: part {current.part} starts at {current.start_time:%H:%M}, "
+                        f"before part {previous.part} ends at {previous.end_time:%H:%M}."
+                    )

@@ -146,15 +146,14 @@ class SharedExamGroup(CamelModel):
 
 
 class FixedAssignment(CamelModel):
+    # The exam must use exactly these venues; the solver chooses the day and session.
     requirement_id: int
-    start_timeslot_id: int
-    # None lets the solver choose the venues.
-    venue_ids: list[int] | None = Field(default=None, min_length=1)
+    venue_ids: list[int] = Field(min_length=1)
 
     @field_validator("venue_ids")
     @classmethod
-    def check_unique(cls, ids: list[int] | None) -> list[int] | None:
-        repeated = _duplicates(ids or [])
+    def check_unique(cls, ids: list[int]) -> list[int]:
+        repeated = _duplicates(ids)
         if repeated:
             raise ValueError(f"Fixed assignment: venueIds {repeated} appear more than once.")
         return ids
@@ -226,13 +225,27 @@ class SolverInput(CamelModel):
             if rid in fixed_seen:
                 raise ValueError(f"Requirement {rid} has more than one fixed assignment.")
             fixed_seen.add(rid)
-            if fixed.start_timeslot_id not in slot_ids:
-                raise ValueError(
-                    f"Fixed assignment for requirement {rid}: unknown startTimeslotId {fixed.start_timeslot_id}."
-                )
-            unknown = sorted(set(fixed.venue_ids or []) - venue_ids)
+            unknown = sorted(set(fixed.venue_ids) - venue_ids)
             if unknown:
                 raise ValueError(f"Fixed assignment for requirement {rid}: unknown venueIds {unknown}.")
+
+        # requiredVenueType and fixedAssignments always come together.
+        fixed_by_exam = {fixed.requirement_id: fixed for fixed in self.fixed_assignments}
+        venue_types = {venue.venue_id: venue.venue_type for venue in self.venues}
+        for exam in self.exams:
+            rid = exam.requirement_id
+            required = exam.required_venue_type
+            fixed = fixed_by_exam.get(rid)
+            if required is not None and fixed is None:
+                raise ValueError(f"Exam {rid} has requiredVenueType {required.value} but no fixed assignment.")
+            if fixed is not None and required is None:
+                raise ValueError(f"Fixed assignment for requirement {rid}: exam has no requiredVenueType.")
+            if fixed is not None:
+                wrong = sorted(vid for vid in fixed.venue_ids if venue_types[vid] != required)
+                if wrong:
+                    raise ValueError(
+                        f"Fixed assignment for requirement {rid}: venues {wrong} are not {required.value}."
+                    )
         return self
 
     def _check_unique_ids(self) -> None:
