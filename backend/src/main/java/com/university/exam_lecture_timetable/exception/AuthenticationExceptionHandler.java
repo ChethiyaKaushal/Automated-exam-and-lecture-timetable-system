@@ -17,8 +17,12 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.util.HashMap;
 import java.util.Map;
+import com.university.exam_lecture_timetable.controller.AuthController;
+import com.university.exam_lecture_timetable.controller.UserController;
 
-@RestControllerAdvice
+
+// Only for the authentication and user-management controllers. All other controllers use GlobalExceptionHandler.
+@RestControllerAdvice(assignableTypes = {AuthController.class, UserController.class})
 public class AuthenticationExceptionHandler {
     private static final Logger logger = LoggerFactory.getLogger(AuthenticationExceptionHandler.class);
 
