@@ -1,5 +1,6 @@
 package com.university.exam_lecture_timetable.repository;
 
+import com.university.exam_lecture_timetable.entity.EnrollmentType;
 import com.university.exam_lecture_timetable.entity.StudentModuleEnrollmentEntity;
 import com.university.exam_lecture_timetable.entity.RegistrationStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -27,4 +28,26 @@ public interface StudentModuleEnrollmentRepository extends JpaRepository<Student
         @Param("semesterIds") Collection<Long> semesterIds,
         @Param("moduleIds") Collection<Long> moduleIds,
         @Param("status") RegistrationStatus status);
+
+
+    // One row per enrollment, used by ExamConflictService to build conflict pairs.
+    //This is for exam type is proper or repeat
+    @Query("""
+        select e.student.studentId as studentId, e.module.moduleId as moduleId,
+            e.semester.semesterId as semesterId, e.enrollmentType as enrollmentType
+        from StudentModuleEnrollmentEntity e
+        where e.module.moduleId in :moduleIds
+          and e.registrationStatus = :status
+    """)
+    List<EnrollmentRow> findEnrollmentsForModules(
+            @Param("moduleIds") Collection<Long> moduleIds,
+            @Param("status") RegistrationStatus status);
+
+    //Only we want column
+    interface EnrollmentRow {
+        Long getStudentId();
+        Long getModuleId();
+        Long getSemesterId();
+        EnrollmentType getEnrollmentType();
+    }
 }
