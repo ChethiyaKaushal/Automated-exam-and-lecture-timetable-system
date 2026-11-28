@@ -1,31 +1,16 @@
 package com.university.exam_lecture_timetable.service;
 
 import com.university.exam_lecture_timetable.dto.ExamSchedulingInput;
-import com.university.exam_lecture_timetable.entity.CalendarPeriodEntity;
-import com.university.exam_lecture_timetable.entity.ExamRequirementEntity;
-import com.university.exam_lecture_timetable.entity.RequirementType;
-import com.university.exam_lecture_timetable.entity.TimeslotEntity;
-import com.university.exam_lecture_timetable.entity.VenueAvailabilityEntity;
-import com.university.exam_lecture_timetable.entity.VenueEntity;
+import com.university.exam_lecture_timetable.dto.solver.SolverInput;
+import com.university.exam_lecture_timetable.entity.*;
 import com.university.exam_lecture_timetable.exception.ExamTimetableReviewException;
-import com.university.exam_lecture_timetable.repository.CalendarPeriodRepository;
-import com.university.exam_lecture_timetable.repository.ExamRequirementRepository;
-import com.university.exam_lecture_timetable.repository.StudentGroupRepository;
+import com.university.exam_lecture_timetable.repository.*;
 import com.university.exam_lecture_timetable.repository.StudentGroupRepository.ModuleGroupMember;
-import com.university.exam_lecture_timetable.repository.TimeslotRepository;
-import com.university.exam_lecture_timetable.repository.VenueAvailabilityRepository;
-import com.university.exam_lecture_timetable.repository.VenueRepository;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class ExamSchedulingInputService {
@@ -36,6 +21,9 @@ public class ExamSchedulingInputService {
     private final TimeslotRepository timeslotRepository;
     private final VenueRepository venueRepository;
     private final VenueAvailabilityRepository availabilityRepository;
+    private final EventAllocationRepository allocationRepository;
+    private final ExamConflictService conflictService;
+
 
     public ExamSchedulingInputService(
             CalendarPeriodRepository periodRepository,
@@ -43,7 +31,9 @@ public class ExamSchedulingInputService {
             StudentGroupRepository groupRepository,
             TimeslotRepository timeslotRepository,
             VenueRepository venueRepository,
-            VenueAvailabilityRepository availabilityRepository
+            VenueAvailabilityRepository availabilityRepository,
+            EventAllocationRepository allocationRepository,
+            ExamConflictService conflictService
     ) {
         this.periodRepository = periodRepository;
         this.examRepository = examRepository;
@@ -51,6 +41,8 @@ public class ExamSchedulingInputService {
         this.timeslotRepository = timeslotRepository;
         this.venueRepository = venueRepository;
         this.availabilityRepository = availabilityRepository;
+        this.allocationRepository = allocationRepository;
+        this.conflictService = conflictService;
     }
 
     @Transactional(readOnly = true)
@@ -63,27 +55,58 @@ public class ExamSchedulingInputService {
         return prepare(periodId, true);
     }
 
-    private DraftInput prepare(Long periodId, boolean allowIncompleteMembership) {
+    /**
+     * The solver contract links requiredVenueType and fixedAssignments: an exam with a required type
+     * must list the venues it may use, all of that type. There is no table of chosen venues per exam
+     * yet, so every eligible venue of the required type is allowed and the solver picks among them.
+     */
+    static List<SolverInput.FixedAssignment> buildFixedAssignments(
+            List<SolverInput.Exam> exams, List<SolverInput.Venue> venues
+    ) {
+        List<SolverInput.FixedAssignment> result = new ArrayList<>();
+        for (SolverInput.Exam exam : exams) {
+            if (exam.requiredVenueType() == null) {
+                continue;
+            }
+            List<Long> venueIds = venues.stream()
+                    .filter(venue -> venue.venueType() == exam.requiredVenueType())
+                    .map(SolverInput.Venue::venueId)
+                    .toList();
+            if (venueIds.isEmpty()) {
+                throw new ExamTimetableReviewException(exam.moduleCode() + " (" + exam.curriculum() + ") needs a "
+                        + exam.requiredVenueType() + " venue, but none is available for exams.");
+            }
+            result.add(new SolverInput.FixedAssignment(exam.requirementId(), venueIds));
+        }
+        return List.copyOf(result);
+    }
+
+    private static SolverInput.Exam toSolverExam(ExamRequirementEntity requirement, ExamSchedulingInput.Exam exam) {
+        var module = requirement.getRequirement().getModule();
+        Integer gapDays = requirement.getExamGapDays();
+        if (gapDays != null && gapDays < 0) {
+            throw new ExamTimetableReviewException(
+                    "Exam requirement " + exam.requirementId() + " has a negative exam gap.");
+        }
+        return new SolverInput.Exam(
+                exam.requirementId(), exam.moduleId(), exam.moduleCode(), exam.moduleName(), exam.curriculum(),
+                module.getDepartment() == null ? null : module.getDepartment().getDepartmentId(),
+                module.getSemester() == null ? null : module.getSemester().getSemesterId(),
+                exam.durationMinutes(),
+                gapDays == null ? 0 : gapDays,
+                requirement.getRequiredVenueType(),
+                exam.studentCount(),
+                exam.groups().stream().map(group -> new SolverInput.Group(group.groupId(), group.studentCount())).toList());
+    }
+
+    private CalendarPeriodEntity findPeriod(Long periodId) {
         if (periodId == null || periodId <= 0) {
             throw new ExamTimetableReviewException("A positive exam period ID is required.");
         }
-        CalendarPeriodEntity period = periodRepository.findById(periodId)
+        return periodRepository.findById(periodId)
                 .orElseThrow(() -> new ExamTimetableReviewException("Unknown calendar period " + periodId + "."));
-        List<ExamRequirementEntity> requirements =
-                examRepository.findActiveByPeriodAndType(
-                        periodId, RequirementType.EXAM);
-        if (requirements.isEmpty()) {
-            throw new ExamTimetableReviewException("No active exam requirements are assigned to period " + periodId + ".");
-        }
-
-        List<ExamWithStudents> exams = loadExams(requirements, allowIncompleteMembership);
-        List<ExamSchedulingInput.Slot> slots = loadSlots(period);
-        List<ExamSchedulingInput.Venue> venues = loadVenues(periodId, slots.size());
-        var input = new ExamSchedulingInput(
-                periodId, exams.stream().map(ExamWithStudents::exam).toList(),
-                slots, venues, findStudentConflicts(exams));
-        return new DraftInput(input, exams.stream().allMatch(ExamWithStudents::membershipComplete));
     }
+
 
     private List<ExamWithStudents> loadExams(
             List<ExamRequirementEntity> requirements, boolean allowIncompleteMembership
@@ -225,4 +248,103 @@ public class ExamSchedulingInputService {
     private record ExamWithStudents(
             ExamSchedulingInput.Exam exam, Set<Long> studentIds, Set<Long> groupIds, boolean membershipComplete
     ) {}
+
+
+    //=================================New method - mapper========================================
+
+    private List<ExamRequirementEntity> findRequirements(Long periodId) {
+        List<ExamRequirementEntity> requirements =
+                examRepository.findActiveByPeriodAndType(
+                        periodId, RequirementType.EXAM);
+        if (requirements.isEmpty()) {
+            throw new ExamTimetableReviewException("No active exam requirements are assigned to period " + periodId + ".");
+        }
+        return requirements;
+    }
+
+    private DraftInput prepare(Long periodId, boolean allowIncompleteMembership) {
+        CalendarPeriodEntity period = findPeriod(periodId);
+        List<ExamRequirementEntity> requirements = findRequirements(periodId);
+
+        List<ExamWithStudents> exams = loadExams(requirements, allowIncompleteMembership);
+        List<ExamSchedulingInput.Slot> slots = loadSlots(period);
+        List<ExamSchedulingInput.Venue> venues = loadVenues(periodId, slots.size());
+        var input = new ExamSchedulingInput(
+                periodId, exams.stream().map(ExamWithStudents::exam).toList(),
+                slots, venues, findStudentConflicts(exams));
+        return new DraftInput(input, exams.stream().allMatch(ExamWithStudents::membershipComplete));
+    }
+
+    /**
+     * Builds the request for the Python CP-SAT solver (ai-service/app/schemas/solver_input.py).
+     *
+     * <ul>
+     *   <li>Exams with hasExam = false are left out (filtered in the repository query).</li>
+     *   <li>Venues with isAvailableForExams = false are left out completely.</li>
+     *   <li>unavailableTimeslotIds = slots marked unavailable + slots already booked by other saved events.</li>
+     *   <li>conflictPairs come from student_module_enrollment (see ExamConflictService).</li>
+     *   <li>sharedExamGroups: sent empty for now (shared exam pairs are not stored yet).</li>
+     *   <li>fixedAssignments: every exam with a requiredVenueType gets all venues of that type.</li>
+     * </ul>
+     */
+    @Transactional(readOnly = true)
+    public SolverInput loadSolverInput(Long periodId) {
+        CalendarPeriodEntity period = findPeriod(periodId);
+        List<ExamRequirementEntity> requirements = findRequirements(periodId);
+
+        // Group sizes are what the solver needs; group membership only fed the old clash check.
+        List<ExamWithStudents> loaded = loadExams(requirements, true);
+        List<SolverInput.Exam> exams = new ArrayList<>();
+        Map<Long, List<Long>> requirementIdsByModule = new TreeMap<>();
+        for (int i = 0; i < requirements.size(); i++) {
+            exams.add(toSolverExam(requirements.get(i), loaded.get(i).exam()));
+            requirementIdsByModule
+                    .computeIfAbsent(exams.get(i).moduleId(), ignored -> new ArrayList<>())
+                    .add(exams.get(i).requirementId());
+        }
+        Set<Long> requirementIds = exams.stream().map(SolverInput.Exam::requirementId).collect(Collectors.toSet());
+
+        List<SolverInput.Slot> slots = loadSlots(period).stream()
+                .map(slot -> new SolverInput.Slot(slot.timeslotId(), slot.date(), slot.startTime(), slot.endTime()))
+                .toList();
+        List<SolverInput.Venue> venues = loadSolverVenues(periodId, slots.size(), requirementIds);
+
+        Set<Long> semesterIds = period.getSemesters().stream()
+                .map(SemesterEntity::getSemesterId)
+                .collect(Collectors.toSet());
+        List<SolverInput.ConflictPair> conflictPairs =
+                conflictService.findConflictPairs(requirementIdsByModule, semesterIds);
+
+        // Shared exams are not stored yet, so none are sent for now.
+        List<SolverInput.SharedExamGroup> sharedGroups = List.of();
+
+        return new SolverInput(periodId, List.copyOf(exams), slots, venues,
+                conflictPairs, sharedGroups, buildFixedAssignments(exams, venues));
+    }
+
+    private List<SolverInput.Venue> loadSolverVenues(Long periodId, int slotCount, Set<Long> scheduledRequirementIds) {
+        Map<Long, Set<Long>> blocked = new HashMap<>();
+        for (VenueAvailabilityEntity row : availabilityRepository.findByTimeslot_Period_PeriodIdAndIsAvailableFalse(periodId)) {
+            blocked.computeIfAbsent(row.getId().getVenueId(), ignored -> new TreeSet<>())
+                    .add(row.getId().getTimeslotId());
+        }
+        for (var booked : allocationRepository.findBookedSlots(periodId, scheduledRequirementIds, TimetableStatus.ARCHIVED)) {
+            blocked.computeIfAbsent(booked.getVenueId(), ignored -> new TreeSet<>())
+                    .add(booked.getTimeslotId());
+        }
+        List<SolverInput.Venue> venues = venueRepository.findByIsAvailableForExamsTrue().stream()
+                .filter(venue -> venue.getExamCapacity() != null && venue.getExamCapacity() > 0)
+                .sorted(Comparator.comparing(VenueEntity::getVenueId))
+                .map(venue -> new SolverInput.Venue(
+                        venue.getVenueId(), venue.getVenueName(), venue.getVenueType(), venue.getExamCapacity(),
+                        venue.getPriority() == null ? 1 : venue.getPriority(),
+                        List.copyOf(blocked.getOrDefault(venue.getVenueId(), Set.of()))))
+                // A venue that is blocked in every slot can never be used.
+                .filter(venue -> venue.unavailableTimeslotIds().size() < slotCount)
+                .toList();
+        if (venues.isEmpty()) {
+            throw new ExamTimetableReviewException("No eligible exam venues are available in period " + periodId + ".");
+        }
+        return venues;
+    }
 }
